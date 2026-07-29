@@ -8,6 +8,8 @@
   --colorBorderHover: rgba(255, 255, 255, 0.14);
   --colorAccent: #58a6ff;
   --colorAccentHover: #79b8ff;
+  --colorAccentMuted: rgba(88, 166, 255, 0.08);
+  --colorAccentBorder: rgba(88, 166, 255, 0.15);
   --colorText: #e6edf3;
   --colorTextSecondary: #8b949e;
   --colorTextMuted: #6e7681;

@@ -85,7 +85,7 @@
   background-color: var(--colorSurfaceHover);
 }
 
-/* ==================== ТЕГИ ==================== */
+/* ==================== ТЕГИ (универсальные) ==================== */
 .tag {
   display: inline-block;
   padding: 4px 10px;
@@ -93,8 +93,8 @@
   font-size: 0.75rem;
   font-weight: 500;
   color: var(--colorAccent);
-  background-color: rgba(88, 166, 255, 0.08);
-  border: 1px solid rgba(88, 166, 255, 0.15);
+  background-color: var(--colorAccentMuted);
+  border: 1px solid var(--colorAccentBorder);
   border-radius: var(--radiusSm);
 }
 
@@ -165,4 +165,96 @@
 
 .footerLink:hover {
   color: var(--colorAccent);
+}
+
+/* ==================== ПЕРЕКЛЮЧАТЕЛЬ ТРЕКОВ ==================== */
+.trackSwitcher {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 40px;
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusMd);
+  overflow: hidden;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.trackBtn {
+  padding: 10px 24px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--colorTextSecondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transitionFast);
+  white-space: nowrap;
+}
+
+.trackBtn.active {
+  background-color: var(--colorAccent);
+  color: #ffffff;
+}
+
+.trackBtn:hover:not(.active) {
+  color: var(--colorText);
+  background-color: var(--colorSurfaceHover);
+}
+
+.trackContent {
+  display: none;
+}
+
+.trackContent.active {
+  display: block;
+}
+
+/* ==================== FAQ (details) ==================== */
+.faqList {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.faqItem {
+  border-bottom: 1px solid var(--colorBorder);
+}
+
+.faqQuestion {
+  padding: 20px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--colorText);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color var(--transitionFast);
+}
+
+.faqQuestion:hover {
+  color: var(--colorAccent);
+}
+
+.faqQuestion::after {
+  content: '+';
+  font-family: var(--fontMono);
+  font-size: 1.25rem;
+  color: var(--colorTextMuted);
+  transition: transform var(--transitionFast);
+}
+
+.faqItem[open] .faqQuestion::after {
+  content: '−';
+  transform: rotate(180deg);
+}
+
+.faqAnswer {
+  padding: 0 0 20px;
+  font-size: 0.938rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.6;
 }

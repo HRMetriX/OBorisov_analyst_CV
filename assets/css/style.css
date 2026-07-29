@@ -29,7 +29,7 @@
   color: var(--colorTextSecondary);
   line-height: 1.6;
   margin-bottom: 28px;
-  max-width: 480px;
+  max-width: 540px;
 }
 
 .heroActions {
@@ -45,7 +45,6 @@
   gap: 8px;
 }
 
-/* Визуал (заглушка под скрин) */
 .heroVisual {
   display: flex;
   flex-direction: column;
@@ -75,6 +74,99 @@
   text-align: center;
 }
 
+/* ==================== ТРИ ОТЛИЧИЯ ==================== */
+.differences {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: var(--sectionPad);
+}
+
+.differencesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.diffCard {
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusMd);
+  padding: 32px 28px;
+  transition: all var(--transitionBase);
+}
+
+.diffCard:hover {
+  background-color: var(--colorSurfaceHover);
+  border-color: var(--colorBorderHover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadowCardHover);
+}
+
+.diffIcon {
+  color: var(--colorAccent);
+  margin-bottom: 20px;
+}
+
+.diffTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--colorText);
+  margin-bottom: 10px;
+}
+
+.diffDesc {
+  font-size: 0.875rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.6;
+}
+
+/* ==================== ТЕХНОЛОГИИ ==================== */
+.tech {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: var(--sectionPad);
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.techGroup {
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusMd);
+  padding: 24px;
+}
+
+.techGroupTitle {
+  font-family: var(--fontMono);
+  font-size: 0.813rem;
+  font-weight: 500;
+  color: var(--colorAccent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.techItem {
+  font-family: var(--fontMono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--colorTextSecondary);
+  background-color: var(--colorBg);
+  padding: 4px 10px;
+  border-radius: var(--radiusSm);
+  border: 1px solid var(--colorBorder);
+}
+
 /* ==================== HOW I WORK ==================== */
 .howWork {
   max-width: var(--maxWidth);
@@ -86,6 +178,135 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+}
+
+/* ==================== ИЗБРАННЫЕ КЕЙСЫ ==================== */
+.featuredWorks {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: var(--sectionPad);
+}
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.featuredCard {
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusMd);
+  overflow: hidden;
+  transition: all var(--transitionBase);
+}
+
+.featuredCard:hover {
+  border-color: var(--colorBorderHover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadowCardHover);
+}
+
+.featuredCardImage {
+  width: 100%;
+}
+
+.featuredCardImage .heroImagePlaceholder {
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid var(--colorBorder);
+  aspect-ratio: 16 / 9;
+}
+
+.featuredCardBody {
+  padding: 20px;
+}
+
+.featuredCardTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--colorText);
+  margin-bottom: 8px;
+}
+
+.featuredCardDesc {
+  font-size: 0.813rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.6;
+}
+
+.featuredCta {
+  text-align: center;
+}
+
+/* ==================== СУБДЕРИКТОРИЯ (тизер) ==================== */
+.blogTeaser {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: var(--sectionPad);
+}
+
+.blogTeaserGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.blogTeaserCard {
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusMd);
+  padding: 24px;
+  transition: all var(--transitionBase);
+}
+
+.blogTeaserCard:hover {
+  border-color: var(--colorBorderHover);
+  background-color: var(--colorSurfaceHover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadowCardHover);
+}
+
+.blogTeaserDate {
+  display: block;
+  font-family: var(--fontMono);
+  font-size: 0.75rem;
+  color: var(--colorTextMuted);
+  margin-bottom: 10px;
+}
+
+.blogTeaserTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--colorText);
+  margin-bottom: 8px;
+}
+
+.blogTeaserDesc {
+  font-size: 0.813rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.blogTeaserLink {
+  font-size: 0.813rem;
+  font-weight: 500;
+  color: var(--colorAccent);
+  transition: color var(--transitionFast);
+}
+
+.blogTeaserLink:hover {
+  color: var(--colorAccentHover);
+}
+
+/* ==================== FAQ ==================== */
+.faq {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: var(--sectionPad);
 }
 
 /* ==================== CTA ==================== */
@@ -122,8 +343,25 @@
     font-size: 2rem;
   }
 
+  .differencesGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .techGrid {
+    grid-template-columns: 1fr;
+  }
+
   .howWorkSteps {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .featuredGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .blogTeaserGrid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -147,6 +385,15 @@
   .footer {
     flex-direction: column;
     gap: 12px;
+    text-align: center;
+  }
+
+  .trackSwitcher {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .trackBtn {
     text-align: center;
   }
 
