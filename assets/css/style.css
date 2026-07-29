@@ -74,6 +74,49 @@
   text-align: center;
 }
 
+/* ==================== КТО Я ==================== */
+.about {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: var(--sectionPad);
+}
+
+.aboutInner {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.aboutPhoto {
+  flex-shrink: 0;
+}
+
+.aboutImg {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--colorBorder);
+}
+
+.aboutName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--colorText);
+  margin-bottom: 16px;
+}
+
+.aboutDesc {
+  font-size: 0.938rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.aboutDesc:last-child {
+  margin-bottom: 0;
+}
+
 /* ==================== ТРИ ОТЛИЧИЯ ==================== */
 .differences {
   max-width: var(--maxWidth);
@@ -341,6 +384,12 @@
 
   .heroTitle {
     font-size: 2rem;
+  }
+
+  .aboutInner {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
   }
 
   .differencesGrid {
