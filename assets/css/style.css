@@ -223,6 +223,50 @@
   gap: 20px;
 }
 
+/* ==================== С ЧЕМ Я НЕ РАБОТАЮ ==================== */
+.noGo {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: var(--sectionPad);
+}
+
+.noGoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.noGoCard {
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusMd);
+  padding: 28px;
+  transition: all var(--transitionBase);
+}
+
+.noGoCard:hover {
+  background-color: var(--colorSurfaceHover);
+  border-color: rgba(255, 100, 100, 0.2);
+}
+
+.noGoIcon {
+  color: #f85149;
+  margin-bottom: 16px;
+}
+
+.noGoTitle {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--colorText);
+  margin-bottom: 8px;
+}
+
+.noGoDesc {
+  font-size: 0.875rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.6;
+}
+
 /* ==================== ИЗБРАННЫЕ КЕЙСЫ ==================== */
 .featuredWorks {
   max-width: var(--maxWidth);
@@ -403,6 +447,10 @@
 
   .howWorkSteps {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .noGoGrid {
+    grid-template-columns: 1fr;
   }
 
   .featuredGrid {
