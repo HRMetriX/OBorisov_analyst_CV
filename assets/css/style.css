@@ -1,0 +1,156 @@
+/* ==================== ИМПОРТ ВСЕХ СТИЛЕЙ ==================== */
+@import 'reset.css';
+@import 'variables.css';
+@import 'base.css';
+@import 'components.css';
+@import 'animations.css';
+
+/* ==================== HERO ==================== */
+.hero {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: 80px 24px 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.heroTitle {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: var(--colorText);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.heroSubtitle {
+  font-size: 1.125rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.6;
+  margin-bottom: 28px;
+  max-width: 480px;
+}
+
+.heroActions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.heroTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Визуал (заглушка под скрин) */
+.heroVisual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroImagePlaceholder {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusLg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroImagePlaceholderText {
+  font-size: 0.875rem;
+  color: var(--colorTextMuted);
+}
+
+.heroImageCaption {
+  font-size: 0.813rem;
+  color: var(--colorTextMuted);
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* ==================== HOW I WORK ==================== */
+.howWork {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: var(--sectionPad);
+}
+
+.howWorkSteps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* ==================== CTA ==================== */
+.cta {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--sectionPad);
+  text-align: center;
+}
+
+.ctaTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--colorText);
+  margin-bottom: 12px;
+}
+
+.ctaText {
+  font-size: 1rem;
+  color: var(--colorTextSecondary);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+/* ==================== АДАПТИВ ==================== */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 40px 24px 60px;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .howWorkSteps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .howWorkSteps {
+    grid-template-columns: 1fr;
+  }
+
+  .headerNav {
+    gap: 14px;
+  }
+
+  .headerLink {
+    font-size: 0.813rem;
+  }
+
+  .heroTitle {
+    font-size: 1.625rem;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  :root {
+    --sectionPad: 60px 16px;
+  }
+}

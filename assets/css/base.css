@@ -1,0 +1,58 @@
+/* ==================== БАЗОВЫЕ СТИЛИ ==================== */
+body {
+  font-family: var(--fontMain);
+  font-size: 16px;
+  color: var(--colorText);
+  background-color: var(--colorBg);
+}
+
+/* Заголовки */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Параграфы */
+p {
+  color: var(--colorTextSecondary);
+}
+
+/* Выделение */
+::selection {
+  background-color: var(--colorAccent);
+  color: var(--colorBg);
+}
+
+/* Скроллбар */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--colorBg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--colorSurfaceHover);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--colorTextMuted);
+}
+
+/* Контейнер */
+.container {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Секция */
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--colorText);
+  margin-bottom: 48px;
+  text-align: center;
+}

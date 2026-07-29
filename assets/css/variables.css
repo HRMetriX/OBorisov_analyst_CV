@@ -1,0 +1,36 @@
+/* ==================== CSS-ПЕРЕМЕННЫЕ ==================== */
+:root {
+  /* Цвета */
+  --colorBg: #0d1117;
+  --colorSurface: #161b22;
+  --colorSurfaceHover: #1c2333;
+  --colorBorder: rgba(255, 255, 255, 0.08);
+  --colorBorderHover: rgba(255, 255, 255, 0.14);
+  --colorAccent: #58a6ff;
+  --colorAccentHover: #79b8ff;
+  --colorText: #e6edf3;
+  --colorTextSecondary: #8b949e;
+  --colorTextMuted: #6e7681;
+
+  /* Шрифты */
+  --fontMain: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --fontMono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  /* Размеры */
+  --maxWidth: 1100px;
+  --radiusSm: 4px;
+  --radiusMd: 6px;
+  --radiusLg: 12px;
+
+  /* Отступы */
+  --sectionPad: 100px 24px;
+  --sectionPadMobile: 60px 16px;
+
+  /* Тени */
+  --shadowCard: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadowCardHover: 0 8px 24px rgba(0, 0, 0, 0.4);
+
+  /* Переходы */
+  --transitionFast: 0.15s ease;
+  --transitionBase: 0.25s ease;
+}

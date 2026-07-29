@@ -1,0 +1,168 @@
+/* ==================== HEADER ==================== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(13, 17, 23, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--colorBorder);
+}
+
+.headerInner {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerLogo {
+  font-family: var(--fontMono);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--colorAccent);
+  transition: opacity var(--transitionFast);
+}
+
+.headerLogo:hover {
+  opacity: 0.8;
+}
+
+.headerNav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.headerLink {
+  font-size: 0.875rem;
+  color: var(--colorTextSecondary);
+  transition: color var(--transitionFast);
+}
+
+.headerLink:hover {
+  color: var(--colorText);
+}
+
+.headerLinkTg {
+  color: var(--colorAccent);
+}
+
+/* ==================== КНОПКИ ==================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-size: 0.938rem;
+  font-weight: 500;
+  border-radius: var(--radiusSm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transitionFast);
+}
+
+.btnPrimary {
+  background-color: var(--colorAccent);
+  color: #ffffff;
+}
+
+.btnPrimary:hover {
+  background-color: var(--colorAccentHover);
+}
+
+.btnSecondary {
+  background-color: transparent;
+  color: var(--colorText);
+  border-color: var(--colorBorder);
+}
+
+.btnSecondary:hover {
+  border-color: var(--colorBorderHover);
+  background-color: var(--colorSurfaceHover);
+}
+
+/* ==================== ТЕГИ ==================== */
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  font-family: var(--fontMono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--colorAccent);
+  background-color: rgba(88, 166, 255, 0.08);
+  border: 1px solid rgba(88, 166, 255, 0.15);
+  border-radius: var(--radiusSm);
+}
+
+/* ==================== КАРТОЧКИ ШАГОВ ==================== */
+.stepCard {
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusMd);
+  padding: 28px;
+  transition: all var(--transitionBase);
+}
+
+.stepCard:hover {
+  background-color: var(--colorSurfaceHover);
+  border-color: var(--colorBorderHover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadowCardHover);
+}
+
+.stepNumber {
+  display: block;
+  font-family: var(--fontMono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--colorAccent);
+  margin-bottom: 12px;
+}
+
+.stepTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--colorText);
+  margin-bottom: 8px;
+}
+
+.stepDesc {
+  font-size: 0.875rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.6;
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--colorBorder);
+}
+
+.footerText {
+  font-size: 0.813rem;
+  color: var(--colorTextMuted);
+}
+
+.footerLinks {
+  display: flex;
+  gap: 20px;
+}
+
+.footerLink {
+  font-size: 0.813rem;
+  color: var(--colorTextSecondary);
+  transition: color var(--transitionFast);
+}
+
+.footerLink:hover {
+  color: var(--colorAccent);
+}
