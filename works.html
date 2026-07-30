@@ -3,360 +3,256 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>666 — Сервер пал</title>
+  <meta name="description" content="Избранные проекты — data-консалтинг, исследования, разработка инструментов">
+
+  <title>Работы — Олег Борисов</title>
 
   <!-- Шрифты -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <style>
-    /* ==================== СБРОС ==================== */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    /* ==================== ПЕРЕМЕННЫЕ ==================== */
-    :root {
-      --colorBg: #0d1117;
-      --colorAccent: #f85149;
-      --colorAccentGlow: rgba(248, 81, 73, 0.5);
-      --colorText: #e6edf3;
-      --colorTextSecondary: #8b949e;
-      --fontMain: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --fontMono: 'JetBrains Mono', monospace;
-    }
-
-    /* ==================== СТРАНИЦА ==================== */
-    body {
-      font-family: var(--fontMain);
-      background-color: var(--colorBg);
-      color: var(--colorText);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .errorContainer {
-      text-align: center;
-      padding: 40px 24px;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Иконка-пентаграмма */
-    .errorIcon {
-      margin: 0 auto 32px;
-      width: 80px;
-      height: 80px;
-    }
-
-    /* Канвас для глитча */
-    .glitchCanvas {
-      display: block;
-      margin: 0 auto 16px;
-    }
-
-    /* Заголовок */
-    .errorTitle {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--colorText);
-      margin-bottom: 12px;
-    }
-
-    /* Описание */
-    .errorDesc {
-      font-size: 1rem;
-      color: var(--colorTextSecondary);
-      max-width: 520px;
-      margin: 0 auto 32px;
-      line-height: 1.6;
-    }
-
-    /* Кнопка */
-    .errorBtn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 28px;
-      font-family: var(--fontMain);
-      font-size: 0.938rem;
-      font-weight: 600;
-      color: #ffffff;
-      background-color: var(--colorAccent);
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background-color 0.2s ease, transform 0.2s ease;
-    }
-
-    .errorBtn:hover {
-      background-color: #ff6b63;
-      transform: translateY(-1px);
-    }
-
-    /* Частицы на фоне */
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .particle {
-      position: absolute;
-      font-family: var(--fontMono);
-      font-size: 0.875rem;
-      color: rgba(248, 81, 73, 0.3);
-      user-select: none;
-      animation: particleFloat linear infinite;
-      text-shadow: 0 0 8px var(--colorAccentGlow);
-    }
-
-    @keyframes particleFloat {
-      0% { transform: translateY(105vh) rotate(0deg); opacity: 0; }
-      5% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-    }
-
-    /* Адаптив */
-    @media (max-width: 600px) {
-      .errorTitle { font-size: 1.25rem; }
-      .errorDesc { font-size: 0.875rem; }
-      .errorIcon { width: 60px; height: 60px; }
-    }
-  </style>
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <!-- Частицы -->
-  <div class="particles" id="particles"></div>
-
-  <!-- Контент -->
-  <div class="errorContainer">
-    <!-- Иконка-пентаграмма -->
-    <div class="errorIcon">
-      <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="40" cy="40" r="38" stroke="#f85149" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5"/>
-        <polygon
-          points="40,6 51.8,30.4 79.2,30.4 58.2,46.2 65.8,71.2 40,56.4 14.2,71.2 21.8,46.2 0.8,30.4 28.2,30.4"
-          stroke="#f85149"
-          stroke-width="1.5"
-          fill="none"
-          stroke-linejoin="round"
-        />
-      </svg>
+  <!-- ==================== HEADER ==================== -->
+  <header class="header">
+    <div class="headerInner">
+      <a href="/OBorisov_analyst_CV/" class="headerLogo">Олег Борисов</a>
+      <nav class="headerNav">
+        <a href="/OBorisov_analyst_CV/" class="headerLink">Главная</a>
+        <a href="/OBorisov_analyst_CV/works.html" class="headerLink headerLinkActive">Работы</a>
+        <a href="/OBorisov_analyst_CV/blog.html" class="headerLink">Субдериктория</a>
+        <a href="/OBorisov_analyst_CV/pricing.html" class="headerLink">Прайс</a>
+        <a href="https://t.me/olegborisov_hr" class="headerLink headerLinkTg" target="_blank" rel="noopener">@olegborisov_hr</a>
+      </nav>
     </div>
+  </header>
 
-    <!-- Canvas-глитч 666 -->
-    <canvas class="glitchCanvas" id="glitchCanvas" width="500" height="160"></canvas>
+  <main>
 
-    <h2 class="errorTitle">Сервер подвергся грехопадению</h2>
-    <p class="errorDesc">Инквизиция уже в&nbsp;пути. Демоны изгнаны, грешники покаялись. Сервер временно не&nbsp;может обрабатывать запросы&nbsp;&mdash; молитвы принимаются в&nbsp;Telegram.</p>
-    <a href="/OBorisov_analyst_CV/" class="errorBtn">Изыди на главную</a>
-  </div>
+    <!-- ==================== ЗАГОЛОВОК ==================== -->
+    <section class="pageHero">
+      <h1 class="pageHeroTitle">Избранные проекты</h1>
+      <p class="pageHeroSubtitle">От&nbsp;поиска скрытых закономерностей до&nbsp;работающих инструментов. Здесь&nbsp;&mdash; что я&nbsp;делаю и&nbsp;как.</p>
+    </section>
 
-  <script>
-    // ==================== ЧАСТИЦЫ ====================
-    (function() {
-      var container = document.getElementById('particles');
-      var chars = '01101000';
-      var particleCount = 50;
+    <!-- ==================== КЕЙС 1 ==================== -->
+    <section class="caseSection">
+      <div class="caseInner">
+        <div class="caseHeader">
+          <h2 class="caseTitle">Сегментация сотрудников после реструктуризации</h2>
+          <div class="caseTags">
+            <span class="tag">Кластеризация</span>
+            <span class="tag">K-means</span>
+            <span class="tag">DBSCAN</span>
+            <span class="tag">Байесовские методы</span>
+            <span class="tag">SAP HANA</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
 
-      for (var i = 0; i < particleCount; i++) {
-        var particle = document.createElement('span');
-        particle.classList.add('particle');
-        particle.textContent = chars[Math.floor(Math.random() * chars.length)];
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDuration = (10 + Math.random() * 18) + 's';
-        particle.style.animationDelay = Math.random() * 14 + 's';
-        container.appendChild(particle);
-      }
-    })();
+        <div class="caseGrid">
+          <div class="caseBlock">
+            <h3 class="caseBlockTitle">Задача</h3>
+            <p class="caseBlockText">HR-директор группы компаний и&nbsp;директор по&nbsp;организационному развитию после масштабной реструктуризации (&gt;100k сотрудников, массовые переподчинения) хотели понять, как люди пережили трансформацию. Изначальный запрос звучал размыто&nbsp;&mdash; &laquo;посмотреть бы, что там с&nbsp;людьми&raquo;. Я&nbsp;предложил конкретный образ результата: выделить группы риска и&nbsp;дать HRBP инструмент для точечной работы.</p>
+          </div>
 
-     // ==================== CANVAS ГЛИТЧ ====================
-    (function() {
-      var canvas = document.getElementById('glitchCanvas');
-      var ctx = canvas.getContext('2d');
+          <div class="caseBlock">
+            <h3 class="caseBlockTitle">Метод</h3>
+            <div class="caseBlockText">
+              <p>Работа шла в&nbsp;пять этапов:</p>
+              <ul class="caseList">
+                <li><strong>Feature engineering.</strong> Собрал датасет из&nbsp;разных таблиц SAP HANA: цифровой след сотрудника, соц.-дем. атрибуты, профессиональные характеристики. Ключ&nbsp;&mdash; сотрудник.</li>
+                <li><strong>Отбор факторов.</strong> Сравнил две известные группы&nbsp;&mdash; уволенные и&nbsp;оставшиеся&nbsp;&mdash; по&nbsp;десяткам параметров. Через статистические тесты и&nbsp;байесовские методы выделил 12&nbsp;ключевых переменных, значимо различающих группы.</li>
+                <li><strong>Кластеризация.</strong> На&nbsp;уволенных за&nbsp;2&nbsp;года опробовал иерархические методы, k-means, HDBSCAN, DBSCAN, гауссовскую кластеризацию. DBSCAN оказался устойчивее в&nbsp;12-мерном пространстве. Grid search подобрал гиперпараметры.</li>
+                <li><strong>Интерпретация.</strong> Ручной анализ 5&nbsp;полученных групп по&nbsp;12&nbsp;факторам. Две ключевые: &laquo;неудовлетворённые&raquo; (негативная оценка и&nbsp;руководителем, и&nbsp;подчинёнными) и&nbsp;&laquo;готовые уволиться завтра&raquo; (цифровой след + опросы).</li>
+                <li><strong>Классификация.</strong> Разметил действующих сотрудников по&nbsp;группам риска. Проверил предсказательную силу через деревья решений (Random Forest, XGBoost, LightGBM).</li>
+              </ul>
+            </div>
+          </div>
 
-      // Подгон размера под экран
-      function resizeCanvas() {
-        var w = Math.min(500, window.innerWidth - 48);
-        canvas.width = w;
-        canvas.height = w * 0.32;
-      }
-      resizeCanvas();
-      window.addEventListener('resize', resizeCanvas);
+          <div class="caseBlock">
+            <h3 class="caseBlockTitle">Результат</h3>
+            <div class="caseBlockText">
+              <p>В&nbsp;подразделениях, где HRBP отработали по&nbsp;группам риска,&nbsp;&mdash; статистически значимый рост удержания по&nbsp;сравнению с&nbsp;подразделениями без такой работы (оценка квартальная). Модель жила на&nbsp;локали: я&nbsp;прогонял сотрудников сам и&nbsp;возвращал HRBP результат.</p>
+              <p>Главный эффект&nbsp;&mdash; переход от&nbsp;адресной работы с&nbsp;ключевыми сотрудниками к&nbsp;управлению пулом риск-факторов. Обнаружены неочевидные связки факторов (например: молодой возраст + наличие детей + невысокий оклад &rarr; повышенная устойчивость к&nbsp;изменениям). Организационные изменения теперь сразу отражаются на&nbsp;карте рисков.</p>
+            </div>
+          </div>
+        </div>
 
-      // Параметры текста
-      var text = '666';
-      var fontSize = canvas.width * 0.34;
-      var font = '700 ' + fontSize + 'px "JetBrains Mono", monospace';
-      var textX = canvas.width / 2;
-      var textY = canvas.height * 0.68;
+        <div class="caseImage">
+          <img src="assets/images/case1.jpg" alt="Сегментация сотрудников — график кластеров" class="caseImg">
+        </div>
+      </div>
+    </section>
 
-      // Полосы глитча
-      var strips = [];
-      var stripCount = 30;
+    <!-- ==================== КЕЙС 2 ==================== -->
+    <section class="caseSection">
+      <div class="caseInner">
+        <div class="caseHeader">
+          <h2 class="caseTitle">Дашборд проблемных доставок</h2>
+          <div class="caseTags">
+            <span class="tag">DataLens</span>
+            <span class="tag">ClickHouse</span>
+            <span class="tag">ETL</span>
+            <span class="tag">D3.js</span>
+            <span class="tag">Логистика</span>
+          </div>
+        </div>
 
-      function initStrips() {
-        strips = [];
-        var h = canvas.height;
-        for (var i = 0; i < stripCount; i++) {
-          strips.push({
-            y: (h / stripCount) * i,
-            height: h / stripCount + 2,
-            offset: 0,
-            targetOffset: 0,
-            colorShift: false,
-            colorType: Math.floor(Math.random() * 3),
-            noise: false,
-            active: false
-          });
-        }
-      }
-      initStrips();
-      window.addEventListener('resize', function() {
-        resizeCanvas();
-        initStrips();
-      });
+        <div class="caseGrid">
+          <div class="caseBlock">
+            <h3 class="caseBlockTitle">Задача</h3>
+            <p class="caseBlockText">Запрос от&nbsp;CEO и&nbsp;финансового директора: доставки&nbsp;&mdash; слабое место компании, они генерируют убытки (политика компании&nbsp;&mdash; возить за&nbsp;свой счёт, даже если клиент не&nbsp;прав). Оценки потерь были приблизительные и&nbsp;собирались разово. Нужен был инструмент, который раз в&nbsp;сутки показывает реальную картину: сколько и&nbsp;почему теряем.</p>
+          </div>
 
-      // Глобальный таймер глитча — реже
-      var glitchTimer = 0;
-      var glitchInterval = 60 + Math.random() * 40; // 60-100 кадров между вспышками
+          <div class="caseBlock">
+            <h3 class="caseBlockTitle">Метод</h3>
+            <div class="caseBlockText">
+              <p>Оркестрировал процесс сборки витрины: от&nbsp;ТЗ до&nbsp;валидации. Исходные данные лежали в&nbsp;1С и&nbsp;грязном слое ClickHouse&nbsp;&mdash; около 8&nbsp;источников. Инженеры собирали руками по&nbsp;моим спецификациям.</p>
+              <p>Спроектировал логическую модель: связал рейсы и&nbsp;доставки (один рейс &rarr; несколько доставок), разложил финансовые потери по&nbsp;категориям причин&nbsp;&mdash; складские (ошибка сборки) и&nbsp;логистические (объём машины, водитель). Валидировал витрину, согласовал методологию с&nbsp;заказчиком&nbsp;&mdash; удерживал фокус на&nbsp;ключевой цели: видеть все потери, а&nbsp;не&nbsp;только те, где есть виновный.</p>
+              <p>Дашборд&nbsp;&mdash; 4&nbsp;вкладки в&nbsp;DataLens + кастомные чарты на&nbsp;D3.js. От&nbsp;помесячной статистики до&nbsp;детализации по&nbsp;конкретной доставке и&nbsp;водителю.</p>
+            </div>
+          </div>
 
-      function updateStrips() {
-        glitchTimer++;
+          <div class="caseBlock">
+            <h3 class="caseBlockTitle">Результат</h3>
+            <div class="caseBlockText">
+              <p>Дашборд показал: недополученная прибыль и&nbsp;прямые убытки&nbsp;&mdash; ~1&nbsp;млрд&nbsp;руб/год. Провёл демо на&nbsp;руководителей всех складов, СЦТ и&nbsp;логистов&nbsp;&mdash; в&nbsp;режиме онлайн отвечал на&nbsp;их&nbsp;вопросы, настраивая фильтры под задачу: &laquo;сколько конкретно мой склад потерял из-за ошибок сборки?&raquo;.</p>
+              <p>Результат: руководители на&nbsp;местах начали работать с&nbsp;утилизацией рейсов; директор по&nbsp;логистике запустил расшивку причин на&nbsp;складские и&nbsp;логистические; инициирован общекорпоративный проект оптимизации цепочек (greenfield + симплекс-методы). Дашборд на&nbsp;проде, работает без ручного участия.</p>
+            </div>
+          </div>
+        </div>
 
-        // Запускаем глитч реже
-        if (glitchTimer >= glitchInterval) {
-          glitchTimer = 0;
-          glitchInterval = 55 + Math.random() * 50;
+        <div class="caseImage">
+          <img src="assets/images/case2.png" alt="Дашборд проблемных доставок" class="caseImg">
+        </div>
+      </div>
+    </section>
 
-          // Активируем случайные полосы — не все, а выборочно
-          for (var i = 0; i < strips.length; i++) {
-            var s = strips[i];
-            if (Math.random() < 0.4) {
-              s.active = true;
-              s.colorShift = Math.random() < 0.4;
-              s.noise = Math.random() < 0.2;
-              s.colorType = Math.floor(Math.random() * 3);
-              s.targetOffset = (Math.random() - 0.5) * canvas.width * 0.3;
-            } else {
-              s.active = false;
-              s.targetOffset = 0;
-              s.colorShift = false;
-              s.noise = false;
-            }
-          }
-        }
+    <!-- ==================== КЕЙС 3 ==================== -->
+    <section class="caseSection">
+      <div class="caseInner">
+        <div class="caseHeader">
+          <h2 class="caseTitle">NLP-анализ стенограмм колл-центра</h2>
+          <div class="caseTags">
+            <span class="tag">NLP</span>
+            <span class="tag">Qwen</span>
+            <span class="tag">NPS</span>
+            <span class="tag">Клиентский сервис</span>
+            <span class="tag">HITL</span>
+          </div>
+        </div>
 
-        // Движение полос — медленное приближение к цели, но рывками
-        for (var i = 0; i < strips.length; i++) {
-          var s = strips[i];
-          if (s.active) {
-            // Рывок: большая часть пути за один кадр, потом затухание
-            s.offset += (s.targetOffset - s.offset) * 0.45;
-          } else {
-            // Возврат на место — плавнее, но всё ещё заметно
-            s.offset += (0 - s.offset) * 0.2;
-          }
-        }
-      }
+        <div class="caseGrid">
+          <div class="caseBlock">
+            <h3 class="caseBlockTitle">Задача</h3>
+            <p class="caseBlockText">Клиентский сервис пришёл после того, как увидел решение аналогичной NLP-задачи для HR&nbsp;(анализ опросов вовлечённости за&nbsp;7&nbsp;лет). Беспокоило: путь пользователя в&nbsp;процессе возврата может быть неочевидным, что создаёт негативный опыт. Во&nbsp;время звонка клиент может поставить 10&nbsp;из&nbsp;10, а&nbsp;в&nbsp;комментарии написать &laquo;у&nbsp;конкурента лучше&raquo;. Нужно было извлечь смысл из&nbsp;стенограмм, а&nbsp;не&nbsp;из&nbsp;цифр опросов.</p>
+          </div>
 
-      // Отрисовка
-      function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+          <div class="caseBlock">
+            <h3 class="caseBlockTitle">Метод</h3>
+            <div class="caseBlockText">
+              <p>Разово обработано около 300&nbsp;стенограмм за&nbsp;несколько месяцев. Развернута квантованная модель Qwen на&nbsp;локали&nbsp;&mdash; никаких внешних API, всё внутри компании. Промпт задавал роль, контекст, задачу, примеры и&nbsp;требования к&nbsp;формату ответа + требование на&nbsp;перепроверку.</p>
+              <p>Стандартная предподготовка текста: нормализация, очистка. Модель извлекала сущности, боли, плюсы и&nbsp;минусы, определяла общую тональность. Изначально тем выделилось больше, но&nbsp;предметный эксперт свёл их&nbsp;к&nbsp;12&nbsp;устойчивым. Процесс&nbsp;&mdash; Human-in-the-Loop: человек валидировал решения модели.</p>
+              <p>NPS считали по&nbsp;оценке, которую клиент давал в&nbsp;начале звонка, в&nbsp;разбивке по&nbsp;выделенным темам.</p>
+            </div>
+          </div>
 
-        // Базовая тень — меньше свечения в спокойном состоянии
-        var anyActive = strips.some(function(s) { return s.active; });
-        ctx.shadowColor = anyActive
-          ? 'rgba(248, 81, 73, 0.7)'
-          : 'rgba(248, 81, 73, 0.3)';
-        ctx.shadowBlur = anyActive ? 25 : 10;
+          <div class="caseBlock">
+            <h3 class="caseBlockTitle">Результат</h3>
+            <div class="caseBlockText">
+              <p>Передал в&nbsp;отдел качества: файлы с&nbsp;разметкой комментариев по&nbsp;темам, презентацию с&nbsp;основными выводами, гипотезами и&nbsp;точками внимания, описание методологии. Найдены очевидные проблемы в&nbsp;процессе возврата&nbsp;&mdash; запущена полная пересборка процесса.</p>
+              <p>Модель HITL показала: AI&nbsp;отлично справляется с&nbsp;задачами извлечения смысла из&nbsp;неструктурированного текста. Писать в&nbsp;десять раз больше кода на&nbsp;то, что уже решено&nbsp;&mdash; не&nbsp;нужно.</p>
+            </div>
+          </div>
+        </div>
 
-        // Для каждой полосы рисуем фрагмент текста
-        for (var i = 0; i < strips.length; i++) {
-          var s = strips[i];
+        <div class="caseImage">
+          <img src="assets/images/case3.png" alt="NLP-анализ стенограмм" class="caseImg">
+        </div>
+      </div>
+    </section>
 
-          ctx.save();
-          ctx.beginPath();
-          ctx.rect(0, s.y, canvas.width, s.height);
-          ctx.clip();
+    <!-- ==================== PET-ПРОЕКТЫ ==================== -->
+    <section class="petProjects">
+      <h2 class="sectionTitle">Pet-проекты</h2>
+      <p class="petProjectsSubtitle">То, что я&nbsp;делаю для себя&nbsp;&mdash; потому что не&nbsp;могу не&nbsp;исследовать.</p>
 
-          // Основной слой (красный) — всегда
-          ctx.fillStyle = '#f85149';
-          ctx.font = font;
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'alphabetic';
-          ctx.fillText(text, textX + s.offset, textY);
+      <!-- HH Analytics -->
+      <div class="petProjectCard">
+        <div class="petProjectHeader">
+          <span class="petProjectPrompt">~/projects/hh-analytics $</span>
+          <h3 class="petProjectTitle">HH Analytics — исследование рынка вакансий</h3>
+        </div>
+        <p class="petProjectDesc">
+          Автоматизированный сбор, очистка и&nbsp;визуализация данных о&nbsp;вакансиях аналитиков с&nbsp;HeadHunter.
+          Ансамблевый классификатор чистит &laquo;мусорные&raquo; вакансии (точность&nbsp;~76%),
+          зарплаты пересчитываются в&nbsp;рублях с&nbsp;учётом курса&nbsp;ЦБ и&nbsp;прогрессивной шкалы&nbsp;НДФЛ.
+          Дашборд в&nbsp;DataLens с&nbsp;кастомными JS-чартами.
+        </p>
+        <div class="petProjectVisual">
+          <iframe
+            src="https://datalens.ru/z4lb3tmp38sij-analiz-rynka-truda-hh?tab=28"
+            class="petProjectIframe"
+            title="Дашборд HH Analytics"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="petProjectActions">
+          <a href="https://datalens.ru/z4lb3tmp38sij-analiz-rynka-truda-hh?tab=28" class="btn btnSecondary" target="_blank" rel="noopener">Открыть в&nbsp;DataLens</a>
+          <a href="https://github.com/HRMetriX/hh-project" class="btn btnSecondary" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
 
-          // Синий слой — только при активном глитче
-          if (s.colorType === 1 && s.active && s.colorShift) {
-            ctx.shadowColor = 'rgba(88, 166, 255, 0.7)';
-            ctx.fillStyle = '#58a6ff';
-            ctx.fillText(text, textX + s.offset - 5, textY + 1);
-          }
+      <!-- Медианалитика -->
+      <div class="petProjectCard">
+        <div class="petProjectHeader">
+          <span class="petProjectPrompt">~/projects/media-analytics $</span>
+          <h3 class="petProjectTitle">Анатомия новостной повестки &laquo;Газеты.Ru&raquo;</h3>
+        </div>
+        <p class="petProjectDesc">
+          Независимое исследование структуры новостной повестки: 20&nbsp;000&nbsp;статей за&nbsp;38&nbsp;дней,
+          98&nbsp;авторов, 11&nbsp;рубрик, 34&nbsp;561&nbsp;именованная сущность.
+          Граф совместной встречаемости, кластеризация (Louvain), анализ центральностей,
+          стилометрия, поиск скрытых нарративов. Четыре кластера, колебательный ритм повестки,
+          двойная бухгалтерия рубрик.
+        </p>
+        <div class="petProjectVisual">
+          <img
+            src="assets/images/graph.png"
+            alt="Граф совместной встречаемости сущностей"
+            class="petProjectImage"
+          >
+        </div>
+        <div class="petProjectActions">
+          <a href="https://hrmetrix.github.io/RuMediaInvestigation/" class="btn btnSecondary" target="_blank" rel="noopener">Смотреть исследование</a>
+          <a href="https://github.com/HRMetriX/RuMediaInvestigation" class="btn btnSecondary" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
 
-          // Белый слой
-          if (s.colorType === 2 && s.active && s.colorShift) {
-            ctx.shadowColor = 'rgba(255, 255, 255, 0.4)';
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-            ctx.fillText(text, textX + s.offset + 4, textY - 2);
-          }
+    <!-- ==================== CTA ==================== -->
+    <section class="cta">
+      <h2 class="ctaTitle">Обсудим ваш проект?</h2>
+      <p class="ctaText">Напишите мне в&nbsp;Telegram&nbsp;&mdash; расскажите, что болит. Посмотрим, можно&nbsp;ли на&nbsp;это ответить данными.</p>
+      <a href="https://t.me/olegborisov_hr" class="btn btnPrimary" target="_blank" rel="noopener">Написать</a>
+    </section>
 
-          // Шумовые линии
-          if (s.noise && s.active) {
-            ctx.shadowColor = 'transparent';
-            ctx.shadowBlur = 0;
-            ctx.fillStyle = Math.random() < 0.5 ? '#f85149' : '#ffffff';
-            ctx.fillRect(
-              Math.random() * canvas.width,
-              s.y + Math.random() * s.height,
-              Math.random() * canvas.width * 0.3 + 2,
-              1
-            );
-          }
+  </main>
 
-          ctx.restore();
-        }
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <p class="footerText">© 2026 Олег Борисов. Собрано руками на GitHub Pages.</p>
+    <div class="footerLinks">
+      <a href="https://github.com/HRMetriX" class="footerLink" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://t.me/olegborisov_hr" class="footerLink" target="_blank" rel="noopener">Telegram</a>
+    </div>
+  </footer>
 
-        // Горизонтальные линии — только при активном глитче
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
-        if (anyActive && Math.random() < 0.3) {
-          ctx.fillStyle = Math.random() < 0.5
-            ? 'rgba(248, 81, 73, 0.5)'
-            : 'rgba(255, 255, 255, 0.3)';
-          var lineY = Math.random() * canvas.height;
-          var lineW = Math.random() * canvas.width * 0.5 + 10;
-          var lineX = Math.random() * (canvas.width - lineW);
-          ctx.fillRect(lineX, lineY, lineW, 1);
-        }
-
-        // Мерцание — реже
-        if (anyActive && Math.random() < 0.04) {
-          ctx.fillStyle = 'rgba(248, 81, 73, 0.1)';
-          ctx.fillRect(0, 0, canvas.width, canvas.height);
-        }
-      }
-
-      // Главный цикл
-      function loop() {
-        updateStrips();
-        draw();
-        requestAnimationFrame(loop);
-      }
-
-      loop();
-    })();
-  </script>
-
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

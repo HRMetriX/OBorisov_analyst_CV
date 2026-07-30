@@ -303,12 +303,15 @@
 
 .featuredCardImage {
   width: 100%;
-}
-
-.featuredCardImage {
-  width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
+}
+
+.featuredCardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .featuredCardBody {
@@ -569,6 +572,190 @@
   color: var(--colorText) !important;
 }
 
+/* ==================== СТРАНИЦА РАБОТ ==================== */
+
+/* Секция кейса */
+.caseSection {
+  border-bottom: 1px solid var(--colorBorder);
+}
+
+.caseInner {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: var(--sectionPad);
+}
+
+.caseHeader {
+  margin-bottom: 40px;
+}
+
+.caseTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--colorText);
+  margin-bottom: 16px;
+}
+
+.caseTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Сетка: задача + метод + результат */
+.caseGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 36px;
+}
+
+.caseBlockTitle {
+  font-family: var(--fontMono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--colorAccent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 14px;
+}
+
+.caseBlockText {
+  font-size: 0.875rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.65;
+}
+
+.caseBlockText p {
+  margin-bottom: 10px;
+}
+
+.caseBlockText p:last-child {
+  margin-bottom: 0;
+}
+
+.caseList {
+  list-style: none;
+  padding: 0;
+}
+
+.caseList li {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 8px;
+  font-size: 0.875rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.55;
+}
+
+.caseList li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--colorTextMuted);
+}
+
+.caseList li strong {
+  color: var(--colorText);
+  font-weight: 600;
+}
+
+/* Изображение кейса */
+.caseImage {
+  width: 100%;
+  border-radius: var(--radiusLg);
+  overflow: hidden;
+  border: 1px solid var(--colorBorder);
+}
+
+.caseImg {
+  width: 100%;
+  display: block;
+}
+
+/* ==================== PET-ПРОЕКТЫ ==================== */
+.petProjects {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: var(--sectionPad);
+  border-top: 1px solid var(--colorBorder);
+}
+
+.petProjectsSubtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--colorTextSecondary);
+  margin-top: -32px;
+  margin-bottom: 56px;
+}
+
+.petProjectCard {
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusLg);
+  padding: 36px;
+  margin-bottom: 32px;
+  transition: border-color var(--transitionBase);
+}
+
+.petProjectCard:hover {
+  border-color: var(--colorBorderHover);
+}
+
+.petProjectHeader {
+  margin-bottom: 20px;
+}
+
+.petProjectPrompt {
+  display: block;
+  font-family: var(--fontMono);
+  font-size: 0.813rem;
+  color: var(--colorAccent);
+  margin-bottom: 8px;
+  opacity: 0.8;
+}
+
+.petProjectTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--colorText);
+}
+
+.petProjectDesc {
+  font-size: 0.938rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.65;
+  margin-bottom: 28px;
+  max-width: 100%;
+}
+
+.petProjectVisual {
+  width: 100%;
+  margin-bottom: 24px;
+  border-radius: var(--radiusMd);
+  overflow: hidden;
+  border: 1px solid var(--colorBorder);
+  background-color: var(--colorBg);
+}
+
+.petProjectIframe {
+  width: 100%;
+  height: 550px;
+  border: none;
+  display: block;
+}
+
+.petProjectImage {
+  width: 100%;
+  display: block;
+}
+
+.petProjectActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 /* ==================== АДАПТИВ ==================== */
 @media (max-width: 900px) {
   .hero {
@@ -612,8 +799,17 @@
     grid-template-columns: 1fr;
   }
 
-   .pricingGrid {
+  .pricingGrid {
     grid-template-columns: 1fr;
+  }
+
+  .caseGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .caseTitle {
+    font-size: 1.375rem;
   }
 }
 
@@ -628,6 +824,14 @@
 
   .headerLink {
     font-size: 0.813rem;
+  }
+
+  .petProjectIframe {
+    height: 400px;
+  }
+
+  .petProjectCard {
+    padding: 24px;
   }
 
   .heroTitle {
