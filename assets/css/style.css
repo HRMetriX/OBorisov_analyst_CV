@@ -74,6 +74,12 @@
   text-align: center;
 }
 
+.heroImage {
+  width: 100%;
+  border-radius: var(--radiusLg);
+  border: 1px solid var(--colorBorder);
+}
+
 /* ==================== КТО Я ==================== */
 .about {
   max-width: var(--maxWidth);
@@ -299,11 +305,10 @@
   width: 100%;
 }
 
-.featuredCardImage .heroImagePlaceholder {
-  border-radius: 0;
-  border: none;
-  border-bottom: 1px solid var(--colorBorder);
+.featuredCardImage {
+  width: 100%;
   aspect-ratio: 16 / 9;
+  overflow: hidden;
 }
 
 .featuredCardBody {
@@ -418,6 +423,152 @@
   line-height: 1.6;
 }
 
+/* ==================== СТРАНИЦА ПРАЙСА ==================== */
+
+/* Заголовок страницы */
+.pageHero {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: 80px 24px 60px;
+  text-align: center;
+}
+
+.pageHeroTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--colorText);
+  margin-bottom: 16px;
+}
+
+.pageHeroSubtitle {
+  font-size: 1.125rem;
+  color: var(--colorTextSecondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Блок пакета */
+.pricingBlock {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+.pricingBlockTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--colorText);
+  margin-bottom: 8px;
+}
+
+.pricingBlockSubtitle {
+  font-size: 0.938rem;
+  color: var(--colorTextSecondary);
+  margin-bottom: 32px;
+}
+
+/* Сетка карточек */
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* Карточка услуги */
+.pricingCard {
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusMd);
+  padding: 28px;
+  transition: all var(--transitionBase);
+}
+
+.pricingCard:hover {
+  border-color: var(--colorBorderHover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadowCardHover);
+}
+
+.pricingCardHeader {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.pricingCardTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--colorText);
+}
+
+.pricingCardPrice {
+  font-family: var(--fontMono);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--colorAccent);
+}
+
+.pricingCardPriceNote {
+  font-family: var(--fontMono);
+  font-size: 0.75rem;
+  color: var(--colorTextMuted);
+  padding: 2px 8px;
+  background-color: var(--colorAccentMuted);
+  border: 1px solid var(--colorAccentBorder);
+  border-radius: var(--radiusSm);
+}
+
+.pricingCardDesc {
+  font-size: 0.875rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.6;
+}
+
+/* Что входит */
+.pricingIncludes {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 24px 100px;
+}
+
+.pricingIncludesTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--colorText);
+  margin-bottom: 20px;
+}
+
+.pricingIncludesList {
+  list-style: none;
+  padding: 0;
+}
+
+.pricingIncludesList li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.938rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.pricingIncludesList li::before {
+  content: '+';
+  position: absolute;
+  left: 0;
+  font-family: var(--fontMono);
+  color: var(--colorAccent);
+  font-weight: 500;
+}
+
+/* Активная ссылка в хедере */
+.headerLinkActive {
+  color: var(--colorText) !important;
+}
+
 /* ==================== АДАПТИВ ==================== */
 @media (max-width: 900px) {
   .hero {
@@ -458,6 +609,10 @@
   }
 
   .blogTeaserGrid {
+    grid-template-columns: 1fr;
+  }
+
+   .pricingGrid {
     grid-template-columns: 1fr;
   }
 }
