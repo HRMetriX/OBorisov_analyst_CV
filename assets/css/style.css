@@ -756,6 +756,27 @@
   flex-wrap: wrap;
 }
 
+/* ==================== БЛОГОСФЕРА — ЗАГЛУШКА ==================== */
+.blogEmpty {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: 60px 24px 100px;
+}
+
+.blogEmptyInner {
+  text-align: center;
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusLg);
+  padding: 60px 24px;
+}
+
+.blogEmptyText {
+  font-size: 1rem;
+  color: var(--colorTextSecondary);
+  margin-bottom: 24px;
+}
+
 /* ==================== АДАПТИВ ==================== */
 @media (max-width: 900px) {
   .hero {
@@ -815,6 +836,35 @@
 
   .headerNav {
     gap: 14px;
+  }
+
+    .headerBurger {
+    display: flex;
+  }
+
+  .headerNav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    gap: 28px;
+    background-color: var(--colorBg);
+    border-left: 1px solid var(--colorBorder);
+    padding: 40px;
+    transition: right var(--transitionBase);
+    z-index: 100;
+  }
+
+  .headerNav.open {
+    right: 0;
+  }
+
+  .headerLink {
+    font-size: 1.125rem;
   }
 
   .headerLink {

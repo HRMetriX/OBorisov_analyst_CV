@@ -68,4 +68,26 @@ document.addEventListener('DOMContentLoaded', () => {
   initTrackSwitcher();
   initFadeIn();
   initFaq();
+  initMobileMenu();
 });
+
+// ==================== МОБИЛЬНОЕ МЕНЮ ====================
+function initMobileMenu() {
+  var burger = document.getElementById('headerBurger');
+  var nav = document.querySelector('.headerNav');
+
+  if (!burger || !nav) return;
+
+  burger.addEventListener('click', function() {
+    burger.classList.toggle('open');
+    nav.classList.toggle('open');
+  });
+
+  // Закрытие при клике на ссылку
+  nav.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      burger.classList.remove('open');
+      nav.classList.remove('open');
+    });
+  });
+}

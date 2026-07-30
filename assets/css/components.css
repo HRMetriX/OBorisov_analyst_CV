@@ -258,3 +258,38 @@
   color: var(--colorTextSecondary);
   line-height: 1.6;
 }
+
+/* ==================== МОБИЛЬНОЕ МЕНЮ ==================== */
+.headerBurger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 110;
+}
+
+.headerBurgerLine {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--colorText);
+  border-radius: 1px;
+  transition: all var(--transitionFast);
+}
+
+/* Анимация в крестик */
+.headerBurger.open .headerBurgerLine:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.headerBurger.open .headerBurgerLine:nth-child(2) {
+  opacity: 0;
+}
+
+.headerBurger.open .headerBurgerLine:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
