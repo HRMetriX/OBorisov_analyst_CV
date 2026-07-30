@@ -602,11 +602,11 @@
   gap: 8px;
 }
 
-/* Сетка: задача + метод + результат */
-.caseGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+/* Вертикальная структура кейса */
+.caseBody {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
   margin-bottom: 36px;
 }
 
@@ -801,11 +801,6 @@
 
   .pricingGrid {
     grid-template-columns: 1fr;
-  }
-
-  .caseGrid {
-    grid-template-columns: 1fr;
-    gap: 24px;
   }
 
   .caseTitle {
