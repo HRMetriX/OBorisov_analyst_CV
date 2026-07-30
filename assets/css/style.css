@@ -777,6 +777,124 @@
   margin-bottom: 24px;
 }
 
+/* ==================== БЛОГОСФЕРА — ПОСТЫ ==================== */
+.blogPosts {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: 0 24px 100px;
+}
+
+.blogPostsInner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.blogPostCard {
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusMd);
+  padding: 32px;
+  transition: all var(--transitionBase);
+}
+
+.blogPostCard:hover {
+  border-color: var(--colorBorderHover);
+  background-color: var(--colorSurfaceHover);
+}
+
+.blogPostDate {
+  display: block;
+  font-family: var(--fontMono);
+  font-size: 0.75rem;
+  color: var(--colorTextMuted);
+  margin-bottom: 12px;
+}
+
+.blogPostTitle {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--colorText);
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+
+.blogPostTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.blogPostExcerpt {
+  font-size: 0.938rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.blogPostLink {
+  font-size: 0.938rem;
+  font-weight: 500;
+  color: var(--colorAccent);
+  transition: color var(--transitionFast);
+}
+
+.blogPostLink:hover {
+  color: var(--colorAccentHover);
+}
+
+/* ==================== СТРАНИЦА ПОСТА ==================== */
+.blogPost {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: 60px 24px 100px;
+}
+
+.blogPostInner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.blogPostHeader {
+  margin-bottom: 36px;
+}
+
+.blogPostHeader .blogPostDate {
+  margin-bottom: 12px;
+}
+
+.blogPostHeader .blogPostTitle {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.blogPostContent {
+  font-size: 1rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.8;
+  margin-bottom: 48px;
+}
+
+.blogPostContent p {
+  margin-bottom: 20px;
+}
+
+.blogPostFooter {
+  border-top: 1px solid var(--colorBorder);
+  padding-top: 24px;
+}
+
+.blogPostBack {
+  font-size: 0.938rem;
+  color: var(--colorAccent);
+  font-weight: 500;
+  transition: color var(--transitionFast);
+}
+
+.blogPostBack:hover {
+  color: var(--colorAccentHover);
+}
+
 /* ==================== АДАПТИВ ==================== */
 @media (max-width: 900px) {
   .hero {

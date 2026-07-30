@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Блогосфера — заметки о данных, аналитике и исследованиях">
+  <meta name="description" content="Почему дашборд без дизайна исследования — деньги на ветер">
 
-  <title>Блогосфера — Олег Борисов</title>
+  <title>Почему дашборд без дизайна исследования — деньги на ветер</title>
 
   <!-- Шрифты -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
@@ -38,18 +38,30 @@
 
   <main>
 
-    <!-- ==================== ЗАГОЛОВОК ==================== -->
-    <section class="pageHero fadeIn">
-      <h1 class="pageHeroTitle">Блогосфера</h1>
-      <p class="pageHeroSubtitle">Заметки о&nbsp;данных, аналитике и&nbsp;исследованиях. Без маркетинга и&nbsp;&laquo;успешного успеха&raquo;.</p>
-    </section>
+    <!-- ==================== ПОСТ ==================== -->
+    <article class="blogPost">
+      <div class="blogPostInner">
+        <header class="blogPostHeader">
+          <time class="blogPostDate" datetime="2026-07-30">30 июля 2026</time>
+          <h1 class="blogPostTitle">Почему дашборд без дизайна исследования — деньги на ветер</h1>
+          <div class="blogPostTags">
+            <span class="tag">исследования</span>
+            <span class="tag">визуализация</span>
+            <span class="tag">методология</span>
+          </div>
+        </header>
 
-    <!-- ==================== ПОСТЫ ==================== -->
-    <section class="blogPosts fadeIn">
-      <div class="blogPostsInner" id="blogPostsContainer">
-        <!-- Посты рендерятся из blog.json -->
+        <div class="blogPostContent">
+          <p>Текст поста появится здесь. А пока — короткая мысль.</p>
+          <p>Большинство дашбордов отвечают не на тот вопрос. Потому что до того, как открыть BI-инструмент, никто не спросил: «А что мы вообще хотим узнать?».</p>
+          <p>Дизайн исследования первичен. Визуализация — лишь финальный слой. Без первого второй — просто красивая картинка.</p>
+        </div>
+
+        <footer class="blogPostFooter">
+          <a href="/OBorisov_analyst_CV/blog.html" class="blogPostBack">← Блогосфера</a>
+        </footer>
       </div>
-    </section>
+    </article>
 
   </main>
 
@@ -62,7 +74,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/blog.js"></script>
+  <script src="../assets/js/main.js"></script>
 </body>
 </html>
