@@ -895,6 +895,203 @@
   color: var(--colorAccentHover);
 }
 
+/* ==================== СТРАНИЦА «МОЙ ПУТЬ» ==================== */
+
+/* Секция */
+.journeySection {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: 0 24px 100px;
+}
+
+.journeySectionTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--colorText);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Принципы */
+.principlesList {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.principleItem {
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusMd);
+  padding: 24px 28px;
+  transition: all var(--transitionBase);
+}
+
+.principleItem:hover {
+  border-color: var(--colorBorderHover);
+  background-color: var(--colorSurfaceHover);
+}
+
+.principleText {
+  font-size: 0.938rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.6;
+}
+
+.principleText strong {
+  color: var(--colorText);
+  font-weight: 600;
+}
+
+/* Таймлайн */
+.timeline {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  padding-left: 28px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background-color: var(--colorBorder);
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 36px;
+}
+
+.timelineItem:last-child {
+  margin-bottom: 0;
+}
+
+.timelineDot {
+  position: absolute;
+  left: -25px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--colorAccent);
+  border: 2px solid var(--colorBg);
+  z-index: 1;
+}
+
+.timelineContent {
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusMd);
+  padding: 20px 24px;
+  transition: all var(--transitionBase);
+}
+
+.timelineContent:hover {
+  border-color: var(--colorBorderHover);
+  background-color: var(--colorSurfaceHover);
+}
+
+.timelineYear {
+  display: inline-block;
+  font-family: var(--fontMono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--colorAccent);
+  margin-bottom: 6px;
+}
+
+.timelineTitle {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--colorText);
+  margin-bottom: 6px;
+}
+
+.timelineDesc {
+  font-size: 0.875rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.55;
+}
+
+/* Книги */
+.booksGrid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.bookCard {
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusMd);
+  padding: 24px;
+  transition: all var(--transitionBase);
+}
+
+.bookCard:hover {
+  border-color: var(--colorBorderHover);
+  background-color: var(--colorSurfaceHover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadowCardHover);
+}
+
+.bookTitle {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--colorText);
+  margin-bottom: 4px;
+}
+
+.bookAuthor {
+  font-size: 0.813rem;
+  color: var(--colorAccent);
+  margin-bottom: 12px;
+}
+
+.bookDesc {
+  font-size: 0.875rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.6;
+}
+
+/* Случайный факт */
+.funFact {
+  max-width: 550px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusLg);
+  padding: 36px 32px;
+}
+
+.funFactText {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--colorText);
+  margin-bottom: 8px;
+}
+
+.funFactCaption {
+  font-size: 0.875rem;
+  color: var(--colorTextMuted);
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+  .booksGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ==================== АДАПТИВ ==================== */
 @media (max-width: 900px) {
   .hero {
