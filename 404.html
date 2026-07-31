@@ -158,24 +158,33 @@
     <canvas class="glitchCanvas" id="glitchCanvas" width="500" height="160"></canvas>
 
     <h2 class="errorTitle">Сервер подвергся грехопадению</h2>
-    <p class="errorDesc">Инквизиция уже в&nbsp;пути. Демоны изгнаны, грешники покаялись. Сервер временно не&nbsp;может обрабатывать запросы&nbsp;&mdash; молитвы принимаются в&nbsp;Telegram.</p>
-    <a href="/OBorisov_analyst_CV/" class="errorBtn">Изыди на главную</a>
+    <p class="errorDesc">Инквизиция уже в&nbsp;пути. Вы&nbsp;столкнулись с&nbsp;маловероятным событием: p&nbsp;&lt;&nbsp;0.001, но&nbsp;оно случилось. Сервер временно не&nbsp;может обрабатывать запросы.</p>
+    <a href="/OBorisov_analyst_CV/" class="errorBtn">Индульгенция тут</a>
   </div>
 
   <script>
-    // ==================== ЧАСТИЦЫ ====================
+        // ==================== ЧАСТИЦЫ ====================
     (function() {
       var container = document.getElementById('particles');
       var chars = '01101000';
-      var particleCount = 50;
+      var particleCount = 120;
 
       for (var i = 0; i < particleCount; i++) {
         var particle = document.createElement('span');
         particle.classList.add('particle');
         particle.textContent = chars[Math.floor(Math.random() * chars.length)];
+
+        // Разброс по размеру
+        var size = 0.7 + Math.random() * 1.3; // от 0.7 до 2 rem
+        particle.style.fontSize = size + 'rem';
+
+        // Разброс по прозрачности
+        var opacity = 0.2 + Math.random() * 0.4; // от 0.2 до 0.6
+        particle.style.color = 'rgba(248, 81, 73, ' + opacity + ')';
+
         particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDuration = (10 + Math.random() * 18) + 's';
-        particle.style.animationDelay = Math.random() * 14 + 's';
+        particle.style.animationDuration = (8 + Math.random() * 16) + 's';
+        particle.style.animationDelay = Math.random() * 10 + 's';
         container.appendChild(particle);
       }
     })();
