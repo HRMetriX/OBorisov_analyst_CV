@@ -1092,6 +1092,106 @@
   }
 }
 
+/* ==================== СТРАНИЦА КОНТАКТОВ ==================== */
+.contactsGrid {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px 100px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.contactCard {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusMd);
+  padding: 28px 24px;
+  text-decoration: none;
+  transition: all var(--transitionBase);
+  position: relative;
+}
+
+.contactCard:hover {
+  border-color: var(--colorAccent);
+  background-color: var(--colorSurfaceHover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadowCardHover);
+}
+
+.contactIcon {
+  flex-shrink: 0;
+  color: var(--colorAccent);
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.contactLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--colorTextMuted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contactValue {
+  font-family: var(--fontMono);
+  font-size: 0.938rem;
+  font-weight: 500;
+  color: var(--colorText);
+  word-break: break-all;
+}
+
+.contactHint {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 0.688rem;
+  color: var(--colorTextMuted);
+}
+
+/* Локация */
+.contactsLocation {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px 100px;
+}
+
+.locationCard {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusMd);
+  padding: 24px;
+}
+
+/* Адаптив */
+@media (max-width: 600px) {
+  .contactsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .contactHint {
+    position: static;
+    margin-top: 4px;
+  }
+
+  .contactCard {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+
 /* ==================== АДАПТИВ ==================== */
 @media (max-width: 900px) {
   .hero {
