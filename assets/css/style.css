@@ -1092,6 +1092,165 @@
   }
 }
 
+/* ==================== СТРАНИЦА КОНТАКТОВ ==================== */
+
+/* Max — основной канал */
+.contactsMax {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 24px 48px;
+}
+
+.maxCard {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background-color: var(--colorSurface);
+  border: 2px solid var(--colorAccent);
+  border-radius: var(--radiusLg);
+  padding: 32px 28px;
+  text-decoration: none;
+  transition: all var(--transitionBase);
+}
+
+.maxCard:hover {
+  background-color: var(--colorSurfaceHover);
+  box-shadow: 0 0 28px rgba(88, 166, 255, 0.18);
+}
+
+.maxIcon {
+  flex-shrink: 0;
+  color: var(--colorAccent);
+}
+
+.maxInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.maxLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--colorAccent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.maxValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--colorText);
+}
+
+.maxUser {
+  font-family: var(--fontMono);
+  font-size: 0.938rem;
+  color: var(--colorTextSecondary);
+}
+
+.maxArrow {
+  margin-left: auto;
+  font-size: 0.938rem;
+  font-weight: 600;
+  color: var(--colorAccent);
+  font-family: var(--fontMono);
+  white-space: nowrap;
+}
+
+/* Список остальных */
+.contactsList {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contactRow {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 20px;
+  text-decoration: none;
+  border-bottom: 1px solid var(--colorBorder);
+  transition: all var(--transitionFast);
+}
+
+.contactRow:hover {
+  background-color: var(--colorSurfaceHover);
+  border-bottom-color: var(--colorBorderHover);
+}
+
+.contactRow:last-child {
+  border-bottom: none;
+}
+
+.contactRowIcon {
+  flex-shrink: 0;
+  color: var(--colorAccent);
+}
+
+.contactRowLabel {
+  font-size: 0.813rem;
+  font-weight: 500;
+  color: var(--colorText);
+  min-width: 100px;
+}
+
+.contactRowValue {
+  font-family: var(--fontMono);
+  font-size: 0.875rem;
+  color: var(--colorTextSecondary);
+  margin-left: auto;
+  text-align: right;
+  word-break: break-all;
+}
+
+/* Статичная строка (не ссылка) */
+.contactRowStatic {
+  cursor: default;
+}
+
+.contactRowStatic:hover {
+  background-color: transparent;
+  border-bottom-color: var(--colorBorder);
+}
+
+/* Локация */
+.contactsLocation {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 24px 100px;
+}
+
+/* Адаптив */
+@media (max-width: 600px) {
+  .maxCard {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+    padding: 28px 20px;
+  }
+
+  .maxArrow {
+    margin-left: 0;
+  }
+
+  .contactRow {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px 12px;
+  }
+
+  .contactRowValue {
+    margin-left: 0;
+    text-align: left;
+    width: 100%;
+    padding-left: 46px;
+  }
+}
+
 /* ==================== АДАПТИВ ==================== */
 @media (max-width: 900px) {
   .hero {
