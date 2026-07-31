@@ -2,27 +2,27 @@
 function loadIncludes() {
   var basePath = '/OBorisov_analyst_CV/assets/includes/';
 
-  // Загружаем хедер
-  fetch(basePath + 'header.html')
-    .then(function(response) { return response.text(); })
-    .then(function(html) {
-      var headerContainer = document.createElement('div');
-      headerContainer.innerHTML = html;
-      document.body.insertBefore(headerContainer.firstElementChild, document.body.firstChild);
-      // После вставки хедера инициализируем мобильное меню
-      initMobileMenu();
-    })
-    .catch(function() { console.warn('Header not loaded'); });
+  var headerPlaceholder = document.getElementById('headerPlaceholder');
+  var footerPlaceholder = document.getElementById('footerPlaceholder');
 
-  // Загружаем футер
-  fetch(basePath + 'footer.html')
-    .then(function(response) { return response.text(); })
-    .then(function(html) {
-      var footerContainer = document.createElement('div');
-      footerContainer.innerHTML = html;
-      document.body.appendChild(footerContainer.firstElementChild);
-    })
-    .catch(function() { console.warn('Footer not loaded'); });
+  if (headerPlaceholder) {
+    fetch(basePath + 'header.html')
+      .then(function(response) { return response.text(); })
+      .then(function(html) {
+        headerPlaceholder.innerHTML = html;
+        initMobileMenu();
+      })
+      .catch(function() { console.warn('Header not loaded'); });
+  }
+
+  if (footerPlaceholder) {
+    fetch(basePath + 'footer.html')
+      .then(function(response) { return response.text(); })
+      .then(function(html) {
+        footerPlaceholder.innerHTML = html;
+      })
+      .catch(function() { console.warn('Footer not loaded'); });
+  }
 }
 
 // ==================== ПЕРЕКЛЮЧАТЕЛЬ ТРЕКОВ ====================
