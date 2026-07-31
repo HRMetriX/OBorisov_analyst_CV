@@ -17,24 +17,7 @@
 </head>
 <body>
 
-  <!-- ==================== HEADER ==================== -->
-  <header class="header">
-    <div class="headerInner">
-      <a href="/OBorisov_analyst_CV/" class="headerLogo">Олег Борисов</a>
-      <nav class="headerNav">
-        <a href="/OBorisov_analyst_CV/works.html" class="headerLink">Работы</a>
-        <a href="/OBorisov_analyst_CV/blog.html" class="headerLink">Блогосфера</a>
-        <a href="/OBorisov_analyst_CV/pricing.html" class="headerLink">Прайс</a>
-        <a href="/OBorisov_analyst_CV/journey.html" class="headerLink">Мой путь</a>
-        <a href="https://t.me/olegborisov_hr" class="headerLink headerLinkTg" target="_blank" rel="noopener">@olegborisov_hr</a>
-      </nav>
-      <button class="headerBurger" id="headerBurger" aria-label="Меню">
-        <span class="headerBurgerLine"></span>
-        <span class="headerBurgerLine"></span>
-        <span class="headerBurgerLine"></span>
-      </button>
-    </div>
-  </header>
+  <div id="headerPlaceholder"></div>
 
   <main>
 
@@ -91,7 +74,6 @@
 
         <div class="diffCard">
           <div class="diffIcon">
-            <!-- Иконка: микроскоп / наука -->
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="10" r="7"/>
               <path d="M8 21h8"/>
@@ -104,7 +86,6 @@
 
         <div class="diffCard">
           <div class="diffIcon">
-            <!-- Иконка: щит / честность -->
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             </svg>
@@ -115,7 +96,6 @@
 
         <div class="diffCard">
           <div class="diffIcon">
-            <!-- Иконка: шестерёнка / автомат -->
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="3"/>
               <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
@@ -197,76 +177,63 @@
     <section class="howWork fadeIn">
       <h2 class="sectionTitle">Как я работаю</h2>
 
-      <!-- Переключатель треков -->
       <div class="trackSwitcher">
         <button class="trackBtn active" data-track="research">Исследование и консалтинг</button>
         <button class="trackBtn" data-track="tool">Инструмент под ключ</button>
       </div>
 
-      <!-- Трек 1: Исследование -->
       <div class="trackContent active" id="trackResearch">
         <div class="howWorkSteps">
-
           <div class="stepCard">
             <span class="stepNumber">01</span>
             <h3 class="stepTitle">Аудит и переформулировка</h3>
             <p class="stepDesc">Часто проблема не&nbsp;в&nbsp;данных, а&nbsp;в&nbsp;том, как задача поставлена. Уточняю контекст, проверяю на&nbsp;здравый смысл, переформулирую в&nbsp;проверяемую гипотезу.</p>
           </div>
-
           <div class="stepCard">
             <span class="stepNumber">02</span>
             <h3 class="stepTitle">Дизайн исследования</h3>
             <p class="stepDesc">Выбираю метод под задачу, а&nbsp;не&nbsp;наоборот. Определяю данные, метрики, границы применимости. Слабый метод, который уместен&nbsp;&mdash; лучше мощного, который врёт.</p>
           </div>
-
           <div class="stepCard">
             <span class="stepNumber">03</span>
             <h3 class="stepTitle">Анализ и проверка гипотез</h3>
             <p class="stepDesc">Сбор и&nbsp;обработка данных, статистические тесты, моделирование. Ищу закономерности, проверяю устойчивость выводов.</p>
           </div>
-
           <div class="stepCard">
             <span class="stepNumber">04</span>
             <h3 class="stepTitle">Результат и рекомендации</h3>
             <p class="stepDesc">Вы&nbsp;получаете не&nbsp;&laquo;график&raquo;, а&nbsp;ответ на&nbsp;вопрос: что делать, на&nbsp;чём основан вывод и&nbsp;какие есть ограничения.</p>
           </div>
-
         </div>
       </div>
 
-      <!-- Трек 2: Инструмент -->
       <div class="trackContent" id="trackTool">
         <div class="howWorkSteps">
-
           <div class="stepCard">
             <span class="stepNumber">01</span>
             <h3 class="stepTitle">Аудит и сбор требований</h3>
             <p class="stepDesc">Где данные, в&nbsp;каком виде, кто пользователь, какие решения будут приниматься на&nbsp;основе результата.</p>
           </div>
-
           <div class="stepCard">
             <span class="stepNumber">02</span>
             <h3 class="stepTitle">Проектирование архитектуры</h3>
             <p class="stepDesc">Витрины, ETL, оркестрация, выбор инструментов. Проектирую так, чтобы не&nbsp;развалилось через месяц.</p>
           </div>
-
           <div class="stepCard">
             <span class="stepNumber">03</span>
             <h3 class="stepTitle">Разработка и визуализация</h3>
             <p class="stepDesc">Дашборд, кастомный чарт, автоматизированный отчёт, ML-модель&nbsp;&mdash; форма зависит от задачи.</p>
           </div>
-
           <div class="stepCard">
             <span class="stepNumber">04</span>
             <h3 class="stepTitle">Автоматизация и передача</h3>
             <p class="stepDesc">Автообновление, cron, документация. Вы&nbsp;получаете работающий инструмент, а&nbsp;не&nbsp;файл на почту.</p>
           </div>
-
         </div>
       </div>
     </section>
 
-          <!-- ==================== С ЧЕМ Я НЕ РАБОТАЮ ==================== -->
+    <!-- ==================== С ЧЕМ Я НЕ РАБОТАЮ ==================== -->
     <section class="noGo fadeIn">
       <h2 class="sectionTitle">С чем я не работаю</h2>
       <div class="noGoGrid">
@@ -471,14 +438,7 @@
 
   </main>
 
-  <!-- ==================== FOOTER ==================== -->
-  <footer class="footer">
-    <p class="footerText">© 2026 Олег Борисов. Собрано руками на GitHub Pages.</p>
-    <div class="footerLinks">
-      <a href="https://github.com/HRMetriX" class="footerLink" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://t.me/olegborisov_hr" class="footerLink" target="_blank" rel="noopener">Telegram</a>
-    </div>
-  </footer>
+  <div id="footerPlaceholder"></div>
 
   <!-- JS -->
   <script src="assets/js/main.js"></script>

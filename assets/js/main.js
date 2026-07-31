@@ -1,21 +1,46 @@
+// ==================== ЗАГРУЗКА ХЕДЕРА И ФУТЕРА ====================
+function loadIncludes() {
+  var basePath = '/OBorisov_analyst_CV/assets/includes/';
+
+  var headerPlaceholder = document.getElementById('headerPlaceholder');
+  var footerPlaceholder = document.getElementById('footerPlaceholder');
+
+  if (headerPlaceholder) {
+    fetch(basePath + 'header.html')
+      .then(function(response) { return response.text(); })
+      .then(function(html) {
+        headerPlaceholder.innerHTML = html;
+        initMobileMenu();
+      })
+      .catch(function() { console.warn('Header not loaded'); });
+  }
+
+  if (footerPlaceholder) {
+    fetch(basePath + 'footer.html')
+      .then(function(response) { return response.text(); })
+      .then(function(html) {
+        footerPlaceholder.innerHTML = html;
+      })
+      .catch(function() { console.warn('Footer not loaded'); });
+  }
+}
+
 // ==================== ПЕРЕКЛЮЧАТЕЛЬ ТРЕКОВ ====================
 function initTrackSwitcher() {
-  const buttons = document.querySelectorAll('.trackBtn');
-  const contents = document.querySelectorAll('.trackContent');
+  var buttons = document.querySelectorAll('.trackBtn');
+  var contents = document.querySelectorAll('.trackContent');
 
   if (buttons.length === 0) return;
 
-  buttons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const targetTrack = btn.getAttribute('data-track');
+  buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var targetTrack = btn.getAttribute('data-track');
 
-      // Снимаем active со всех кнопок и контентов
-      buttons.forEach((b) => b.classList.remove('active'));
-      contents.forEach((c) => c.classList.remove('active'));
+      buttons.forEach(function(b) { b.classList.remove('active'); });
+      contents.forEach(function(c) { c.classList.remove('active'); });
 
-      // Включаем нужные
       btn.classList.add('active');
-      const targetContent = document.getElementById(
+      var targetContent = document.getElementById(
         targetTrack === 'research' ? 'trackResearch' : 'trackTool'
       );
       if (targetContent) {
@@ -27,13 +52,13 @@ function initTrackSwitcher() {
 
 // ==================== FADE-IN ПРИ СКРОЛЛЕ ====================
 function initFadeIn() {
-  const fadeElements = document.querySelectorAll('.fadeIn');
+  var fadeElements = document.querySelectorAll('.fadeIn');
 
   if (fadeElements.length === 0) return;
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
+  var observer = new IntersectionObserver(
+    function(entries) {
+      entries.forEach(function(entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
           observer.unobserve(entry.target);
@@ -43,17 +68,17 @@ function initFadeIn() {
     { threshold: 0.1 }
   );
 
-  fadeElements.forEach((el) => observer.observe(el));
+  fadeElements.forEach(function(el) { observer.observe(el); });
 }
 
 // ==================== FAQ: ЗАКРЫВАТЬ ОСТАЛЬНЫЕ ПРИ ОТКРЫТИИ ====================
 function initFaq() {
-  const details = document.querySelectorAll('.faqItem');
+  var details = document.querySelectorAll('.faqItem');
 
-  details.forEach((detail) => {
-    detail.addEventListener('toggle', () => {
+  details.forEach(function(detail) {
+    detail.addEventListener('toggle', function() {
       if (detail.open) {
-        details.forEach((other) => {
+        details.forEach(function(other) {
           if (other !== detail) {
             other.open = false;
           }
@@ -62,14 +87,6 @@ function initFaq() {
     });
   });
 }
-
-// ==================== ЗАПУСК ====================
-document.addEventListener('DOMContentLoaded', () => {
-  initTrackSwitcher();
-  initFadeIn();
-  initFaq();
-  initMobileMenu();
-});
 
 // ==================== МОБИЛЬНОЕ МЕНЮ ====================
 function initMobileMenu() {
@@ -83,7 +100,6 @@ function initMobileMenu() {
     nav.classList.toggle('open');
   });
 
-  // Закрытие при клике на ссылку
   nav.querySelectorAll('a').forEach(function(link) {
     link.addEventListener('click', function() {
       burger.classList.remove('open');
@@ -91,3 +107,11 @@ function initMobileMenu() {
     });
   });
 }
+
+// ==================== ЗАПУСК ====================
+document.addEventListener('DOMContentLoaded', function() {
+  loadIncludes();
+  initTrackSwitcher();
+  initFadeIn();
+  initFaq();
+});
