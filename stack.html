@@ -219,7 +219,7 @@
           var linkExtension = svg.append('g')
             .attr('fill', 'none')
             .attr('stroke', '#8b949e')
-            .attr('stroke-opacity', 0.2)
+            .attr('stroke-opacity', 0.4)
             .selectAll('path')
             .data(hierarchy.links().filter(function(d) { return !d.target.children; }))
             .join('path')
