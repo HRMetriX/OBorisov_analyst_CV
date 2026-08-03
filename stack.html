@@ -15,35 +15,34 @@
 
   <style>
     .stackContainer {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 24px 80px;
+      position: relative;
     }
     .stackChart {
       width: 100%;
-      height: 650px;
-      position: relative;
+      display: flex;
+      justify-content: center;
     }
     .stackTooltip {
-      position: absolute;
+      position: fixed;
       background: var(--colorSurface);
       border: 1px solid var(--colorAccent);
       border-radius: var(--radiusMd);
-      padding: 16px 20px;
+      padding: 14px 18px;
       pointer-events: none;
       opacity: 0;
-      transition: opacity 0.2s;
-      max-width: 300px;
-      z-index: 10;
+      transition: opacity 0.15s;
+      max-width: 280px;
+      z-index: 100;
     }
-    .stackTooltip.visible {
-      opacity: 1;
-    }
+    .stackTooltip.visible { opacity: 1; }
     .stackTooltipTitle {
       font-size: 0.938rem;
       font-weight: 600;
       color: var(--colorText);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .stackTooltipLevel {
       display: inline-block;
@@ -52,42 +51,46 @@
       font-weight: 500;
       padding: 2px 8px;
       border-radius: var(--radiusSm);
-      margin-bottom: 10px;
-    }
-    .levelDeep { background: rgba(63, 185, 80, 0.15); color: #3fb950; border: 1px solid rgba(63, 185, 80, 0.3); }
-    .levelSolid { background: rgba(88, 166, 255, 0.15); color: #58a6ff; border: 1px solid rgba(88, 166, 255, 0.3); }
-    .levelBasic { background: rgba(139, 148, 158, 0.15); color: #8b949e; border: 1px solid rgba(139, 148, 158, 0.3); }
-    .stackTooltipTools {
-      font-family: var(--fontMono);
-      font-size: 0.75rem;
-      color: var(--colorTextSecondary);
       margin-bottom: 8px;
     }
-    .stackTooltipCase {
-      font-size: 0.813rem;
-      color: var(--colorAccent);
+    .levelLead { background: rgba(63, 185, 80, 0.2); color: #3fb950; border: 1px solid rgba(63, 185, 80, 0.4); }
+    .levelSen { background: rgba(88, 166, 255, 0.2); color: #58a6ff; border: 1px solid rgba(88, 166, 255, 0.4); }
+    .levelMid { background: rgba(240, 136, 62, 0.2); color: #f0883e; border: 1px solid rgba(240, 136, 62, 0.4); }
+    .levelJun { background: rgba(139, 148, 158, 0.2); color: #8b949e; border: 1px solid rgba(139, 148, 158, 0.4); }
+    .stackTooltipDomain {
+      font-size: 0.688rem;
+      color: var(--colorTextMuted);
+      margin-bottom: 6px;
     }
     .stackLegend {
       display: flex;
       justify-content: center;
       gap: 24px;
-      margin-top: 16px;
+      margin-top: 8px;
     }
     .stackLegendItem {
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.813rem;
+      font-size: 0.75rem;
       color: var(--colorTextSecondary);
     }
     .stackLegendDot {
-      width: 12px;
-      height: 12px;
-      border-radius: 3px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
     }
-    .stackLegendDotDeep { background: #3fb950; }
-    .stackLegendDotSolid { background: #58a6ff; }
-    .stackLegendDotBasic { background: #8b949e; }
+    .label--active {
+      fill: #e6edf3 !important;
+      font-weight: bold;
+    }
+    .link--active {
+      stroke-opacity: 0.8 !important;
+      stroke-width: 3.5px;
+    }
+    .link-extension--active {
+      stroke-opacity: 0.6;
+    }
   </style>
 </head>
 <body>
@@ -98,17 +101,13 @@
 
     <section class="pageHero fadeIn">
       <h1 class="pageHeroTitle">Карта компетенций</h1>
-      <p class="pageHeroSubtitle">Размер блока&nbsp;&mdash; глубина экспертизы. Цвет&nbsp;&mdash; домен. Наведите&nbsp;&mdash; узнаете детали.</p>
+      <p class="pageHeroSubtitle">Радиальное дерево: домен → категория → инструмент. Длина ветки - глубина экспертизы. Цвет - домен.</p>
     </section>
 
     <section class="stackContainer fadeIn">
       <div class="stackChart" id="stackChart"></div>
       <div class="stackTooltip" id="stackTooltip"></div>
-      <div class="stackLegend">
-        <div class="stackLegendItem"><span class="stackLegendDot stackLegendDotDeep"></span> Глубоко</div>
-        <div class="stackLegendItem"><span class="stackLegendDot stackLegendDotSolid"></span> Уверенно</div>
-        <div class="stackLegendItem"><span class="stackLegendDot stackLegendDotBasic"></span> Базово</div>
-      </div>
+      <div class="stackLegend" id="stackLegend"></div>
     </section>
 
   </main>
@@ -119,138 +118,194 @@
   <script src="assets/js/main.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      var container = document.getElementById('stackChart');
+      var chartContainer = document.getElementById('stackChart');
       var tooltip = document.getElementById('stackTooltip');
-      if (!container) return;
+      var legendContainer = document.getElementById('stackLegend');
+      if (!chartContainer) return;
 
-      var width = container.clientWidth;
-      var height = 650;
+      var width = Math.min(1000, window.innerWidth - 48);
+      var outerRadius = width / 2;
+      var innerRadius = outerRadius - 210;
+
+      var domainColors = {
+        'Исследования и статистика': '#58a6ff',
+        'Разработка и автоматизация': '#3fb950',
+        'BI и визуализация': '#f0883e',
+        'Данные и инфраструктура': '#bc8cff'
+      };
+
+      var levelLabels = {
+        'lead': 'Lead',
+        'sen': 'Senior',
+        'mid': 'Middle',
+        'jun': 'Junior'
+      };
+
+      // Легенда
+      Object.keys(domainColors).forEach(function(domain) {
+        var item = document.createElement('div');
+        item.className = 'stackLegendItem';
+        item.innerHTML = '<span class="stackLegendDot" style="background:' + domainColors[domain] + '"></span>' + domain;
+        legendContainer.appendChild(item);
+      });
 
       fetch('assets/data/stack.json')
         .then(function(r) { return r.json(); })
         .then(function(data) {
 
-          // Строим иерархию: домен → категории
           var root = {
-            name: 'root',
-            children: data.domains.map(function(domain) {
+            name: 'Стек',
+            branchset: data.domains.map(function(domain) {
               return {
                 name: domain.name,
-                children: domain.categories.map(function(cat) {
-                  var size;
-                  if (cat.level === 'deep') size = 30;
-                  else if (cat.level === 'solid') size = 18;
-                  else size = 10;
+                length: domain.length,
+                branchset: domain.categories.map(function(cat) {
                   return {
                     name: cat.name,
-                    value: size,
-                    level: cat.level,
-                    tools: cat.tools,
-                    case: cat.case,
-                    domain: domain.name
+                    length: cat.length,
+                    branchset: cat.tools.map(function(tool) {
+                      return {
+                        name: tool.name,
+                        level: tool.level,
+                        domain: domain.name,
+                        length: 4
+                      };
+                    })
                   };
                 })
               };
             })
           };
 
-          var hierarchy = d3.hierarchy(root).sum(function(d) { return d.value || 0; });
+          var hierarchy = d3.hierarchy(root, function(d) { return d.branchset; })
+            .sum(function(d) { return d.branchset ? 0 : 1; })
+            .sort(function(a, b) { return (a.value - b.value) || d3.ascending(a.data.length, b.data.length); });
 
-          var treemap = d3.treemap()
-            .size([width, height])
-            .padding(3)
-            .round(true);
+          var cluster = d3.cluster()
+            .size([360, innerRadius])
+            .separation(function(a, b) { return 1; });
 
-          treemap(hierarchy);
+          cluster(hierarchy);
 
-          var leaves = hierarchy.leaves();
+          function setRadius(d, y0, k) {
+            d.radius = (y0 += d.data.length) * k;
+            if (d.children) d.children.forEach(function(child) { setRadius(child, y0, k); });
+          }
 
-          var domainColors = {
-            'Исследования и статистика': '#58a6ff',
-            'Разработка и автоматизация': '#3fb950',
-            'BI и визуализация': '#f0883e',
-            'Данные и инфраструктура': '#bc8cff'
-          };
+          function maxLength(d) {
+            return d.data.length + (d.children ? d3.max(d.children, maxLength) : 0);
+          }
+
+          setRadius(hierarchy, hierarchy.data.length = 0, innerRadius / maxLength(hierarchy));
+
+          function setColor(d) {
+            d.color = domainColors[d.data.domain] || (d.parent ? d.parent.color : '#8b949e');
+            if (d.children) d.children.forEach(setColor);
+          }
+          setColor(hierarchy);
 
           var svg = d3.select('#stackChart')
             .append('svg')
-            .attr('width', width)
-            .attr('height', height);
-
-          var cells = svg.selectAll('g')
-            .data(leaves)
-            .enter()
-            .append('g')
-            .attr('transform', function(d) { return 'translate(' + d.x0 + ',' + d.y0 + ')'; });
-
-          cells.append('rect')
-            .attr('width', function(d) { return d.x1 - d.x0; })
-            .attr('height', function(d) { return d.y1 - d.y0; })
-            .attr('fill', function(d) { return domainColors[d.data.domain] || '#8b949e'; })
-            .attr('opacity', 0.8)
-            .attr('rx', 4)
-            .attr('stroke', '#0d1117')
-            .attr('stroke-width', 2)
-            .on('mouseover', function(event, d) {
-              var levelText, levelClass;
-              if (d.data.level === 'deep') { levelText = 'Глубоко'; levelClass = 'levelDeep'; }
-              else if (d.data.level === 'solid') { levelText = 'Уверенно'; levelClass = 'levelSolid'; }
-              else { levelText = 'Базово'; levelClass = 'levelBasic'; }
-
-              var html = '<div class="stackTooltipTitle">' + d.data.name + '</div>';
-              html += '<span class="stackTooltipLevel ' + levelClass + '">' + levelText + '</span>';
-              html += '<div class="stackTooltipTools">' + d.data.tools.join(', ') + '</div>';
-              if (d.data.case) {
-                html += '<div class="stackTooltipCase">📎 ' + d.data.case + '</div>';
-              }
-
-              tooltip.innerHTML = html;
-              tooltip.classList.add('visible');
-            })
-            .on('mousemove', function(event) {
-              tooltip.style.left = (event.pageX + 16) + 'px';
-              tooltip.style.top = (event.pageY - 16) + 'px';
-            })
-            .on('mouseout', function() {
-              tooltip.classList.remove('visible');
-            });
-
-          // Подписи - только если влезают
-          cells.append('text')
-            .attr('x', 6)
-            .attr('y', 16)
-            .text(function(d) { return d.data.name; })
-            .attr('fill', '#e6edf3')
+            .attr('viewBox', [-outerRadius, -outerRadius, width, width])
             .attr('font-family', '"JetBrains Mono", monospace')
-            .attr('font-size', function(d) {
-              var w = d.x1 - d.x0;
-              return w > 100 ? '11px' : '9px';
-            })
-            .attr('pointer-events', 'none')
-            .each(function(d) {
-              var text = d3.select(this);
-              var w = d.x1 - d.x0;
-              if (w < 60) text.attr('opacity', 0);
-            });
+            .attr('font-size', 9);
 
-          // Длинные названия - перенос
-          cells.selectAll('text').each(function(d) {
-            var text = d3.select(this);
-            var words = text.text().split(' ');
-            if (words.length > 1 && (d.x1 - d.x0) > 60) {
-              text.text(null);
-              text.selectAll('tspan')
-                .data(words)
-                .enter()
-                .append('tspan')
-                .attr('x', 6)
-                .attr('dy', '1.2em')
-                .text(function(w) { return w; })
-                .attr('fill', '#e6edf3')
-                .attr('font-family', '"JetBrains Mono", monospace')
-                .attr('font-size', '9px');
-            }
-          });
+          svg.append('style').text(`
+            .link--active { stroke-opacity: 0.8 !important; stroke-width: 1.8px; }
+            .link-extension--active { stroke-opacity: 0.6; }
+            .label--active { fill: #e6edf3 !important; font-weight: bold; }
+          `);
+
+          var linkExtension = svg.append('g')
+            .attr('fill', 'none')
+            .attr('stroke', '#8b949e')
+            .attr('stroke-opacity', 0.4)
+            .selectAll('path')
+            .data(hierarchy.links().filter(function(d) { return !d.target.children; }))
+            .join('path')
+            .each(function(d) { d.target.linkExtensionNode = this; })
+            .attr('d', linkExtensionConstant);
+
+          function linkStep(startAngle, startRadius, endAngle, endRadius) {
+            var c0 = Math.cos((startAngle - 90) / 180 * Math.PI);
+            var s0 = Math.sin((startAngle - 90) / 180 * Math.PI);
+            var c1 = Math.cos((endAngle - 90) / 180 * Math.PI);
+            var s1 = Math.sin((endAngle - 90) / 180 * Math.PI);
+            return 'M' + startRadius * c0 + ',' + startRadius * s0
+              + (endAngle === startAngle ? '' : 'A' + startRadius + ',' + startRadius + ' 0 0 ' + (endAngle > startAngle ? 1 : 0) + ' ' + startRadius * c1 + ',' + startRadius * s1)
+              + 'L' + endRadius * c1 + ',' + endRadius * s1;
+          }
+
+          function linkConstant(d) {
+            return linkStep(d.source.x, d.source.radius, d.target.x, d.target.radius);
+          }
+
+          function linkExtensionConstant(d) {
+            return linkStep(d.target.x, d.target.radius, d.target.x, innerRadius);
+          }
+
+          var link = svg.append('g')
+            .attr('fill', 'none')
+            .attr('stroke-opacity', 0.5)
+            .selectAll('path')
+            .data(hierarchy.links())
+            .join('path')
+            .each(function(d) { d.target.linkNode = this; })
+            .attr('d', linkConstant)
+            .attr('stroke', function(d) { return d.target.color; });
+
+          var labels = svg.append('g')
+            .selectAll('text')
+            .data(hierarchy.leaves())
+            .join('text')
+            .attr('dy', '.31em')
+            .attr('transform', function(d) {
+              return 'rotate(' + (d.x - 90) + ') translate(' + (innerRadius + 4) + ',0)'
+                + (d.x < 180 ? '' : ' rotate(180)');
+            })
+            .attr('text-anchor', function(d) { return d.x < 180 ? 'start' : 'end'; })
+            .text(function(d) { return d.data.name; })
+            .attr('fill', '#6e7681')
+            .attr('font-size', '18px')
+            .style('cursor', 'default');
+
+          function mouseovered(active) {
+            return function(event, d) {
+              d3.select(this).classed('label--active', active);
+              d3.select(d.linkExtensionNode).classed('link-extension--active', active).raise();
+              do {
+                d3.select(d.linkNode).classed('link--active', active).raise();
+                d = d.parent;
+              } while (d);
+
+              if (active) {
+                var dd = d3.select(this).datum().data;
+                var level = dd.level;
+                var levelText = levelLabels[level] || level;
+                var levelClass = 'level' + level.charAt(0).toUpperCase() + level.slice(1);
+
+                var html = '<div class="stackTooltipTitle">' + dd.name + '</div>';
+                if (dd.domain) {
+                  html += '<div class="stackTooltipDomain">' + dd.domain + '</div>';
+                }
+                html += '<span class="stackTooltipLevel ' + levelClass + '">' + levelText + '</span>';
+
+                tooltip.innerHTML = html;
+                tooltip.classList.add('visible');
+              } else {
+                tooltip.classList.remove('visible');
+              }
+            };
+          }
+
+          labels
+            .on('mouseover', mouseovered(true))
+            .on('mousemove', function(event) {
+              tooltip.style.left = (event.clientX) + 'px';
+              tooltip.style.top = (event.clientY) + 'px';
+            })
+            .on('mouseout', mouseovered(false));
+
         });
     });
   </script>
