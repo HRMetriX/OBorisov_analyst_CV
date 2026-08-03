@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Карта компетенций — стек технологий и методов">
+
+  <title>Стек — Олег Борисов</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .stackContainer {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+    .stackChart {
+      width: 100%;
+      height: 650px;
+      position: relative;
+    }
+    .stackTooltip {
+      position: absolute;
+      background: var(--colorSurface);
+      border: 1px solid var(--colorAccent);
+      border-radius: var(--radiusMd);
+      padding: 16px 20px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+      max-width: 300px;
+      z-index: 10;
+    }
+    .stackTooltip.visible {
+      opacity: 1;
+    }
+    .stackTooltipTitle {
+      font-size: 0.938rem;
+      font-weight: 600;
+      color: var(--colorText);
+      margin-bottom: 6px;
+    }
+    .stackTooltipLevel {
+      display: inline-block;
+      font-family: var(--fontMono);
+      font-size: 0.688rem;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: var(--radiusSm);
+      margin-bottom: 10px;
+    }
+    .levelDeep { background: rgba(63, 185, 80, 0.15); color: #3fb950; border: 1px solid rgba(63, 185, 80, 0.3); }
+    .levelSolid { background: rgba(88, 166, 255, 0.15); color: #58a6ff; border: 1px solid rgba(88, 166, 255, 0.3); }
+    .levelBasic { background: rgba(139, 148, 158, 0.15); color: #8b949e; border: 1px solid rgba(139, 148, 158, 0.3); }
+    .stackTooltipTools {
+      font-family: var(--fontMono);
+      font-size: 0.75rem;
+      color: var(--colorTextSecondary);
+      margin-bottom: 8px;
+    }
+    .stackTooltipCase {
+      font-size: 0.813rem;
+      color: var(--colorAccent);
+    }
+    .stackLegend {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 16px;
+    }
+    .stackLegendItem {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.813rem;
+      color: var(--colorTextSecondary);
+    }
+    .stackLegendDot {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+    }
+    .stackLegendDotDeep { background: #3fb950; }
+    .stackLegendDotSolid { background: #58a6ff; }
+    .stackLegendDotBasic { background: #8b949e; }
+  </style>
+</head>
+<body>
+
+  <div id="headerPlaceholder"></div>
+
+  <main>
+
+    <section class="pageHero fadeIn">
+      <h1 class="pageHeroTitle">Карта компетенций</h1>
+      <p class="pageHeroSubtitle">Размер блока&nbsp;&mdash; глубина экспертизы. Цвет&nbsp;&mdash; домен. Наведите&nbsp;&mdash; узнаете детали.</p>
+    </section>
+
+    <section class="stackContainer fadeIn">
+      <div class="stackChart" id="stackChart"></div>
+      <div class="stackTooltip" id="stackTooltip"></div>
+      <div class="stackLegend">
+        <div class="stackLegendItem"><span class="stackLegendDot stackLegendDotDeep"></span> Глубоко</div>
+        <div class="stackLegendItem"><span class="stackLegendDot stackLegendDotSolid"></span> Уверенно</div>
+        <div class="stackLegendItem"><span class="stackLegendDot stackLegendDotBasic"></span> Базово</div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footerPlaceholder"></div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var container = document.getElementById('stackChart');
+      var tooltip = document.getElementById('stackTooltip');
+      if (!container) return;
+
+      var width = container.clientWidth;
+      var height = 650;
+
+      fetch('assets/data/stack.json')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+
+          // Строим иерархию: домен → категории
+          var root = {
+            name: 'root',
+            children: data.domains.map(function(domain) {
+              return {
+                name: domain.name,
+                children: domain.categories.map(function(cat) {
+                  var size;
+                  if (cat.level === 'deep') size = 30;
+                  else if (cat.level === 'solid') size = 18;
+                  else size = 10;
+                  return {
+                    name: cat.name,
+                    value: size,
+                    level: cat.level,
+                    tools: cat.tools,
+                    case: cat.case,
+                    domain: domain.name
+                  };
+                })
+              };
+            })
+          };
+
+          var hierarchy = d3.hierarchy(root).sum(function(d) { return d.value || 0; });
+
+          var treemap = d3.treemap()
+            .size([width, height])
+            .padding(3)
+            .round(true);
+
+          treemap(hierarchy);
+
+          var leaves = hierarchy.leaves();
+
+          var domainColors = {
+            'Исследования и статистика': '#58a6ff',
+            'Разработка и автоматизация': '#3fb950',
+            'BI и визуализация': '#f0883e',
+            'Данные и инфраструктура': '#bc8cff'
+          };
+
+          var svg = d3.select('#stackChart')
+            .append('svg')
+            .attr('width', width)
+            .attr('height', height);
+
+          var cells = svg.selectAll('g')
+            .data(leaves)
+            .enter()
+            .append('g')
+            .attr('transform', function(d) { return 'translate(' + d.x0 + ',' + d.y0 + ')'; });
+
+          cells.append('rect')
+            .attr('width', function(d) { return d.x1 - d.x0; })
+            .attr('height', function(d) { return d.y1 - d.y0; })
+            .attr('fill', function(d) { return domainColors[d.data.domain] || '#8b949e'; })
+            .attr('opacity', 0.8)
+            .attr('rx', 4)
+            .attr('stroke', '#0d1117')
+            .attr('stroke-width', 2)
+            .on('mouseover', function(event, d) {
+              var levelText, levelClass;
+              if (d.data.level === 'deep') { levelText = 'Глубоко'; levelClass = 'levelDeep'; }
+              else if (d.data.level === 'solid') { levelText = 'Уверенно'; levelClass = 'levelSolid'; }
+              else { levelText = 'Базово'; levelClass = 'levelBasic'; }
+
+              var html = '<div class="stackTooltipTitle">' + d.data.name + '</div>';
+              html += '<span class="stackTooltipLevel ' + levelClass + '">' + levelText + '</span>';
+              html += '<div class="stackTooltipTools">' + d.data.tools.join(', ') + '</div>';
+              if (d.data.case) {
+                html += '<div class="stackTooltipCase">📎 ' + d.data.case + '</div>';
+              }
+
+              tooltip.innerHTML = html;
+              tooltip.classList.add('visible');
+            })
+            .on('mousemove', function(event) {
+              tooltip.style.left = (event.pageX + 16) + 'px';
+              tooltip.style.top = (event.pageY - 16) + 'px';
+            })
+            .on('mouseout', function() {
+              tooltip.classList.remove('visible');
+            });
+
+          // Подписи — только если влезают
+          cells.append('text')
+            .attr('x', 6)
+            .attr('y', 16)
+            .text(function(d) { return d.data.name; })
+            .attr('fill', '#e6edf3')
+            .attr('font-family', '"JetBrains Mono", monospace')
+            .attr('font-size', function(d) {
+              var w = d.x1 - d.x0;
+              return w > 100 ? '11px' : '9px';
+            })
+            .attr('pointer-events', 'none')
+            .each(function(d) {
+              var text = d3.select(this);
+              var w = d.x1 - d.x0;
+              if (w < 60) text.attr('opacity', 0);
+            });
+
+          // Длинные названия — перенос
+          cells.selectAll('text').each(function(d) {
+            var text = d3.select(this);
+            var words = text.text().split(' ');
+            if (words.length > 1 && (d.x1 - d.x0) > 60) {
+              text.text(null);
+              text.selectAll('tspan')
+                .data(words)
+                .enter()
+                .append('tspan')
+                .attr('x', 6)
+                .attr('dy', '1.2em')
+                .text(function(w) { return w; })
+                .attr('fill', '#e6edf3')
+                .attr('font-family', '"JetBrains Mono", monospace')
+                .attr('font-size', '9px');
+            }
+          });
+        });
+    });
+  </script>
+</body>
+</html>

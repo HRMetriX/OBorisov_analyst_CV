@@ -1,0 +1,126 @@
+{
+  "domains": [
+    {
+      "name": "Исследования и статистика",
+      "categories": [
+        {
+          "name": "Проверка гипотез",
+          "level": "deep",
+          "tools": ["t-тест", "A/B-тесты", "пермутационные тесты", "бутстрэп"],
+          "case": "Сегментация сотрудников после реструктуризации"
+        },
+        {
+          "name": "Кластеризация",
+          "level": "deep",
+          "tools": ["k-means", "DBSCAN", "HDBSCAN", "иерархические методы", "гауссовские смеси"],
+          "case": "Сегментация сотрудников после реструктуризации"
+        },
+        {
+          "name": "Байесовские методы",
+          "level": "deep",
+          "tools": ["PyMC", "апостериорные распределения", "байесовский A/B"],
+          "case": "Сегментация сотрудников"
+        },
+        {
+          "name": "Дизайн экспериментов",
+          "level": "solid",
+          "tools": ["рандомизация", "стратификация", "контроль confounding"],
+          "case": null
+        },
+        {
+          "name": "Факторный анализ / IRT / CTT",
+          "level": "deep",
+          "tools": ["психометрика", "шкалирование", "валидизация тестов"],
+          "case": "TalentCode: психометрическая проверка тестов"
+        }
+      ]
+    },
+    {
+      "name": "Разработка и автоматизация",
+      "categories": [
+        {
+          "name": "Python",
+          "level": "deep",
+          "tools": ["pandas", "numpy", "scikit-learn", "matplotlib", "seaborn"],
+          "case": null
+        },
+        {
+          "name": "JavaScript / D3.js",
+          "level": "solid",
+          "tools": ["кастомные чарты", "интерактивные дашборды", "SVG-графика"],
+          "case": "HH Analytics: кастомные JS-чарты"
+        },
+        {
+          "name": "ETL и пайплайны",
+          "level": "solid",
+          "tools": ["Airflow", "Dagster", "cron", "парсинг (Playwright, BS4)"],
+          "case": "Дашборд проблемных доставок"
+        },
+        {
+          "name": "NLP / AI",
+          "level": "solid",
+          "tools": ["Qwen", "Natasha", "prompt engineering", "HITL"],
+          "case": "NLP-анализ стенограмм колл-центра"
+        },
+        {
+          "name": "Git / REST API",
+          "level": "solid",
+          "tools": ["GitHub Actions", "API-интеграции"],
+          "case": null
+        }
+      ]
+    },
+    {
+      "name": "BI и визуализация",
+      "categories": [
+        {
+          "name": "DataLens",
+          "level": "deep",
+          "tools": ["многостраничные дашборды", "кастомные JS-чарты", "автообновление"],
+          "case": "HH Analytics, Дашборд проблемных доставок"
+        },
+        {
+          "name": "Qlik Sense",
+          "level": "solid",
+          "tools": ["сквозная отчётность", "HR-дашборды"],
+          "case": "X5 Group: сквозной HR-отчёт"
+        },
+        {
+          "name": "Power BI / Grafana",
+          "level": "basic",
+          "tools": ["базовая визуализация", "метрики"],
+          "case": null
+        }
+      ]
+    },
+    {
+      "name": "Данные и инфраструктура",
+      "categories": [
+        {
+          "name": "SQL / ClickHouse / PostgreSQL",
+          "level": "solid",
+          "tools": ["витрины данных", "сложные запросы", "оптимизация"],
+          "case": "Дашборд проблемных доставок, HH Analytics"
+        },
+        {
+          "name": "SAP HANA / Greenplum",
+          "level": "solid",
+          "tools": ["корпоративные хранилища", "модели данных"],
+          "case": "Сегментация сотрудников"
+        },
+        {
+          "name": "S3 / Яндекс.Облако",
+          "level": "basic",
+          "tools": ["хранение данных", "облачная инфраструктура"],
+          "case": null
+        },
+        {
+          "name": "Docker",
+          "level": "basic",
+          "tools": ["контейнеризация", "изолированные среды"],
+          "case": null
+        }
+      ]
+    }
+  ]
+}
