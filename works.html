@@ -165,6 +165,52 @@
       </div>
     </section>
 
+        <!-- ==================== КЕЙС 4 ==================== -->
+    <section class="caseSection fadeIn">
+      <div class="caseInner">
+        <div class="caseHeader">
+          <h2 class="caseTitle">Доказательная база для диссертационного исследования</h2>
+          <div class="caseTags">
+            <span class="tag">pandas</span>
+            <span class="tag">scipy</span>
+            <span class="tag">pingouin</span>
+            <span class="tag">bambi</span>
+            <span class="tag">байесовский ANOVA</span>
+            <span class="tag">медиационный анализ</span>
+            <span class="tag">cross-lagged модели</span>
+          </div>
+        </div>
+
+        <div class="caseBody">
+          <div class="caseBlock">
+            <h3 class="caseBlockTitle">Задача</h3>
+            <p class="caseBlockText">Диссертант собрал данные, но&nbsp;не&nbsp;знал, как подступиться к&nbsp;анализу. На&nbsp;входе&nbsp;&mdash; два хаотичных Excel-файла: 50+ листов, заголовки в&nbsp;разных строках, скрытые дубликаты (~17% данных), смешанные единицы измерений. Нужно было не&nbsp;просто &laquo;посчитать&raquo;, а&nbsp;выстроить логику анализа, которая выдержит защиту перед диссоветом.</p>
+          </div>
+
+          <div class="caseBlock">
+            <h3 class="caseBlockTitle">Метод</h3>
+            <div class="caseBlockText">
+              <p>Начал не&nbsp;с&nbsp;цифр, а&nbsp;с&nbsp;проектирования: разобрался в&nbsp;предметной области (адаптивная физкультура, специальные медицинские группы), формализовал гипотезы, спроектировал архитектуру данных&nbsp;&mdash; 5&nbsp;связанных датафреймов, ~19&nbsp;000&nbsp;строк в&nbsp;длинном формате.</p>
+              <p>Написал кастомный парсер (эволюция V1→V4), который автоматически находит строку заголовка, сопоставляет колонки по&nbsp;ключевым словам и&nbsp;конвертирует единицы измерения.</p>
+              <p>Анализ&nbsp;&mdash; по&nbsp;принципу &laquo;от&nbsp;простого к&nbsp;сложному&raquo;: описательная статистика → сравнение групп → анализ динамики → поиск механизмов. Каждый ключевой вывод подтверждён минимум двумя методами: классическая статистика + байесовский подход. Отдельно проверена гипотеза о&nbsp;роли чат-бота: медиационный анализ (Baron&nbsp;&amp;&nbsp;Kenny + bootstrap 5000 итераций) и&nbsp;cross-lagged panel model.</p>
+            </div>
+          </div>
+
+          <div class="caseBlock">
+            <h3 class="caseBlockTitle">Результат</h3>
+            <div class="caseBlockText">
+              <p>Методика подтверждена: 17&nbsp;из&nbsp;22&nbsp;тестов показали значимую динамику. Наибольший эффект&nbsp;&mdash; на&nbsp;дыхательную систему (η² до&nbsp;0.24) и&nbsp;сердечно-сосудистую адаптацию (η²=0.09). Двигательная активность выросла кратно, качество жизни улучшилось по&nbsp;4&nbsp;из&nbsp;8&nbsp;шкал SF-36.</p>
+              <p>На&nbsp;выходе диссертант получил не&nbsp;просто таблицы, а&nbsp;готовую доказательную базу: аналитическую записку на&nbsp;50&nbsp;страниц, Excel с&nbsp;19&nbsp;листами структурированных результатов и&nbsp;ответы на&nbsp;потенциальные вопросы рецензента. Проект занял 40&nbsp;часов.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="caseImage">
+          <img src="assets/images/research.png" alt="Доказательная база для диссертационного исследования" class="caseImg">
+        </div>
+      </div>
+    </section>
+
     <!-- ==================== PET-ПРОЕКТЫ ==================== -->
     <section class="petProjects fadeIn">
       <h2 class="sectionTitle">Pet-проекты</h2>
