@@ -301,8 +301,8 @@
           labels
             .on('mouseover', mouseovered(true))
             .on('mousemove', function(event) {
-              tooltip.style.left = (event.clientX + 14) + 'px';
-              tooltip.style.top = (event.clientY + 14) + 'px';
+              tooltip.style.left = (event.clientX) + 'px';
+              tooltip.style.top = (event.clientY) + 'px';
             })
             .on('mouseout', mouseovered(false));
 
