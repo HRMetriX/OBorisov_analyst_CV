@@ -1,12 +1,19 @@
 /* ==================== HEADER ==================== */
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 100;
   background-color: rgba(13, 17, 23, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--colorBorder);
+  transition: background-color 0.3s ease;
+}
+
+.header.scrolled {
+  background-color: rgba(13, 17, 23, 0.95);
 }
 
 .headerInner {
