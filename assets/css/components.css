@@ -114,8 +114,8 @@
 .contactRow:active,
 .principleItem:active,
 .bookCard:active,
-.blogTeaserCard:active,
-.petProjectCard:active {
+.blogTeaserCard:active
+{
   transform: scale(0.98);
 }
 
