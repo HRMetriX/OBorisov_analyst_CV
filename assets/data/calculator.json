@@ -1,0 +1,33 @@
+{
+  "baseRates": {
+    "audit": 100000,
+    "research": 150000,
+    "dashboard": 200000,
+    "fullCycle": 300000,
+    "science": "individual"
+  },
+  "volume": [
+    {"label": "До 5 источников", "factor": 1.0},
+    {"label": "5–15 источников", "factor": 1.3},
+    {"label": "15+ источников, нужен ETL", "factor": 1.6}
+  ],
+  "complexity": [
+    {"label": "Чистые, структурированные", "factor": 1.0},
+    {"label": "Нужна очистка и нормализация", "factor": 1.3},
+    {"label": "Хаотичные: дубликаты, мусор, разные форматы", "factor": 1.6}
+  ],
+  "urgency": [
+    {"label": "Стандарт", "factor": 1.0},
+    {"label": "Ускоренно", "factor": 1.3},
+    {"label": "Срочно", "factor": 1.6}
+  ],
+  "options": {
+    "methodologyAdvanced": {"label": "Методология продвинутая", "type": "research", "percent": 30},
+    "methodologyHigh": {"label": "Методология высокая", "type": "research", "percent": 60},
+    "vizStatic": {"label": "Статичная визуализация для отчёта", "type": "research", "percent": 10},
+    "vizCustom": {"label": "Кастомная визуализация D3.js", "type": "dashboard", "percent": 40},
+    "automation": {"label": "Автоматизация и автообновление", "type": "dashboard", "percent": 30},
+    "training": {"label": "Обучение команды / демо", "type": "all", "percent": 15}
+  },
+  "note": "Все суммы указаны без учёта налога (НДФЛ 13%). Цены ориентировочные, не являются публичной офертой."
+}
