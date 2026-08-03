@@ -6,59 +6,106 @@
       "categories": [
         {
           "name": "Проверка гипотез",
-          "level": "deep",
           "length": 35,
-          "tools": ["t-тест", "A/B-тесты", "Пермутационные тесты", "Бутстрэп"],
-          "case": "Сегментация сотрудников после реструктуризации"
+          "tools": [
+            {"name": "t-тест", "level": "lead"},
+            {"name": "A/B-тесты", "level": "mid"},
+            {"name": "Пермутационные тесты", "level": "mid"},
+            {"name": "Бутстрэп", "level": "mid"}
+          ]
         },
         {
           "name": "Кластеризация",
-          "level": "deep",
           "length": 35,
-          "tools": ["k-means", "DBSCAN", "HDBSCAN", "Иерархические методы", "Гауссовские смеси"],
-          "case": "Сегментация сотрудников после реструктуризации"
+          "tools": [
+            {"name": "k-means", "level": "lead"},
+            {"name": "DBSCAN", "level": "sen"},
+            {"name": "HDBSCAN", "level": "sen"},
+            {"name": "Иерархические методы", "level": "lead"},
+            {"name": "Гауссовские смеси", "level": "jun"}
+          ]
         },
         {
           "name": "Байесовские методы",
-          "level": "deep",
           "length": 35,
-          "tools": ["PyMC", "Bambi", "Байесовский A/B", "Апостериорные распределения"],
-          "case": "Диссертационное исследование"
-        },
-        {
-          "name": "Медиационный анализ",
-          "level": "solid",
-          "length": 22,
-          "tools": ["Baron & Kenny", "Bootstrap Preacher & Hayes"],
-          "case": "Диссертационное исследование"
-        },
-        {
-          "name": "Cross-lagged модели",
-          "level": "solid",
-          "length": 22,
-          "tools": ["semopy", "Панельные данные", "Направленность связей"],
-          "case": "Диссертационное исследование"
+          "tools": [
+            {"name": "PyMC", "level": "mid"},
+            {"name": "Bambi", "level": "mid"},
+            {"name": "Байесовский A/B", "level": "mid"},
+            {"name": "Апостериорные распределения", "level": "sen"}
+          ]
         },
         {
           "name": "Дизайн экспериментов",
-          "level": "solid",
           "length": 22,
-          "tools": ["Рандомизация", "Стратификация", "Контроль confounding"],
-          "case": null
+          "tools": [
+            {"name": "Рандомизация", "level": "lead"},
+            {"name": "Стратификация", "level": "lead"}
+          ]
         },
         {
           "name": "Факторный анализ",
-          "level": "deep",
           "length": 35,
-          "tools": ["PCA", "LDA", "IRT", "CTT"],
-          "case": "TalentCode: психометрическая проверка тестов"
+          "tools": [
+            {"name": "PCA", "level": "sen"},
+            {"name": "LDA", "level": "sen"},
+            {"name": "IRT", "level": "sen"},
+            {"name": "CTT", "level": "sen"}
+          ]
         },
         {
           "name": "Временные ряды",
-          "level": "solid",
           "length": 22,
-          "tools": ["Декомпозиция", "STL", "Прогнозирование"],
-          "case": "Яндекс: прогнозирование найма"
+          "tools": [
+            {"name": "Декомпозиция", "level": "sen"},
+            {"name": "STL", "level": "sen"},
+            {"name": "Прогнозирование", "level": "sen"}
+          ]
+        },
+        {
+          "name": "Корреляционный анализ",
+          "length": 22,
+          "tools": [
+            {"name": "Спирмен", "level": "lead"},
+            {"name": "Пирсон", "level": "lead"},
+            {"name": "Кендалл", "level": "lead"}
+          ]
+        },
+        {
+          "name": "Непараметрические тесты",
+          "length": 22,
+          "tools": [
+            {"name": "Манна-Уитни", "level": "lead"},
+            {"name": "Вилкоксон", "level": "lead"},
+            {"name": "Краскел-Уоллис", "level": "lead"}
+          ]
+        },
+        {
+          "name": "Множественные сравнения",
+          "length": 22,
+          "tools": [
+            {"name": "Бонферрони", "level": "lead"},
+            {"name": "Холма", "level": "lead"},
+            {"name": "FDR", "level": "lead"}
+          ]
+        },
+        {
+          "name": "ANOVA",
+          "length": 22,
+          "tools": [
+            {"name": "Однофакторный", "level": "lead"},
+            {"name": "Смешанный", "level": "lead"},
+            {"name": "Гринхаус-Гейссер", "level": "lead"}
+          ]
+        },
+        {
+          "name": "Размеры эффекта",
+          "length": 22,
+          "tools": [
+            {"name": "Cohen's d", "level": "lead"},
+            {"name": "η²", "level": "lead"},
+            {"name": "r", "level": "lead"}
+          ]
         }
       ]
     },
@@ -68,45 +115,74 @@
       "categories": [
         {
           "name": "Python",
-          "level": "deep",
           "length": 35,
-          "tools": ["pandas", "numpy", "scikit-learn", "matplotlib", "seaborn", "pingouin", "statsmodels"],
-          "case": null
+          "tools": [
+            {"name": "pandas", "level": "lead"},
+            {"name": "numpy", "level": "lead"},
+            {"name": "scikit-learn", "level": "sen"},
+            {"name": "matplotlib", "level": "lead"},
+            {"name": "seaborn", "level": "lead"},
+            {"name": "pingouin", "level": "mid"},
+            {"name": "statsmodels", "level": "lead"},
+            {"name": "semopy", "level": "mid"}
+          ]
         },
         {
           "name": "JavaScript",
-          "level": "solid",
           "length": 22,
-          "tools": ["D3.js", "SVG-графика", "Интерактивные дашборды"],
-          "case": "HH Analytics: кастомные JS-чарты"
+          "tools": [
+            {"name": "D3.js", "level": "mid"},
+            {"name": "SVG-графика", "level": "mid"}
+          ]
         },
         {
           "name": "ETL и оркестрация",
-          "level": "solid",
           "length": 22,
-          "tools": ["Airflow", "Dagster", "cron", "GitHub Actions"],
-          "case": "Дашборд проблемных доставок"
+          "tools": [
+            {"name": "Airflow", "level": "lead"},
+            {"name": "Dagster", "level": "mid"},
+            {"name": "cron", "level": "mid"},
+            {"name": "GitHub Actions", "level": "mid"}
+          ]
         },
         {
           "name": "Парсинг",
-          "level": "solid",
           "length": 22,
-          "tools": ["Playwright", "BeautifulSoup", "Кастомные парсеры"],
-          "case": "Диссертационное исследование"
+          "tools": [
+            {"name": "Playwright", "level": "sen"},
+            {"name": "BeautifulSoup", "level": "lead"},
+            {"name": "Кастомные парсеры", "level": "lead"}
+          ]
         },
         {
           "name": "NLP / AI",
-          "level": "solid",
           "length": 22,
-          "tools": ["Qwen", "Natasha", "Prompt Engineering", "HITL"],
-          "case": "NLP-анализ стенограмм колл-центра"
+          "tools": [
+            {"name": "Qwen", "level": "lead"},
+            {"name": "Natasha", "level": "lead"},
+            {"name": "Prompt Engineering", "level": "sen"},
+            {"name": "HITL", "level": "lead"}
+          ]
         },
         {
           "name": "Git",
-          "level": "solid",
           "length": 22,
-          "tools": ["Git", "GitHub", "REST API"],
-          "case": null
+          "tools": [
+            {"name": "Git", "level": "lead"},
+            {"name": "GitHub", "level": "mid"}
+          ]
+        },
+        {
+          "name": "Инструменты разработки",
+          "length": 22,
+          "tools": [
+            {"name": "Jupyter", "level": "lead"},
+            {"name": "PyCharm", "level": "lead"},
+            {"name": "venv", "level": "lead"},
+            {"name": "pytest", "level": "mid"},
+            {"name": "Poetry / pip", "level": "mid"},
+            {"name": "Логирование", "level": "mid"}
+          ]
         }
       ]
     },
@@ -116,31 +192,50 @@
       "categories": [
         {
           "name": "DataLens",
-          "level": "deep",
           "length": 35,
-          "tools": ["Многостраничные дашборды", "Кастомные JS-чарты", "Автообновление"],
-          "case": "HH Analytics, Дашборд проблемных доставок"
+          "tools": [
+            {"name": "DataLens", "level": "lead"}
+          ]
         },
         {
           "name": "Qlik Sense",
-          "level": "solid",
           "length": 22,
-          "tools": ["Сквозная отчётность", "HR-дашборды", "Модели данных"],
-          "case": "X5 Group: сквозной HR-отчёт"
+          "tools": [
+            {"name": "Qlik Sense", "level": "sen"}
+          ]
         },
         {
           "name": "Power BI",
-          "level": "basic",
           "length": 12,
-          "tools": ["Базовая визуализация", "Метрики"],
-          "case": null
+          "tools": [
+            {"name": "Power BI", "level": "mid"}
+          ]
         },
         {
           "name": "Grafana",
-          "level": "basic",
           "length": 12,
-          "tools": ["Мониторинг", "Метрики"],
-          "case": null
+          "tools": [
+            {"name": "Grafana", "level": "mid"}
+          ]
+        },
+        {
+          "name": "Разработка дашбордов",
+          "length": 35,
+          "tools": [
+            {"name": "Интерактивные дашборды", "level": "lead"},
+            {"name": "Автообновление", "level": "lead"},
+            {"name": "ETL для BI", "level": "lead"},
+            {"name": "Дизайн дашбордов", "level": "lead"},
+            {"name": "Мониторинг и алерты", "level": "lead"}
+          ]
+        },
+        {
+          "name": "Внедрение BI",
+          "length": 22,
+          "tools": [
+            {"name": "Внедрение BI", "level": "lead"},
+            {"name": "Обучение пользователей", "level": "sen"}
+          ]
         }
       ]
     },
@@ -150,24 +245,43 @@
       "categories": [
         {
           "name": "SQL и хранилища",
-          "level": "solid",
           "length": 22,
-          "tools": ["ClickHouse", "PostgreSQL", "SAP HANA", "Greenplum"],
-          "case": "Дашборд проблемных доставок, Сегментация сотрудников"
+          "tools": [
+            {"name": "ClickHouse", "level": "sen"},
+            {"name": "PostgreSQL", "level": "sen"},
+            {"name": "SAP HANA", "level": "mid"},
+            {"name": "Greenplum", "level": "mid"},
+            {"name": "SQL", "level": "lead"}
+          ]
         },
         {
           "name": "Витрины данных",
-          "level": "solid",
           "length": 22,
-          "tools": ["Золотой слой", "Длинный формат", "Оптимизация"],
-          "case": null
+          "tools": [
+            {"name": "Золотой слой", "level": "mid"},
+            {"name": "Длинный формат", "level": "lead"},
+            {"name": "Оптимизация", "level": "mid"},
+            {"name": "Модели данных", "level": "lead"}
+          ]
         },
         {
           "name": "Облачная инфраструктура",
-          "level": "basic",
           "length": 12,
-          "tools": ["S3", "Яндекс.Облако", "Docker"],
-          "case": null
+          "tools": [
+            {"name": "S3", "level": "mid"},
+            {"name": "Яндекс.Облако", "level": "sen"},
+            {"name": "Docker", "level": "jun"},
+            {"name": "Supabase", "level": "mid"}
+          ]
+        },
+        {
+          "name": "Интеграции и хранение",
+          "length": 22,
+          "tools": [
+            {"name": "API интеграции", "level": "sen"},
+            {"name": "Хранение и бэкапы", "level": "mid"},
+            {"name": "GitHub Actions / Secrets", "level": "mid"}
+          ]
         }
       ]
     }

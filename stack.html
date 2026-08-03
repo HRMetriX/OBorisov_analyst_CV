@@ -15,7 +15,7 @@
 
   <style>
     .stackContainer {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 24px 80px;
       position: relative;
@@ -26,20 +26,20 @@
       justify-content: center;
     }
     .stackTooltip {
-      position: absolute;
+      position: fixed;
       background: var(--colorSurface);
       border: 1px solid var(--colorAccent);
       border-radius: var(--radiusMd);
       padding: 14px 18px;
       pointer-events: none;
       opacity: 0;
-      transition: opacity 0.2s;
+      transition: opacity 0.15s;
       max-width: 280px;
-      z-index: 10;
+      z-index: 100;
     }
     .stackTooltip.visible { opacity: 1; }
     .stackTooltipTitle {
-      font-size: 0.875rem;
+      font-size: 0.938rem;
       font-weight: 600;
       color: var(--colorText);
       margin-bottom: 4px;
@@ -47,26 +47,20 @@
     .stackTooltipLevel {
       display: inline-block;
       font-family: var(--fontMono);
-      font-size: 0.625rem;
+      font-size: 0.688rem;
       font-weight: 500;
-      padding: 2px 6px;
+      padding: 2px 8px;
       border-radius: var(--radiusSm);
       margin-bottom: 8px;
     }
-    .levelDeep { background: rgba(63, 185, 80, 0.15); color: #3fb950; border: 1px solid rgba(63, 185, 80, 0.3); }
-    .levelSolid { background: rgba(88, 166, 255, 0.15); color: #58a6ff; border: 1px solid rgba(88, 166, 255, 0.3); }
-    .levelBasic { background: rgba(139, 148, 158, 0.15); color: #8b949e; border: 1px solid rgba(139, 148, 158, 0.3); }
+    .levelLead { background: rgba(63, 185, 80, 0.2); color: #3fb950; border: 1px solid rgba(63, 185, 80, 0.4); }
+    .levelSen { background: rgba(88, 166, 255, 0.2); color: #58a6ff; border: 1px solid rgba(88, 166, 255, 0.4); }
+    .levelMid { background: rgba(240, 136, 62, 0.2); color: #f0883e; border: 1px solid rgba(240, 136, 62, 0.4); }
+    .levelJun { background: rgba(139, 148, 158, 0.2); color: #8b949e; border: 1px solid rgba(139, 148, 158, 0.4); }
     .stackTooltipDomain {
       font-size: 0.688rem;
       color: var(--colorTextMuted);
       margin-bottom: 6px;
-    }
-    .stackTooltipCase {
-      font-size: 0.75rem;
-      color: var(--colorAccent);
-      margin-top: 6px;
-      border-top: 1px solid var(--colorBorder);
-      padding-top: 6px;
     }
     .stackLegend {
       display: flex;
@@ -86,18 +80,16 @@
       height: 10px;
       border-radius: 50%;
     }
-
-    /* Анимация */
-    .link--active {
-      stroke-opacity: 0.8 !important;
-      stroke-width: 1.5px;
-    }
-    .link-extension--active {
-      stroke-opacity: 0.6;
-    }
     .label--active {
       fill: #e6edf3 !important;
       font-weight: bold;
+    }
+    .link--active {
+      stroke-opacity: 0.8 !important;
+      stroke-width: 1.8px;
+    }
+    .link-extension--active {
+      stroke-opacity: 0.6;
     }
   </style>
 </head>
@@ -131,15 +123,22 @@
       var legendContainer = document.getElementById('stackLegend');
       if (!chartContainer) return;
 
-      var width = Math.min(900, window.innerWidth - 48);
+      var width = Math.min(1000, window.innerWidth - 48);
       var outerRadius = width / 2;
-      var innerRadius = outerRadius - 190;
+      var innerRadius = outerRadius - 210;
 
       var domainColors = {
         'Исследования и статистика': '#58a6ff',
         'Разработка и автоматизация': '#3fb950',
         'BI и визуализация': '#f0883e',
         'Данные и инфраструктура': '#bc8cff'
+      };
+
+      var levelLabels = {
+        'lead': 'Lead',
+        'sen': 'Senior',
+        'mid': 'Middle',
+        'jun': 'Junior'
       };
 
       // Легенда
@@ -154,7 +153,6 @@
         .then(function(r) { return r.json(); })
         .then(function(data) {
 
-          // Строим иерархию с branchset (как в референсе)
           var root = {
             name: 'Стек',
             branchset: data.domains.map(function(domain) {
@@ -164,15 +162,11 @@
                 branchset: domain.categories.map(function(cat) {
                   return {
                     name: cat.name,
-                    level: cat.level,
                     length: cat.length,
-                    tools: cat.tools,
-                    case: cat.case,
-                    domain: domain.name,
                     branchset: cat.tools.map(function(tool) {
                       return {
-                        name: tool,
-                        level: cat.level,
+                        name: tool.name,
+                        level: tool.level,
                         domain: domain.name,
                         length: 4
                       };
@@ -193,7 +187,6 @@
 
           cluster(hierarchy);
 
-          // Радиусы
           function setRadius(d, y0, k) {
             d.radius = (y0 += d.data.length) * k;
             if (d.children) d.children.forEach(function(child) { setRadius(child, y0, k); });
@@ -205,7 +198,6 @@
 
           setRadius(hierarchy, hierarchy.data.length = 0, innerRadius / maxLength(hierarchy));
 
-          // Цвета
           function setColor(d) {
             d.color = domainColors[d.data.domain] || (d.parent ? d.parent.color : '#8b949e');
             if (d.children) d.children.forEach(setColor);
@@ -218,14 +210,12 @@
             .attr('font-family', '"JetBrains Mono", monospace')
             .attr('font-size', 9);
 
-          // CSS для анимации
           svg.append('style').text(`
-            .link--active { stroke-opacity: 0.8 !important; stroke-width: 1.5px; }
+            .link--active { stroke-opacity: 0.8 !important; stroke-width: 1.8px; }
             .link-extension--active { stroke-opacity: 0.6; }
             .label--active { fill: #e6edf3 !important; font-weight: bold; }
           `);
 
-          // Линии-расширения (от листьев до внешнего кольца) — СНАЧАЛА, чтобы были под ссылками
           var linkExtension = svg.append('g')
             .attr('fill', 'none')
             .attr('stroke', '#8b949e')
@@ -236,7 +226,6 @@
             .each(function(d) { d.target.linkExtensionNode = this; })
             .attr('d', linkExtensionConstant);
 
-          // Ссылки
           function linkStep(startAngle, startRadius, endAngle, endRadius) {
             var c0 = Math.cos((startAngle - 90) / 180 * Math.PI);
             var s0 = Math.sin((startAngle - 90) / 180 * Math.PI);
@@ -265,7 +254,6 @@
             .attr('d', linkConstant)
             .attr('stroke', function(d) { return d.target.color; });
 
-          // Подписи — только листья
           var labels = svg.append('g')
             .selectAll('text')
             .data(hierarchy.leaves())
@@ -278,10 +266,9 @@
             .attr('text-anchor', function(d) { return d.x < 180 ? 'start' : 'end'; })
             .text(function(d) { return d.data.name; })
             .attr('fill', '#6e7681')
-            .attr('font-size', '8px')
+            .attr('font-size', '18px')
             .style('cursor', 'default');
 
-          // Ховер с анимацией как в референсе
           function mouseovered(active) {
             return function(event, d) {
               d3.select(this).classed('label--active', active);
@@ -292,20 +279,16 @@
               } while (d);
 
               if (active) {
-                var levelText, levelClass;
-                if (d3.select(this).datum().data.level === 'deep') { levelText = 'Глубоко'; levelClass = 'levelDeep'; }
-                else if (d3.select(this).datum().data.level === 'solid') { levelText = 'Уверенно'; levelClass = 'levelSolid'; }
-                else if (d3.select(this).datum().data.level === 'basic') { levelText = 'Базово'; levelClass = 'levelBasic'; }
-                else { levelText = ''; levelClass = ''; }
-
                 var dd = d3.select(this).datum().data;
+                var level = dd.level;
+                var levelText = levelLabels[level] || level;
+                var levelClass = 'level' + level.charAt(0).toUpperCase() + level.slice(1);
+
                 var html = '<div class="stackTooltipTitle">' + dd.name + '</div>';
                 if (dd.domain) {
                   html += '<div class="stackTooltipDomain">' + dd.domain + '</div>';
                 }
-                if (levelText) {
-                  html += '<span class="stackTooltipLevel ' + levelClass + '">' + levelText + '</span>';
-                }
+                html += '<span class="stackTooltipLevel ' + levelClass + '">' + levelText + '</span>';
 
                 tooltip.innerHTML = html;
                 tooltip.classList.add('visible');
@@ -318,8 +301,8 @@
           labels
             .on('mouseover', mouseovered(true))
             .on('mousemove', function(event) {
-              tooltip.style.left = (event.pageX + 16) + 'px';
-              tooltip.style.top = (event.pageY - 16) + 'px';
+              tooltip.style.left = (event.clientX + 14) + 'px';
+              tooltip.style.top = (event.clientY + 14) + 'px';
             })
             .on('mouseout', mouseovered(false));
 
