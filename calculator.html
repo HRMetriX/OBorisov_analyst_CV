@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Калькулятор стоимости data-проекта — ориентировочная оценка">
+
+  <title>Калькулятор — Олег Борисов</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .calculatorContainer {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+    .calcColumns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .calcSection {
+      margin-bottom: 24px;
+    }
+    .calcSectionTitle {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--colorTextMuted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+    .calcTiles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .calcTile {
+      display: flex;
+      flex-direction: column;
+      padding: 14px 12px;
+      background: var(--colorSurface);
+      border: 1px solid var(--colorBorder);
+      border-radius: var(--radiusMd);
+      cursor: pointer;
+      text-align: center;
+      transition: all var(--transitionFast);
+      font-family: var(--fontMain);
+    }
+    .calcTile:hover {
+      border-color: var(--colorBorderHover);
+      background: var(--colorSurfaceHover);
+    }
+    .calcTile.active {
+      border-color: var(--colorAccent);
+      background: rgba(88, 166, 255, 0.08);
+    }
+    .calcTileLabel {
+      font-size: 0.813rem;
+      font-weight: 600;
+      color: var(--colorText);
+      margin-bottom: 2px;
+    }
+    .calcTileDesc {
+      font-size: 0.688rem;
+      color: var(--colorTextMuted);
+    }
+    .calcRadioGroup {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .calcRadio {
+      display: block;
+      width: 100%;
+      padding: 10px 14px;
+      background: var(--colorSurface);
+      border: 1px solid var(--colorBorder);
+      border-radius: var(--radiusMd);
+      color: var(--colorText);
+      font-size: 0.875rem;
+      cursor: pointer;
+      text-align: left;
+      transition: all var(--transitionFast);
+      font-family: var(--fontMain);
+    }
+    .calcRadio:hover {
+      border-color: var(--colorBorderHover);
+    }
+    .calcRadio.active {
+      border-color: var(--colorAccent);
+      background: rgba(88, 166, 255, 0.08);
+    }
+    .calcCheckbox {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--colorSurface);
+      border: 1px solid var(--colorBorder);
+      border-radius: var(--radiusMd);
+      cursor: pointer;
+      margin-bottom: 6px;
+      transition: all var(--transitionFast);
+    }
+    .calcCheckbox:hover {
+      border-color: var(--colorBorderHover);
+    }
+    .calcCheckbox input[type="checkbox"] {
+      accent-color: var(--colorAccent);
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+    .calcCheckboxLabel {
+      font-size: 0.875rem;
+      color: var(--colorText);
+    }
+    .calcResult {
+      position: sticky;
+      top: 80px;
+      background: var(--colorSurface);
+      border: 1px solid var(--colorBorder);
+      border-radius: var(--radiusLg);
+      padding: 32px 28px;
+      text-align: center;
+    }
+    .calcResultLabel {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--colorTextMuted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .calcResultValue {
+      font-family: var(--fontMono);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--colorAccent);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .calcCurrency {
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+    .calcResultNote {
+      font-size: 0.75rem;
+      color: var(--colorTextMuted);
+      line-height: 1.5;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .calcResultBtn {
+      width: 100%;
+    }
+    .calcDisclaimer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--colorTextMuted);
+      margin-top: 16px;
+    }
+    @media (max-width: 750px) {
+      .calcColumns {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .calcTiles {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .calcResult {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="headerPlaceholder"></div>
+
+  <main>
+
+    <section class="pageHero fadeIn">
+      <h1 class="pageHeroTitle">Калькулятор стоимости</h1>
+      <p class="pageHeroSubtitle">Ориентировочная вилка под ваш запрос. Точная стоимость — после аудита задачи.</p>
+    </section>
+
+    <section class="calculatorContainer fadeIn">
+      <div class="calcColumns">
+        <div class="calcLeft" id="calculatorContainer"></div>
+        <div class="calcRight">
+          <div class="calcResult" id="calcResultSticky">
+            <div class="calcResultLabel">Ориентировочная стоимость</div>
+            <div class="calcResultValue" id="calcResultValueSticky">—</div>
+            <div class="calcResultNote" id="calcResultNoteSticky"></div>
+            <a href="https://max.ru/u/f9LHodD0cOKlBfgKnrDXJZkZH9USJodMW4B0SCaGVpPpKNEwYyVrvHo08HQ" class="btn btnPrimary calcResultBtn" target="_blank" rel="noopener">Обсудить в Макс</a>
+            <p class="calcDisclaimer" style="margin-top:16px;">Цены ориентировочные, не являются публичной офертой. Суммы без учёта НДФЛ.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footerPlaceholder"></div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

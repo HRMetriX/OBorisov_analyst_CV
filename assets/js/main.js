@@ -287,6 +287,180 @@ function initReadinessQuiz() {
   });
 }
 
+// ==================== КАЛЬКУЛЯТОР СТОИМОСТИ ====================
+function initCalculator() {
+  var container = document.getElementById('calculatorContainer');
+  if (!container) return;
+
+  var data = {};
+  var selections = {
+    type: null,
+    volume: 0,
+    complexity: 0,
+    urgency: 0,
+    options: {}
+  };
+
+  // Загружаем конфиг
+  fetch('/OBorisov_analyst_CV/assets/data/calculator.json')
+    .then(function(r) { return r.json(); })
+    .then(function(json) {
+      data = json;
+      renderCalculator();
+    });
+
+  function renderCalculator() {
+    var html = '';
+
+    // Тип задачи — плитки
+    html += '<div class="calcSection"><h3 class="calcSectionTitle">Тип задачи</h3><div class="calcTiles">';
+    var types = [
+      {id: 'audit', label: 'Аудит и консалтинг', desc: 'Разбор данных и процессов'},
+      {id: 'research', label: 'Исследование', desc: 'Проверка гипотез, анализ'},
+      {id: 'dashboard', label: 'Дашборд / инструмент', desc: 'Разработка под ключ'},
+      {id: 'fullCycle', label: 'Полный цикл', desc: 'Исследование + дашборд'},
+      {id: 'science', label: 'Наукоёмкое', desc: 'Диссертации, академические'}
+    ];
+    types.forEach(function(t) {
+      html += '<button class="calcTile' + (selections.type === t.id ? ' active' : '') + '" data-type="' + t.id + '">';
+      html += '<span class="calcTileLabel">' + t.label + '</span>';
+      html += '<span class="calcTileDesc">' + t.desc + '</span>';
+      html += '</button>';
+    });
+    html += '</div></div>';
+
+    // Общие параметры
+    html += renderRadio('volume', 'Объём данных', data.volume);
+    html += renderRadio('complexity', 'Сложность данных', data.complexity);
+    html += renderRadio('urgency', 'Срочность', data.urgency);
+
+    // Опции — зависят от типа
+    if (selections.type && selections.type !== 'science') {
+      var relevantOptions = getRelevantOptions();
+      if (relevantOptions.length > 0) {
+        html += '<div class="calcSection"><h3 class="calcSectionTitle">Дополнительные опции</h3>';
+        relevantOptions.forEach(function(opt) {
+          html += '<label class="calcCheckbox">';
+          html += '<input type="checkbox" data-option="' + opt.id + '"' + (selections.options[opt.id] ? ' checked' : '') + '>';
+          html += '<span class="calcCheckboxLabel">' + opt.label + ' (+' + opt.percent + '%)</span>';
+          html += '</label>';
+        });
+        html += '</div>';
+      }
+    }
+
+    container.innerHTML = html;
+    bindEvents();
+    updateResult();
+  }
+
+  function renderRadio(id, title, options) {
+    var h = '<div class="calcSection"><h3 class="calcSectionTitle">' + title + '</h3><div class="calcRadioGroup">';
+    options.forEach(function(opt, i) {
+      h += '<button class="calcRadio' + (selections[id] === i ? ' active' : '') + '" data-group="' + id + '" data-index="' + i + '">' + opt.label + '</button>';
+    });
+    h += '</div></div>';
+    return h;
+  }
+
+  function getRelevantOptions() {
+    var result = [];
+    Object.keys(data.options).forEach(function(key) {
+      var opt = data.options[key];
+      if (opt.type === 'all' || opt.type === selections.type ||
+          (opt.type === 'research' && (selections.type === 'research' || selections.type === 'fullCycle')) ||
+          (opt.type === 'dashboard' && (selections.type === 'dashboard' || selections.type === 'fullCycle'))) {
+        result.push(Object.assign({id: key}, opt));
+      }
+    });
+    return result;
+  }
+
+  function bindEvents() {
+    // Плитки типа
+    container.querySelectorAll('.calcTile').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        selections.type = btn.getAttribute('data-type');
+        selections.options = {};
+        renderCalculator();
+      });
+    });
+
+    // Радио-кнопки
+    container.querySelectorAll('.calcRadio').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var group = btn.getAttribute('data-group');
+        var index = parseInt(btn.getAttribute('data-index'));
+        selections[group] = index;
+        renderCalculator();
+      });
+    });
+
+    // Чекбоксы
+    container.querySelectorAll('input[type="checkbox"]').forEach(function(cb) {
+      cb.addEventListener('change', function() {
+        var optId = cb.getAttribute('data-option');
+        selections.options[optId] = cb.checked;
+        updateResult();
+      });
+    });
+  }
+
+  function updateResult() {
+    var resultValue = document.getElementById('calcResultValue');
+    var resultNote = document.getElementById('calcResultNote');
+    var stickyValue = document.getElementById('calcResultValueSticky');
+    var stickyNote = document.getElementById('calcResultNoteSticky');
+
+    if (!selections.type || selections.type === 'science') {
+      var sciText = selections.type === 'science' ? 'Индивидуально' : '—';
+      var sciNote = selections.type === 'science' ? 'Стоимость обсуждается после знакомства с проектом' : '';
+      if (resultValue) resultValue.textContent = sciText;
+      if (resultNote) resultNote.textContent = sciNote;
+      if (stickyValue) stickyValue.textContent = sciText;
+      if (stickyNote) stickyNote.textContent = sciNote;
+      return;
+    }
+
+    var base = data.baseRates[selections.type];
+    var volFactor = data.volume[selections.volume].factor;
+    var compFactor = data.complexity[selections.complexity].factor;
+    var urgFactor = data.urgency[selections.urgency].factor;
+
+    var optSum = 0;
+    var optDetails = [];
+    Object.keys(selections.options).forEach(function(key) {
+      if (selections.options[key] && data.options[key]) {
+        var pct = data.options[key].percent;
+        var amount = Math.round(base * pct / 100);
+        optSum += amount;
+        optDetails.push(data.options[key].label + ': +' + amount.toLocaleString('ru-RU') + ' ₽');
+      }
+    });
+
+    var middle = Math.round(base * volFactor * compFactor * urgFactor) + optSum;
+    var low = Math.max(base, middle);
+    var high = Math.round(middle * 1.2);
+    if (high < low) high = Math.round(low * 1.15);
+
+    var valueHTML = low.toLocaleString('ru-RU') + ' – ' + high.toLocaleString('ru-RU') + ' <span class="calcCurrency">₽</span>';
+
+    var detailHTML = 'База: ' + base.toLocaleString('ru-RU') + ' ₽';
+    detailHTML += ' × ' + volFactor.toFixed(1) + ' (объём)';
+    detailHTML += ' × ' + compFactor.toFixed(1) + ' (сложность)';
+    detailHTML += ' × ' + urgFactor.toFixed(1) + ' (срочность)';
+    if (optDetails.length > 0) {
+      detailHTML += '<br>' + optDetails.join(', ');
+    }
+    detailHTML += '<br>Верхняя граница: ×1.2';
+
+    if (resultValue) resultValue.innerHTML = valueHTML;
+    if (resultNote) resultNote.innerHTML = detailHTML;
+    if (stickyValue) stickyValue.innerHTML = valueHTML;
+    if (stickyNote) stickyNote.innerHTML = detailHTML;
+  }
+}
+
 // ==================== ЗАПУСК ====================
 document.addEventListener('DOMContentLoaded', function() {
   loadIncludes();
@@ -294,4 +468,5 @@ document.addEventListener('DOMContentLoaded', function() {
   initFadeIn();
   initFaq();
   initReadinessQuiz();
+  initCalculator();
 });
