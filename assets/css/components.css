@@ -98,6 +98,27 @@
   background-color: var(--colorSurfaceHover);
 }
 
+.btn:active {
+  transform: scale(0.97);
+}
+
+.calcTile:active,
+.calcRadio:active,
+.quizAnswer:active,
+.stepCard:active,
+.pricingCard:active,
+.featuredCard:active,
+.diffCard:active,
+.noGoCard:active,
+.contactCard:active,
+.contactRow:active,
+.principleItem:active,
+.bookCard:active,
+.blogTeaserCard:active,
+.petProjectCard:active {
+  transform: scale(0.98);
+}
+
 /* ==================== ТЕГИ (универсальные) ==================== */
 .tag {
   display: inline-block;
