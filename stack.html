@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Карта компетенций — стек технологий и методов">
+  <meta name="description" content="Карта компетенций - стек технологий и методов">
 
-  <title>Стек — Олег Борисов</title>
+  <title>Стек - Олег Борисов</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -215,7 +215,7 @@
               tooltip.classList.remove('visible');
             });
 
-          // Подписи — только если влезают
+          // Подписи - только если влезают
           cells.append('text')
             .attr('x', 6)
             .attr('y', 16)
@@ -233,7 +233,7 @@
               if (w < 60) text.attr('opacity', 0);
             });
 
-          // Длинные названия — перенос
+          // Длинные названия - перенос
           cells.selectAll('text').each(function(d) {
             var text = d3.select(this);
             var words = text.text().split(' ');

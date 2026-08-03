@@ -51,6 +51,12 @@
   color: var(--colorAccent);
 }
 
+.headerIconMax {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
 /* ==================== КНОПКИ ==================== */
 .btn {
   display: inline-flex;
