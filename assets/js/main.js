@@ -11,6 +11,7 @@ function loadIncludes() {
       .then(function(html) {
         headerPlaceholder.innerHTML = html;
         initMobileMenu();
+        initHeaderScroll();
       })
       .catch(function() { console.warn('Header not loaded'); });
   }
@@ -23,6 +24,20 @@ function loadIncludes() {
       })
       .catch(function() { console.warn('Footer not loaded'); });
   }
+}
+
+// ==================== ПРОЗРАЧНОСТЬ ХЕДЕРА ПРИ СКРОЛЛЕ ====================
+function initHeaderScroll() {
+  var header = document.querySelector('.header');
+  if (!header) return;
+
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 10) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
 }
 
 // ==================== ПЕРЕКЛЮЧАТЕЛЬ ТРЕКОВ ====================
@@ -108,7 +123,6 @@ function initMobileMenu() {
   });
 }
 
-// ==================== ЧЕК-ЛИСТ ГОТОВНОСТИ ====================
 // ==================== ЧЕК-ЛИСТ ГОТОВНОСТИ ====================
 function initReadinessQuiz() {
   // Проверяем, закрывал ли пользователь
