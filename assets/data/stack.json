@@ -2,122 +2,171 @@
   "domains": [
     {
       "name": "Исследования и статистика",
+      "length": 8,
       "categories": [
         {
           "name": "Проверка гипотез",
           "level": "deep",
-          "tools": ["t-тест", "A/B-тесты", "пермутационные тесты", "бутстрэп"],
+          "length": 35,
+          "tools": ["t-тест", "A/B-тесты", "Пермутационные тесты", "Бутстрэп"],
           "case": "Сегментация сотрудников после реструктуризации"
         },
         {
           "name": "Кластеризация",
           "level": "deep",
-          "tools": ["k-means", "DBSCAN", "HDBSCAN", "иерархические методы", "гауссовские смеси"],
+          "length": 35,
+          "tools": ["k-means", "DBSCAN", "HDBSCAN", "Иерархические методы", "Гауссовские смеси"],
           "case": "Сегментация сотрудников после реструктуризации"
         },
         {
           "name": "Байесовские методы",
           "level": "deep",
-          "tools": ["PyMC", "апостериорные распределения", "байесовский A/B"],
-          "case": "Сегментация сотрудников"
+          "length": 35,
+          "tools": ["PyMC", "Bambi", "Байесовский A/B", "Апостериорные распределения"],
+          "case": "Диссертационное исследование"
+        },
+        {
+          "name": "Медиационный анализ",
+          "level": "solid",
+          "length": 22,
+          "tools": ["Baron & Kenny", "Bootstrap Preacher & Hayes"],
+          "case": "Диссертационное исследование"
+        },
+        {
+          "name": "Cross-lagged модели",
+          "level": "solid",
+          "length": 22,
+          "tools": ["semopy", "Панельные данные", "Направленность связей"],
+          "case": "Диссертационное исследование"
         },
         {
           "name": "Дизайн экспериментов",
           "level": "solid",
-          "tools": ["рандомизация", "стратификация", "контроль confounding"],
+          "length": 22,
+          "tools": ["Рандомизация", "Стратификация", "Контроль confounding"],
           "case": null
         },
         {
-          "name": "Факторный анализ / IRT / CTT",
+          "name": "Факторный анализ",
           "level": "deep",
-          "tools": ["психометрика", "шкалирование", "валидизация тестов"],
+          "length": 35,
+          "tools": ["PCA", "LDA", "IRT", "CTT"],
           "case": "TalentCode: психометрическая проверка тестов"
+        },
+        {
+          "name": "Временные ряды",
+          "level": "solid",
+          "length": 22,
+          "tools": ["Декомпозиция", "STL", "Прогнозирование"],
+          "case": "Яндекс: прогнозирование найма"
         }
       ]
     },
     {
       "name": "Разработка и автоматизация",
+      "length": 8,
       "categories": [
         {
           "name": "Python",
           "level": "deep",
-          "tools": ["pandas", "numpy", "scikit-learn", "matplotlib", "seaborn"],
+          "length": 35,
+          "tools": ["pandas", "numpy", "scikit-learn", "matplotlib", "seaborn", "pingouin", "statsmodels"],
           "case": null
         },
         {
-          "name": "JavaScript / D3.js",
+          "name": "JavaScript",
           "level": "solid",
-          "tools": ["кастомные чарты", "интерактивные дашборды", "SVG-графика"],
+          "length": 22,
+          "tools": ["D3.js", "SVG-графика", "Интерактивные дашборды"],
           "case": "HH Analytics: кастомные JS-чарты"
         },
         {
-          "name": "ETL и пайплайны",
+          "name": "ETL и оркестрация",
           "level": "solid",
-          "tools": ["Airflow", "Dagster", "cron", "парсинг (Playwright, BS4)"],
+          "length": 22,
+          "tools": ["Airflow", "Dagster", "cron", "GitHub Actions"],
           "case": "Дашборд проблемных доставок"
+        },
+        {
+          "name": "Парсинг",
+          "level": "solid",
+          "length": 22,
+          "tools": ["Playwright", "BeautifulSoup", "Кастомные парсеры"],
+          "case": "Диссертационное исследование"
         },
         {
           "name": "NLP / AI",
           "level": "solid",
-          "tools": ["Qwen", "Natasha", "prompt engineering", "HITL"],
+          "length": 22,
+          "tools": ["Qwen", "Natasha", "Prompt Engineering", "HITL"],
           "case": "NLP-анализ стенограмм колл-центра"
         },
         {
-          "name": "Git / REST API",
+          "name": "Git",
           "level": "solid",
-          "tools": ["GitHub Actions", "API-интеграции"],
+          "length": 22,
+          "tools": ["Git", "GitHub", "REST API"],
           "case": null
         }
       ]
     },
     {
       "name": "BI и визуализация",
+      "length": 8,
       "categories": [
         {
           "name": "DataLens",
           "level": "deep",
-          "tools": ["многостраничные дашборды", "кастомные JS-чарты", "автообновление"],
+          "length": 35,
+          "tools": ["Многостраничные дашборды", "Кастомные JS-чарты", "Автообновление"],
           "case": "HH Analytics, Дашборд проблемных доставок"
         },
         {
           "name": "Qlik Sense",
           "level": "solid",
-          "tools": ["сквозная отчётность", "HR-дашборды"],
+          "length": 22,
+          "tools": ["Сквозная отчётность", "HR-дашборды", "Модели данных"],
           "case": "X5 Group: сквозной HR-отчёт"
         },
         {
-          "name": "Power BI / Grafana",
+          "name": "Power BI",
           "level": "basic",
-          "tools": ["базовая визуализация", "метрики"],
+          "length": 12,
+          "tools": ["Базовая визуализация", "Метрики"],
+          "case": null
+        },
+        {
+          "name": "Grafana",
+          "level": "basic",
+          "length": 12,
+          "tools": ["Мониторинг", "Метрики"],
           "case": null
         }
       ]
     },
     {
       "name": "Данные и инфраструктура",
+      "length": 8,
       "categories": [
         {
-          "name": "SQL / ClickHouse / PostgreSQL",
+          "name": "SQL и хранилища",
           "level": "solid",
-          "tools": ["витрины данных", "сложные запросы", "оптимизация"],
-          "case": "Дашборд проблемных доставок, HH Analytics"
+          "length": 22,
+          "tools": ["ClickHouse", "PostgreSQL", "SAP HANA", "Greenplum"],
+          "case": "Дашборд проблемных доставок, Сегментация сотрудников"
         },
         {
-          "name": "SAP HANA / Greenplum",
+          "name": "Витрины данных",
           "level": "solid",
-          "tools": ["корпоративные хранилища", "модели данных"],
-          "case": "Сегментация сотрудников"
-        },
-        {
-          "name": "S3 / Яндекс.Облако",
-          "level": "basic",
-          "tools": ["хранение данных", "облачная инфраструктура"],
+          "length": 22,
+          "tools": ["Золотой слой", "Длинный формат", "Оптимизация"],
           "case": null
         },
         {
-          "name": "Docker",
+          "name": "Облачная инфраструктура",
           "level": "basic",
-          "tools": ["контейнеризация", "изолированные среды"],
+          "length": 12,
+          "tools": ["S3", "Яндекс.Облако", "Docker"],
           "case": null
         }
       ]
