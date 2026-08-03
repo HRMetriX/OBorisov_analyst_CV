@@ -116,9 +116,15 @@ function initReadinessQuiz() {
   // Кнопка-триггер
   var trigger = document.createElement('button');
   trigger.id = 'quizTrigger';
-  trigger.innerHTML = '?';
-  trigger.title = 'Проверить готовность к data-проекту';
+  trigger.textContent = 'Чек-лист';
+  trigger.setAttribute('aria-label', 'Проверьте готовность к data-проекту');
   document.body.appendChild(trigger);
+
+  // Тултип
+  var tooltipEl = document.createElement('span');
+  tooltipEl.id = 'quizTooltip';
+  tooltipEl.textContent = 'Проверьте готовность к data-проекту';
+  trigger.appendChild(tooltipEl);
 
   // Модальное окно
   var overlay = document.createElement('div');
@@ -141,8 +147,10 @@ function initReadinessQuiz() {
   // Стили
   var style = document.createElement('style');
   style.textContent =
-    '#quizTrigger { position: fixed; bottom: 28px; right: 28px; width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--colorAccent); background: var(--colorSurface); color: var(--colorAccent); font-size: 1.5rem; font-weight: 700; cursor: pointer; z-index: 1000; animation: quizPulse 2.5s ease-in-out infinite; transition: all 0.2s; } ' +
+    '#quizTrigger { position: fixed; bottom: 28px; right: 28px; padding: 14px 22px; border-radius: 12px; border: 1px solid var(--colorAccent); background: var(--colorSurface); color: var(--colorAccent); font-size: 0.875rem; font-weight: 600; cursor: pointer; z-index: 1000; animation: quizPulse 2.5s ease-in-out infinite; transition: all 0.2s; font-family: var(--fontMain); } ' +
     '#quizTrigger:hover { background: var(--colorAccent); color: #fff; animation: none; } ' +
+    '#quizTooltip { position: absolute; bottom: calc(100% + 10px); right: 0; background: var(--colorSurface); border: 1px solid var(--colorBorder); color: var(--colorText); font-size: 0.75rem; padding: 6px 12px; border-radius: 6px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; font-weight: 400; } ' +
+    '#quizTrigger:hover #quizTooltip { opacity: 1; } ' +
     '@keyframes quizPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(88, 166, 255, 0.4); } 50% { box-shadow: 0 0 0 12px rgba(88, 166, 255, 0); } } ' +
     '#quizOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; display: none; align-items: center; justify-content: center; } ' +
     '#quizOverlay.open { display: flex; } ' +
