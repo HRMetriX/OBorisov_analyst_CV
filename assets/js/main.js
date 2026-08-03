@@ -109,6 +109,7 @@ function initMobileMenu() {
 }
 
 // ==================== ЧЕК-ЛИСТ ГОТОВНОСТИ ====================
+// ==================== ЧЕК-ЛИСТ ГОТОВНОСТИ ====================
 function initReadinessQuiz() {
   // Проверяем, закрывал ли пользователь
   if (sessionStorage.getItem('quizClosed') === 'true') return;
@@ -139,7 +140,6 @@ function initReadinessQuiz() {
     '  <div class="quizBody" id="quizBody"></div>' +
     '  <div class="quizFooter">' +
     '    <button class="btn btnSecondary" id="quizPrev" style="display:none;">← Назад</button>' +
-    '    <button class="btn btnPrimary" id="quizNext">Далее →</button>' +
     '  </div>' +
     '</div>';
   document.body.appendChild(overlay);
@@ -166,7 +166,7 @@ function initReadinessQuiz() {
     '.quizAnswer { display: block; width: 100%; padding: 14px 18px; background: var(--colorSurface); border: 1px solid var(--colorBorder); border-radius: var(--radiusMd); color: var(--colorText); font-size: 0.938rem; cursor: pointer; text-align: left; transition: all 0.15s; } ' +
     '.quizAnswer:hover { border-color: var(--colorAccent); background: var(--colorSurfaceHover); } ' +
     '.quizAnswer.selected { border-color: var(--colorAccent); background: rgba(88, 166, 255, 0.08); } ' +
-    '.quizFooter { display: flex; justify-content: space-between; } ' +
+    '.quizFooter { display: flex; justify-content: flex-start; } ' +
     '.quizResult { text-align: center; } ' +
     '.quizResultIcon { font-size: 3rem; margin-bottom: 12px; } ' +
     '.quizResultTitle { font-size: 1.25rem; font-weight: 700; color: var(--colorText); margin-bottom: 8px; } ' +
@@ -204,7 +204,6 @@ function initReadinessQuiz() {
 
     document.getElementById('quizStep').textContent = currentStep + 1;
     document.getElementById('quizPrev').style.display = currentStep === 0 ? 'none' : 'inline-flex';
-    document.getElementById('quizNext').textContent = currentStep === questions.length - 1 ? 'Результат' : 'Далее →';
 
     // Обработчики ответов
     body.querySelectorAll('.quizAnswer').forEach(function(btn) {
@@ -212,22 +211,20 @@ function initReadinessQuiz() {
         body.querySelectorAll('.quizAnswer').forEach(function(b) { b.classList.remove('selected'); });
         btn.classList.add('selected');
         answers[currentStep] = parseInt(btn.getAttribute('data-index'));
+
+        setTimeout(function() {
+          if (currentStep === questions.length - 1) {
+            showResult();
+          } else {
+            currentStep++;
+            renderStep();
+          }
+        }, 200);
       });
     });
   }
 
-  // Навигация
-  document.getElementById('quizNext').addEventListener('click', function() {
-    if (answers[currentStep] === undefined) return; // нужен ответ
-
-    if (currentStep === questions.length - 1) {
-      showResult();
-    } else {
-      currentStep++;
-      renderStep();
-    }
-  });
-
+  // Навигация назад
   document.getElementById('quizPrev').addEventListener('click', function() {
     if (currentStep > 0) {
       currentStep--;
@@ -245,19 +242,16 @@ function initReadinessQuiz() {
     }, 0);
     var pct = total / maxScore;
 
-    var level, icon, title, text, accentColor;
+    var level, icon, title, text;
     if (pct >= 0.75) {
       level = 'ready'; icon = '🟢'; title = 'Вы готовы к data-проекту';
       text = 'У вас есть данные, понимание цели и реалистичные ожидания. Можно стартовать.';
-      accentColor = '#3fb950';
     } else if (pct >= 0.45) {
       level = 'almost'; icon = '🟡'; title = 'Почти готовы';
       text = 'Есть пара моментов, которые стоит прояснить перед стартом. Давайте обсудим — я помогу разобраться.';
-      accentColor = '#f0883e';
     } else {
       level = 'notReady'; icon = '🔴'; title = 'Пока рано';
       text = 'Сейчас запуск data-проекта рискован. Но это не приговор — давайте обсудим, с чего начать подготовку.';
-      accentColor = '#f85149';
     }
 
     var body = document.getElementById('quizBody');
