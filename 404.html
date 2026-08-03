@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>666 — Сервер пал</title>
+  <title>666 - Сервер пал</title>
 
   <!-- Шрифты -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -236,7 +236,7 @@
         initStrips();
       });
 
-      // Глобальный таймер глитча — реже
+      // Глобальный таймер глитча - реже
       var glitchTimer = 0;
       var glitchInterval = 60 + Math.random() * 40; // 60-100 кадров между вспышками
 
@@ -248,7 +248,7 @@
           glitchTimer = 0;
           glitchInterval = 55 + Math.random() * 50;
 
-          // Активируем случайные полосы — не все, а выборочно
+          // Активируем случайные полосы - не все, а выборочно
           for (var i = 0; i < strips.length; i++) {
             var s = strips[i];
             if (Math.random() < 0.4) {
@@ -266,14 +266,14 @@
           }
         }
 
-        // Движение полос — медленное приближение к цели, но рывками
+        // Движение полос - медленное приближение к цели, но рывками
         for (var i = 0; i < strips.length; i++) {
           var s = strips[i];
           if (s.active) {
             // Рывок: большая часть пути за один кадр, потом затухание
             s.offset += (s.targetOffset - s.offset) * 0.45;
           } else {
-            // Возврат на место — плавнее, но всё ещё заметно
+            // Возврат на место - плавнее, но всё ещё заметно
             s.offset += (0 - s.offset) * 0.2;
           }
         }
@@ -283,7 +283,7 @@
       function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Базовая тень — меньше свечения в спокойном состоянии
+        // Базовая тень - меньше свечения в спокойном состоянии
         var anyActive = strips.some(function(s) { return s.active; });
         ctx.shadowColor = anyActive
           ? 'rgba(248, 81, 73, 0.7)'
@@ -299,14 +299,14 @@
           ctx.rect(0, s.y, canvas.width, s.height);
           ctx.clip();
 
-          // Основной слой (красный) — всегда
+          // Основной слой (красный) - всегда
           ctx.fillStyle = '#f85149';
           ctx.font = font;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'alphabetic';
           ctx.fillText(text, textX + s.offset, textY);
 
-          // Синий слой — только при активном глитче
+          // Синий слой - только при активном глитче
           if (s.colorType === 1 && s.active && s.colorShift) {
             ctx.shadowColor = 'rgba(88, 166, 255, 0.7)';
             ctx.fillStyle = '#58a6ff';
@@ -336,7 +336,7 @@
           ctx.restore();
         }
 
-        // Горизонтальные линии — только при активном глитче
+        // Горизонтальные линии - только при активном глитче
         ctx.shadowColor = 'transparent';
         ctx.shadowBlur = 0;
         if (anyActive && Math.random() < 0.3) {
@@ -349,7 +349,7 @@
           ctx.fillRect(lineX, lineY, lineW, 1);
         }
 
-        // Мерцание — реже
+        // Мерцание - реже
         if (anyActive && Math.random() < 0.04) {
           ctx.fillStyle = 'rgba(248, 81, 73, 0.1)';
           ctx.fillRect(0, 0, canvas.width, canvas.height);
