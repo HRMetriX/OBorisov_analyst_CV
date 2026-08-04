@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /assets/data/
+Disallow: /assets/includes/
+Disallow: /404.html
+
+Sitemap: https://hrmetrix.github.io/OBorisov_analyst_CV/sitemap.xml
