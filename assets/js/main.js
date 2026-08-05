@@ -274,7 +274,7 @@ function initReadinessQuiz() {
       '<div class="quizResultIcon">' + icon + '</div>' +
       '<div class="quizResultTitle">' + title + '</div>' +
       '<div class="quizResultText">' + text + '</div>' +
-      '<a href="https://max.ru/u/f9LHodD0cOKlBfgKnrDXJZkZH9USJodMW4B0SCaGVpPpKNEwYyVrvHo08HQ" class="btn btnPrimary" target="_blank" rel="noopener">Обсудить в Макс</a>' +
+      '<a href="https://t.me/olegborisov_hr" class="btn btnPrimary" target="_blank" rel="noopener">Обсудить в Telegram</a>' +
       '</div>';
     document.getElementById('quizFooter').style.display = 'none';
     document.getElementById('quizProgress').style.display = 'none';
