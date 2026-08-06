@@ -352,6 +352,81 @@
   line-height: 1.6;
 }
 
+/* Баннер ключевого продукта */
+.featureBanner {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+.featureBannerCard {
+  background: linear-gradient(135deg, rgba(88, 166, 255, 0.06), rgba(88, 166, 255, 0.02));
+  border: 1px solid rgba(88, 166, 255, 0.2);
+  border-radius: var(--radiusLg);
+  padding: 40px 44px;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  transition: border-color var(--transitionBase), background var(--transitionBase);
+}
+
+.featureBannerCard:hover {
+  border-color: rgba(88, 166, 255, 0.4);
+  background: linear-gradient(135deg, rgba(88, 166, 255, 0.08), rgba(88, 166, 255, 0.03));
+}
+
+.featureBannerIcon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  color: var(--colorAccent);
+  opacity: 0.9;
+}
+
+.featureBannerInfo {
+  flex: 1;
+}
+
+.featureBannerLabel {
+  font-family: var(--fontMono);
+  font-size: 0.688rem;
+  font-weight: 500;
+  color: var(--colorAccent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.featureBannerTitle {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--colorText);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.featureBannerDesc {
+  font-size: 0.938rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.55;
+}
+
+.featureBannerBtn {
+  flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+  .featureBannerCard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 28px 24px;
+  }
+  .featureBannerBtn {
+    width: 100%;
+  }
+}
+
 /* ==================== ИЗБРАННЫЕ КЕЙСЫ ==================== */
 .featuredWorks {
   max-width: var(--maxWidth);
@@ -1444,6 +1519,484 @@
     text-align: left;
     width: 100%;
     padding-left: 46px;
+  }
+}
+
+/* ==================== СТРАНИЦА ATTRITION DIAGNOSTIC ==================== */
+
+/* Hero продукта */
+.productHero {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: 100px 24px 80px;
+  text-align: center;
+  position: relative;
+}
+
+.productHeroIcon {
+  margin: 0 auto 28px;
+  width: 72px;
+  height: 72px;
+  color: var(--colorAccent);
+  opacity: 0.9;
+  animation: productIconFloat 4s ease-in-out infinite;
+}
+
+@keyframes productIconFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.productHeroTitle {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: var(--colorText);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.productHeroTitleAccent {
+  display: block;
+  background: linear-gradient(135deg, var(--colorAccent), #79b8ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.productHeroSubtitle {
+  font-size: 1.125rem;
+  color: var(--colorTextSecondary);
+  max-width: 650px;
+  margin: 0 auto 36px;
+  line-height: 1.6;
+}
+
+.productHeroActions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Секция продукта */
+.productSection {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: 0 24px 100px;
+}
+
+.productSectionTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--colorText);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.productSectionSubtitle {
+  font-size: 0.938rem;
+  color: var(--colorTextSecondary);
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 48px;
+  line-height: 1.6;
+}
+
+/* Сетка вопросов (5 штук) */
+.questionsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.questionCard {
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusMd);
+  overflow: hidden;
+  transition: all var(--transitionBase);
+}
+
+.questionCard:hover {
+  border-color: var(--colorBorderHover);
+}
+
+.questionHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--transitionFast);
+}
+
+.questionHeader:hover {
+  background-color: var(--colorSurfaceHover);
+}
+
+.questionNumber {
+  font-family: var(--fontMono);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--colorAccent);
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--colorAccentBorder);
+  border-radius: var(--radiusSm);
+  background-color: var(--colorAccentMuted);
+}
+
+.questionText {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--colorText);
+  flex: 1;
+}
+
+.questionArrow {
+  font-family: var(--fontMono);
+  font-size: 0.875rem;
+  color: var(--colorTextMuted);
+  transition: transform var(--transitionFast);
+  flex-shrink: 0;
+}
+
+.questionCard.open .questionArrow {
+  transform: rotate(180deg);
+}
+
+.questionBody {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+
+.questionCard.open .questionBody {
+  max-height: 500px;
+}
+
+.questionBodyInner {
+  padding: 0 24px 20px 72px;
+  font-size: 0.875rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.7;
+}
+
+.questionBodyInner p {
+  margin-bottom: 10px;
+}
+
+.questionBodyInner p:last-child {
+  margin-bottom: 0;
+}
+
+/* Противопоставление: наивный анализ vs исследование */
+.compareGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.compareCard {
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusMd);
+  padding: 28px;
+}
+
+.compareCard.naive {
+  border-left: 3px solid #f85149;
+}
+
+.compareCard.research {
+  border-left: 3px solid #3fb950;
+}
+
+.compareCardTitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+
+.compareCard.naive .compareCardTitle {
+  color: #f85149;
+}
+
+.compareCard.research .compareCardTitle {
+  color: #3fb950;
+}
+
+.compareCardText {
+  font-size: 0.875rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.6;
+}
+
+/* Timeline фаз */
+.phaseTimeline {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  padding-left: 32px;
+}
+
+.phaseTimeline::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--colorAccent), var(--colorBorder), var(--colorBorder), var(--colorBorder), var(--colorAccent));
+}
+
+.phaseItem {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.phaseItem:last-child {
+  margin-bottom: 0;
+}
+
+.phaseDot {
+  position: absolute;
+  left: -26px;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--colorAccent);
+  border: 3px solid var(--colorBg);
+  z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.phaseItem.visible .phaseDot {
+  transform: scale(1.3);
+  box-shadow: 0 0 12px rgba(88, 166, 255, 0.5);
+}
+
+.phaseContent {
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusMd);
+  padding: 20px 24px;
+  transition: border-color var(--transitionBase);
+}
+
+.phaseItem.visible .phaseContent {
+  border-color: var(--colorAccent);
+}
+
+.phaseTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--colorText);
+  margin-bottom: 6px;
+}
+
+.phaseDesc {
+  font-size: 0.875rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.55;
+}
+
+/* Таблица гипотез */
+.hypothesisTable {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.hypothesisTable th {
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--colorTextMuted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--colorBorder);
+}
+
+.hypothesisTable td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--colorBorder);
+  color: var(--colorTextSecondary);
+  line-height: 1.5;
+}
+
+.hypothesisTable tr:last-child td {
+  border-bottom: none;
+}
+
+.verdictConfirmed {
+  color: #3fb950;
+  font-weight: 600;
+}
+
+.verdictPartial {
+  color: #f0883e;
+  font-weight: 600;
+}
+
+.verdictRejected {
+  color: #f85149;
+  font-weight: 600;
+}
+
+.verdictInsufficient {
+  color: #8b949e;
+  font-weight: 600;
+}
+
+/* Сетка результатов (8 штук) */
+.outcomesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.outcomeCard {
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusMd);
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  transition: all var(--transitionBase);
+}
+
+.outcomeCard:hover {
+  border-color: var(--colorBorderHover);
+  background-color: var(--colorSurfaceHover);
+}
+
+.outcomeNumber {
+  font-family: var(--fontMono);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--colorAccent);
+  flex-shrink: 0;
+}
+
+.outcomeTitle {
+  font-size: 0.938rem;
+  font-weight: 600;
+  color: var(--colorText);
+  margin-bottom: 4px;
+}
+
+.outcomeDesc {
+  font-size: 0.813rem;
+  color: var(--colorTextSecondary);
+  line-height: 1.5;
+}
+
+/* Карточки данных */
+.dataLevelGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.dataLevelCard {
+  background-color: var(--colorSurface);
+  border: 1px solid var(--colorBorder);
+  border-radius: var(--radiusMd);
+  padding: 24px;
+}
+
+.dataLevelCard.recommended {
+  border-color: var(--colorAccent);
+  background-color: var(--colorAccentMuted);
+}
+
+.dataLevelLabel {
+  font-size: 0.688rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--colorTextMuted);
+  margin-bottom: 8px;
+}
+
+.dataLevelCard.recommended .dataLevelLabel {
+  color: var(--colorAccent);
+}
+
+.dataLevelTitle {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--colorText);
+  margin-bottom: 12px;
+}
+
+.dataLevelTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.dataLevelTag {
+  font-family: var(--fontMono);
+  font-size: 0.688rem;
+  color: var(--colorTextSecondary);
+  background-color: var(--colorBg);
+  padding: 3px 8px;
+  border-radius: var(--radiusSm);
+  border: 1px solid var(--colorBorder);
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+  .compareGrid {
+    grid-template-columns: 1fr;
+  }
+  .outcomesGrid {
+    grid-template-columns: 1fr;
+  }
+  .dataLevelGrid {
+    grid-template-columns: 1fr;
+  }
+  .productHeroTitle {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .productHero {
+    padding: 60px 24px 50px;
+  }
+  .productHeroTitle {
+    font-size: 1.5rem;
+  }
+  .questionBodyInner {
+    padding: 0 16px 16px 56px;
+  }
+  .hypothesisTable {
+    font-size: 0.75rem;
+  }
+  .hypothesisTable th, .hypothesisTable td {
+    padding: 10px 12px;
   }
 }
 
