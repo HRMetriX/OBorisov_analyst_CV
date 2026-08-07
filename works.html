@@ -267,6 +267,52 @@
       </div>
     </section>
 
+    <!-- ==================== КЕЙС 5 ==================== -->
+    <section class="caseSection fadeIn">
+      <div class="caseInner">
+        <div class="caseHeader">
+          <h2 class="caseTitle">Автоматический парсинг отсканированных актов</h2>
+          <div class="caseTags">
+            <span class="tag">OCR</span>
+            <span class="tag">Tesseract</span>
+            <span class="tag">PyMuPDF</span>
+            <span class="tag">Python</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Streamlit</span>
+          </div>
+        </div>
+
+        <div class="caseBody">
+          <div class="caseBlock">
+            <h3 class="caseBlockTitle">Задача</h3>
+            <p class="caseBlockText">Бухгалтерия ежемесячно получает 50–100 отсканированных актов в&nbsp;PDF&nbsp;&mdash; изображения без текстового слоя. Качество сканов нестабильное, поля названы по-разному. Сотрудник вручную находит в&nbsp;каждом документе ФИО исполнителя, заказчика и&nbsp;сумму, переносит в&nbsp;Excel. 100&nbsp;документов&nbsp;&mdash; 3–4&nbsp;часа. Ошибки выявляются только при сверке.</p>
+            <p class="caseBlockText">Документы содержат персональные данные&nbsp;&mdash; облачные OCR-сервисы исключены. Бюджет на&nbsp;лицензии&nbsp;&mdash; ноль. Админских прав на&nbsp;рабочих ПК&nbsp;нет.</p>
+          </div>
+
+          <div class="caseBlock">
+            <h3 class="caseBlockTitle">Метод</h3>
+            <div class="caseBlockText">
+              <p>Построен полный пайплайн: загрузка PDF → рендеринг в&nbsp;PNG (PyMuPDF, 600&nbsp;DPI) → OCR (Tesseract, русская модель) → извлечение трёх полей → Excel.</p>
+              <p>Собственный модуль извлечения ищет поля с&nbsp;учётом типичных искажений распознавания: &laquo;Исполнитель&raquo; может прочитаться как &laquo;ИзпонНйтель&raquo;&nbsp;&mdash; нечёткий поиск это отрабатывает. ФИО, заказчик и&nbsp;сумма извлекаются независимыми потоками, для каждого вычисляется confidence. Ложные срабатывания отсекаются стоп-словами и&nbsp;координатными зонами.</p>
+              <p>Веб-интерфейс на&nbsp;Streamlit: drag-and-drop загрузка, прогресс-бар, логи в&nbsp;реальном времени, таблица результатов, скачивание Excel. Развёртывание&nbsp;&mdash; Docker, CI/CD, cron для healthcheck и&nbsp;очистки логов.</p>
+            </div>
+          </div>
+
+          <div class="caseBlock">
+            <h3 class="caseBlockTitle">Результат</h3>
+            <div class="caseBlockText">
+              <p>100&nbsp;документов обрабатываются за&nbsp;~6&nbsp;минут без участия человека. Ручной ввод и&nbsp;связанные с&nbsp;ним ошибки исключены полностью. Система доступна 24/7, масштабируется добавлением ядер.</p>
+              <p>Нулевой бюджет: только open-source, портативная установка без прав администратора, обработка строго внутри корпоративного контура.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="caseImage">
+          <img src="assets/images/case5.png" alt="Автоматический парсинг отсканированных актов" class="caseImg">
+        </div>
+      </div>
+    </section>
+
     <!-- ==================== PET-ПРОЕКТЫ ==================== -->
     <section class="petProjects fadeIn">
       <h2 class="sectionTitle">Pet-проекты</h2>
