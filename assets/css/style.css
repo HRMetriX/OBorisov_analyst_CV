@@ -803,7 +803,7 @@
 }
 
 .caseList li::before {
-  content: '—';
+  content: '-';
   position: absolute;
   left: 0;
   color: var(--colorTextMuted);
@@ -910,7 +910,7 @@
   flex-wrap: wrap;
 }
 
-/* ==================== БЛОГОСФЕРА — ЗАГЛУШКА ==================== */
+/* ==================== БЛОГОСФЕРА - ЗАГЛУШКА ==================== */
 .blogEmpty {
   max-width: var(--maxWidth);
   margin: 0 auto;
@@ -931,7 +931,7 @@
   margin-bottom: 24px;
 }
 
-/* ==================== БЛОГОСФЕРА — ПОСТЫ ==================== */
+/* ==================== БЛОГОСФЕРА - ПОСТЫ ==================== */
 .blogPosts {
   max-width: var(--maxWidth);
   margin: 0 auto;
@@ -1359,7 +1359,7 @@
 
 /* ==================== СТРАНИЦА КОНТАКТОВ ==================== */
 
-/* Max — основной канал */
+/* Max - основной канал */
 .contactsMax {
   max-width: 600px;
   margin: 0 auto;
