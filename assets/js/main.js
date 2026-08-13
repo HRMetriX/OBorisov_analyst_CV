@@ -475,6 +475,60 @@ function initCalculator() {
   }
 }
 
+// ==================== ПОП-АП ДИАГНОСТИКИ ТЕКУЧЕСТИ ====================
+function initAttritionPopup() {
+  // Проверяем, не закрывал ли пользователь
+  if (sessionStorage.getItem('attritionPopupClosed') === 'true') return;
+
+  // Задержка 18 секунд
+  setTimeout(function() {
+    var overlay = document.createElement('div');
+    overlay.id = 'attritionPopupOverlay';
+    overlay.innerHTML =
+      '<div class="attritionPopup">' +
+      '  <button class="attritionPopupClose" id="attritionPopupClose">&times;</button>' +
+      '  <div class="attritionPopupIcon">' +
+      '    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">' +
+      '      <path d="M3 3v18h18"/>' +
+      '      <path d="M7 16l4-8 4 4 4-6"/>' +
+      '    </svg>' +
+      '  </div>' +
+      '  <h3 class="attritionPopupTitle">Диагностика текучести персонала</h3>' +
+      '  <p class="attritionPopupDesc">Почему сотрудники уходят&nbsp;&mdash; и&nbsp;действительно&nbsp;ли вы&nbsp;понимаете причину. Исследование на&nbsp;ваших данных.</p>' +
+      '  <a href="/OBorisov_analyst_CV/attrition-diagnostic.html" class="btn btnPrimary" style="width:100%;">Узнать подробнее</a>' +
+      '</div>';
+    document.body.appendChild(overlay);
+
+    // Стили
+    var style = document.createElement('style');
+    style.textContent =
+      '#attritionPopupOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 3000; display: flex; align-items: center; justify-content: center; animation: popupFadeIn 0.3s ease; } ' +
+      '@keyframes popupFadeIn { from { opacity: 0; } to { opacity: 1; } } ' +
+      '.attritionPopup { background: var(--colorBg); border: 1px solid rgba(88, 166, 255, 0.3); border-radius: var(--radiusLg); padding: 36px 32px 28px; max-width: 440px; width: 90%; text-align: center; position: relative; animation: popupSlideIn 0.4s ease; } ' +
+      '@keyframes popupSlideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } } ' +
+      '.attritionPopupClose { position: absolute; top: 12px; right: 16px; background: none; border: none; color: var(--colorTextMuted); font-size: 1.5rem; cursor: pointer; } ' +
+      '.attritionPopupClose:hover { color: var(--colorText); } ' +
+      '.attritionPopupIcon { color: var(--colorAccent); margin-bottom: 16px; } ' +
+      '.attritionPopupTitle { font-size: 1.25rem; font-weight: 700; color: var(--colorText); margin-bottom: 8px; } ' +
+      '.attritionPopupDesc { font-size: 0.875rem; color: var(--colorTextSecondary); line-height: 1.5; margin-bottom: 20px; } ' +
+      '@media (max-width: 500px) { .attritionPopup { padding: 28px 20px 22px; } }';
+    document.head.appendChild(style);
+
+    // Закрытие
+    document.getElementById('attritionPopupClose').addEventListener('click', function() {
+      document.getElementById('attritionPopupOverlay').remove();
+      sessionStorage.setItem('attritionPopupClosed', 'true');
+    });
+
+    document.getElementById('attritionPopupOverlay').addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.remove();
+        sessionStorage.setItem('attritionPopupClosed', 'true');
+      }
+    });
+  }, 18000);
+}
+
 // ==================== ЗАПУСК ====================
 document.addEventListener('DOMContentLoaded', function() {
   loadIncludes();
@@ -483,4 +537,5 @@ document.addEventListener('DOMContentLoaded', function() {
   initFaq();
   initReadinessQuiz();
   initCalculator();
+  initAttritionPopup();
 });

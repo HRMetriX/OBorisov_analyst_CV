@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="yandex-verification" content="60a52a57ad74f935" />
+
+  <!-- SEO -->
+  <title>Диагностика текучести персонала - исследование причин увольнений | Олег Борисов</title>
+  <meta name="description" content="Почему сотрудники уходят - и действительно ли вы понимаете причину. Исследование причин текучести на уровне сотрудников и во времени. Data-консультант Олег Борисов.">
+  <meta name="keywords" content="текучесть персонала, причины увольнений, диагностика текучести, HR-аналитика, data-консалтинг, HR-исследование">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Диагностика текучести персонала - исследование причин увольнений">
+  <meta property="og:description" content="Почему сотрудники уходят - и действительно ли вы понимаете причину. Диагностика на данных.">
+  <meta property="og:image" content="https://hrmetrix.github.io/OBorisov_analyst_CV/assets/images/og-image-index.png">
+  <meta property="og:url" content="https://hrmetrix.github.io/OBorisov_analyst_CV/attrition-diagnostic.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Олег Борисов - Data Консультант">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://hrmetrix.github.io/OBorisov_analyst_CV/attrition-diagnostic.html">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/OBorisov_analyst_CV/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/OBorisov_analyst_CV/assets/images/logo.png">
+
+  <!-- Шрифты -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <div id="headerPlaceholder"></div>
+
+  <main>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="productHero fadeIn">
+      <div class="productHeroIcon">
+        <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 3v18h18"/>
+          <path d="M7 16l4-8 4 4 4-6"/>
+        </svg>
+      </div>
+      <h1 class="productHeroTitle">
+        <span class="productHeroTitleAccent">Диагностика текучести</span>
+      </h1>
+      <p class="productHeroSubtitle">
+        Почему сотрудники уходят&nbsp;&mdash; и&nbsp;действительно&nbsp;ли вы&nbsp;понимаете причину. Исследование на&nbsp;уровне сотрудников и&nbsp;во&nbsp;времени.
+      </p>
+      <div class="productHeroActions">
+        <a href="https://t.me/olegborisov_hr" class="btn btnPrimary" target="_blank" rel="noopener">Запросить консультацию</a>
+        <a href="#how-it-works" class="btn btnSecondary">Как проходит →</a>
+      </div>
+    </section>
+
+    <!-- ==================== ДЛЯ КОГО ==================== -->
+    <section class="productSection fadeIn">
+      <h2 class="productSectionTitle">Это исследование для вас, если</h2>
+      <div class="questionsGrid">
+
+        <div class="questionCard">
+          <div class="questionHeader" onclick="toggleQuestion(this)">
+            <span class="questionText">Вы&nbsp;видите, что люди уходят, но&nbsp;не&nbsp;понимаете, почему именно</span>
+            <span class="questionArrow">▼</span>
+          </div>
+          <div class="questionBody">
+            <div class="questionBodyInner">
+              <p>Текучесть считают правильно. А&nbsp;вот объясняют её&nbsp;часто неправильно. &laquo;В&nbsp;этом регионе текучесть выше&raquo;, &laquo;у&nbsp;сотрудников низкая зарплата&raquo;, &laquo;люди уходят из-за руководителей&raquo;&nbsp;&mdash; такие гипотезы могут быть правдой. А&nbsp;могут быть удобными объяснениями, которые рассыпаются при взгляде на&nbsp;данные.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="questionCard">
+          <div class="questionHeader" onclick="toggleQuestion(this)">
+            <span class="questionText">У&nbsp;вас есть гипотезы о&nbsp;причинах, но&nbsp;вы&nbsp;не&nbsp;уверены, какие из&nbsp;них подтверждаются</span>
+            <span class="questionArrow">▼</span>
+          </div>
+          <div class="questionBody">
+            <div class="questionBodyInner">
+              <p>&laquo;Основная причина увольнений&nbsp;&mdash; зарплата&raquo;, &laquo;люди уходят из-за руководителей&raquo;, &laquo;проблема в&nbsp;адаптации&raquo;&nbsp;&mdash; вместо того чтобы подгонять анализ под эти предположения, мы&nbsp;проверяем их&nbsp;на&nbsp;данных. Результат: подтверждается, подтверждается частично, не&nbsp;подтверждается, недостаточно данных.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="questionCard">
+          <div class="questionHeader" onclick="toggleQuestion(this)">
+            <span class="questionText">В&nbsp;одних подразделениях текучесть выше, но&nbsp;непонятно, почему</span>
+            <span class="questionArrow">▼</span>
+          </div>
+          <div class="questionBody">
+            <div class="questionBodyInner">
+              <p>Простое сравнение &laquo;30% против&nbsp;12%&raquo; само по&nbsp;себе ничего не&nbsp;говорит о&nbsp;причине. Может оказаться, что в&nbsp;одном подразделении просто больше новичков или позиций с&nbsp;традиционно высоким оборотом. Мы&nbsp;ищем не&nbsp;просто высокую текучесть, а&nbsp;избыточную&nbsp;&mdash; относительно ожидаемого уровня.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="questionCard">
+          <div class="questionHeader" onclick="toggleQuestion(this)">
+            <span class="questionText">Вам нужен не&nbsp;очередной дашборд, а&nbsp;исследование для принятия решений</span>
+            <span class="questionArrow">▼</span>
+          </div>
+          <div class="questionBody">
+            <div class="questionBodyInner">
+              <p>Результат&nbsp;&mdash; не&nbsp;показатель &laquo;текучесть&nbsp;&mdash; 21,4%&raquo;. Это можно посчитать самостоятельно. Результат&nbsp;&mdash; понимание: где и&nbsp;когда возникает проблема, какие факторы с&nbsp;ней действительно связаны, какие гипотезы подтвердились, а&nbsp;какие нет, и&nbsp;что имеет смысл делать дальше.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== ЧТО ИССЛЕДУЕТСЯ ==================== -->
+    <section class="productSection fadeIn">
+      <h2 class="productSectionTitle">Что именно исследуется</h2>
+      <p class="productSectionSubtitle">Пять последовательных вопросов&nbsp;&mdash; от&nbsp;локализации проблемы до&nbsp;проверки гипотез.</p>
+
+      <div class="questionsGrid">
+
+        <div class="questionCard">
+          <div class="questionHeader" onclick="toggleQuestion(this)">
+            <span class="questionNumber">01</span>
+            <span class="questionText">Где возникает проблема?</span>
+            <span class="questionArrow">▼</span>
+          </div>
+          <div class="questionBody">
+            <div class="questionBodyInner">
+              <p>Какие подразделения, роли, регионы, категории сотрудников имеют повышенную текучесть? Мы&nbsp;ищем не&nbsp;только высокую, но&nbsp;и&nbsp;<strong>избыточную текучесть</strong>&nbsp;&mdash; относительно ожидаемого уровня с&nbsp;учётом структуры персонала.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="questionCard">
+          <div class="questionHeader" onclick="toggleQuestion(this)">
+            <span class="questionNumber">02</span>
+            <span class="questionText">Когда сотрудники начинают уходить?</span>
+            <span class="questionArrow">▼</span>
+          </div>
+          <div class="questionBody">
+            <div class="questionBodyInner">
+              <p>Текучесть&nbsp;&mdash; событие во&nbsp;времени. Важно не&nbsp;только <em>что</em> произошло, но&nbsp;и&nbsp;<em>когда</em> относительно найма, окончания испытательного срока, повышения, смены руководителя. 20% годовой текучести с&nbsp;равномерным распределением и&nbsp;20%, где половина уходит в&nbsp;первые четыре месяца&nbsp;&mdash; совершенно разные проблемы.</p>
+              <p>Исследование рассматривает динамику риска ухода во&nbsp;времени: когортный анализ и&nbsp;анализ выживаемости там, где это оправдано данными.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="questionCard">
+          <div class="questionHeader" onclick="toggleQuestion(this)">
+            <span class="questionNumber">03</span>
+            <span class="questionText">У&nbsp;кого риск ухода выше?</span>
+            <span class="questionArrow">▼</span>
+          </div>
+          <div class="questionBody">
+            <div class="questionBodyInner">
+              <p>Исследуются характеристики сотрудников и&nbsp;их&nbsp;контекст: стаж, должность, грейд, подразделение, регион, руководитель, занятость, зарплата и&nbsp;её&nbsp;положение внутри диапазона, оценка эффективности, карьерные изменения, история переводов.</p>
+              <p>Цель&nbsp;&mdash; не&nbsp;таблица сегментов, а&nbsp;устойчивые закономерности, сохраняющиеся после учёта других факторов.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="questionCard">
+          <div class="questionHeader" onclick="toggleQuestion(this)">
+            <span class="questionNumber">04</span>
+            <span class="questionText">Какие факторы действительно связаны с&nbsp;уходом?</span>
+            <span class="questionArrow">▼</span>
+          </div>
+          <div class="questionBody">
+            <div class="questionBodyInner">
+              <p>Наивный анализ: &laquo;сотрудники с&nbsp;низкой зарплатой увольняются чаще&raquo;. Но&nbsp;после учёта стажа, должности и&nbsp;подразделения эффект может исчезнуть. Поэтому используются модели, позволяющие учитывать несколько факторов одновременно и&nbsp;проверять устойчивость результатов.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="questionCard">
+          <div class="questionHeader" onclick="toggleQuestion(this)">
+            <span class="questionNumber">05</span>
+            <span class="questionText">Какие гипотезы подтверждаются, а&nbsp;какие нет?</span>
+            <span class="questionArrow">▼</span>
+          </div>
+          <div class="questionBody">
+            <div class="questionBodyInner">
+              <p>Если у&nbsp;HR уже есть объяснение, оно становится частью исследовательского вопроса. Мы&nbsp;не&nbsp;подгоняем анализ под предположения&nbsp;&mdash; мы&nbsp;проверяем их&nbsp;на&nbsp;данных.</p>
+              <p>Результат может быть одним из&nbsp;четырёх: <strong>подтверждается, подтверждается частично, не&nbsp;подтверждается, недостаточно данных</strong>. Последнее&nbsp;&mdash; полноценный результат, а&nbsp;не&nbsp;ошибка.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== ПОЧЕМУ ОБЫЧНОГО АНАЛИЗА НЕДОСТАТОЧНО ==================== -->
+    <section class="productSection fadeIn">
+      <h2 class="productSectionTitle">Почему обычного анализа недостаточно</h2>
+
+      <div class="compareGrid">
+        <div class="compareCard naive">
+          <div class="compareCardTitle">Поверхностный взгляд</div>
+          <div class="compareCardText">
+            <p>В&nbsp;одном подразделении текучесть&nbsp;&mdash; 30%, в&nbsp;другом&nbsp;&mdash; 12%. Вывод: &laquo;проблема в&nbsp;первом&raquo;.</p>
+            <p>У&nbsp;сотрудников с&nbsp;зарплатой ниже медианы текучесть выше. Вывод: &laquo;люди уходят из-за денег&raquo;.</p>
+            <p>Но&nbsp;после анализа может оказаться, что разница объясняется структурой персонала&nbsp;&mdash; и&nbsp;тогда эти выводы ничего не&nbsp;стоят.</p>
+          </div>
+        </div>
+        <div class="compareCard research">
+          <div class="compareCardTitle">Исследование</div>
+          <div class="compareCardText">
+            <p>Мы&nbsp;проходим всю цепочку:</p>
+            <p>Что происходит → где → когда → с&nbsp;чем связано → сохраняется&nbsp;ли связь после учёта других факторов → насколько устойчив результат → что из&nbsp;этого можно использовать для решений.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== КАК ПРОХОДИТ ==================== -->
+    <section class="productSection fadeIn" id="how-it-works">
+      <h2 class="productSectionTitle">Как проходит исследование</h2>
+
+      <div class="phaseTimeline">
+
+        <div class="phaseItem">
+          <div class="phaseDot"></div>
+          <div class="phaseContent">
+            <div class="phaseTitle">Фаза 1: Постановка и&nbsp;подготовка</div>
+            <div class="phaseDesc">
+              <strong>Шаг 1.</strong> Постановка исследовательского вопроса&nbsp;&mdash; какое решение должно поддержать исследование.<br>
+              <strong>Шаг 2.</strong> Спецификация данных&nbsp;&mdash; какие данные нужны, в&nbsp;какой детализации.<br>
+              <strong>Шаг 3.</strong> Аудит данных&nbsp;&mdash; проверка полноты, уникальности, хронологической целостности, логической согласованности.
+            </div>
+          </div>
+        </div>
+
+        <div class="phaseItem">
+          <div class="phaseDot"></div>
+          <div class="phaseContent">
+            <div class="phaseTitle">Фаза 2: Диагностика</div>
+            <div class="phaseDesc">
+              <strong>Шаг 4.</strong> Формирование аналитической выборки&nbsp;&mdash; кого включаем, какое событие считаем увольнением, какой период наблюдения.<br>
+              <strong>Шаг 5.</strong> Базовая диагностика&nbsp;&mdash; картина по&nbsp;сегментам.<br>
+              <strong>Шаг 6.</strong> Динамика увольнений&nbsp;&mdash; когортный анализ, кривые удержания, анализ выживаемости.<br>
+              <strong>Шаг 7.</strong> Ожидаемая и&nbsp;избыточная текучесть&nbsp;&mdash; где фактическая текучесть превышает ожидаемую.
+            </div>
+          </div>
+        </div>
+
+        <div class="phaseItem">
+          <div class="phaseDot"></div>
+          <div class="phaseContent">
+            <div class="phaseTitle">Фаза 3: Анализ причин</div>
+            <div class="phaseDesc">
+              <strong>Шаг 8.</strong> Анализ факторов&nbsp;&mdash; моделирование факторов, связанных с&nbsp;уходом.<br>
+              <strong>Шаг 9.</strong> Проверка альтернативных объяснений&nbsp;&mdash; не&nbsp;останавливаемся на&nbsp;первой корреляции.<br>
+              <strong>Шаг 10.</strong> Анализ взаимодействий&nbsp;&mdash; когда фактор имеет значение только в&nbsp;определённых условиях.<br>
+              <strong>Шаг 11.</strong> Проверка устойчивости&nbsp;&mdash; вывод не&nbsp;должен исчезать при разумных изменениях спецификации.
+            </div>
+          </div>
+        </div>
+
+        <div class="phaseItem">
+          <div class="phaseDot"></div>
+          <div class="phaseContent">
+            <div class="phaseTitle">Фаза 4: Интерпретация</div>
+            <div class="phaseDesc">
+              <strong>Шаг 12.</strong> Сопоставление с&nbsp;гипотезами бизнеса&nbsp;&mdash; что подтвердилось, что нет.<br>
+              <strong>Шаг 13.</strong> Формирование рекомендаций&nbsp;&mdash; на&nbsp;основе доказанного, с&nbsp;отделением фактов от&nbsp;интерпретаций.
+            </div>
+          </div>
+        </div>
+
+        <div class="phaseItem">
+          <div class="phaseDot"></div>
+          <div class="phaseContent">
+            <div class="phaseTitle">Фаза 5: Передача результата</div>
+            <div class="phaseDesc">
+              Отчёт, презентация, обсуждение с&nbsp;заказчиком. При необходимости&nbsp;&mdash; повторное измерение через несколько месяцев для оценки эффекта внедрённых изменений.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== ПРИМЕР ВЫВОДОВ ==================== -->
+    <section class="productSection fadeIn">
+      <h2 class="productSectionTitle">Пример результатов проверки гипотез</h2>
+
+      <table class="hypothesisTable">
+        <thead>
+          <tr>
+            <th>Гипотеза</th>
+            <th>Результат</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Основная причина&nbsp;&mdash; зарплата</td>
+            <td><span class="verdictPartial">Подтверждается частично</span></td>
+          </tr>
+          <tr>
+            <td>Проблема возникает в&nbsp;первые 6&nbsp;месяцев</td>
+            <td><span class="verdictConfirmed">Подтверждается</span></td>
+          </tr>
+          <tr>
+            <td>Основной источник&nbsp;&mdash; конкретные руководители</td>
+            <td><span class="verdictPartial">Подтверждается для отдельных групп</span></td>
+          </tr>
+          <tr>
+            <td>Источник найма&nbsp;X даёт плохое удержание</td>
+            <td><span class="verdictRejected">Не&nbsp;подтверждается после корректировки</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ==================== ЧТО НА ВЫХОДЕ ==================== -->
+    <section class="productSection fadeIn">
+      <h2 class="productSectionTitle">Что вы&nbsp;получаете на&nbsp;выходе</h2>
+
+      <div class="outcomesGrid">
+
+        <div class="outcomeCard">
+          <span class="outcomeNumber">01</span>
+          <div>
+            <div class="outcomeTitle">Краткие выводы для руководства</div>
+            <div class="outcomeDesc">Что происходит, где проблема, какие факторы связаны с&nbsp;уходом.</div>
+          </div>
+        </div>
+
+        <div class="outcomeCard">
+          <span class="outcomeNumber">02</span>
+          <div>
+            <div class="outcomeTitle">Карта текучести</div>
+            <div class="outcomeDesc">Структура по&nbsp;периодам, подразделениям, должностям, стажу и&nbsp;другим сегментам.</div>
+          </div>
+        </div>
+
+        <div class="outcomeCard">
+          <span class="outcomeNumber">03</span>
+          <div>
+            <div class="outcomeTitle">Динамика увольнений</div>
+            <div class="outcomeDesc">Анализ времени до&nbsp;ухода: когорты, удержание, выживаемость, риски.</div>
+          </div>
+        </div>
+
+        <div class="outcomeCard">
+          <span class="outcomeNumber">04</span>
+          <div>
+            <div class="outcomeTitle">Карта избыточной текучести</div>
+            <div class="outcomeDesc">Где фактическая текучесть превышает ожидаемую с&nbsp;учётом структуры персонала.</div>
+          </div>
+        </div>
+
+        <div class="outcomeCard">
+          <span class="outcomeNumber">05</span>
+          <div>
+            <div class="outcomeTitle">Анализ факторов</div>
+            <div class="outcomeDesc">Какие характеристики имеют устойчивую статистическую связь с&nbsp;уходом.</div>
+          </div>
+        </div>
+
+        <div class="outcomeCard">
+          <span class="outcomeNumber">06</span>
+          <div>
+            <div class="outcomeTitle">Вердикты по&nbsp;гипотезам</div>
+            <div class="outcomeDesc">Что подтверждено, что частично, что не&nbsp;подтверждено, что невозможно проверить.</div>
+          </div>
+        </div>
+
+        <div class="outcomeCard">
+          <span class="outcomeNumber">07</span>
+          <div>
+            <div class="outcomeTitle">Карта действий</div>
+            <div class="outcomeDesc">Какие направления вмешательства имеет смысл рассмотреть.</div>
+          </div>
+        </div>
+
+        <div class="outcomeCard">
+          <span class="outcomeNumber">08</span>
+          <div>
+            <div class="outcomeTitle">Методология и&nbsp;ограничения</div>
+            <div class="outcomeDesc">Подробное описание выборки, методов, моделей, ограничений и&nbsp;проверок.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== КАКИЕ ДАННЫЕ НУЖНЫ ==================== -->
+    <section class="productSection fadeIn">
+      <h2 class="productSectionTitle">Какие данные нужны</h2>
+
+      <div class="dataLevelGrid">
+
+        <div class="dataLevelCard">
+          <div class="dataLevelLabel">Минимальный набор</div>
+          <div class="dataLevelTitle">Сотрудники и&nbsp;их&nbsp;история</div>
+          <div class="dataLevelTags">
+            <span class="dataLevelTag">ID сотрудника</span>
+            <span class="dataLevelTag">дата найма</span>
+            <span class="dataLevelTag">дата увольнения</span>
+            <span class="dataLevelTag">тип увольнения</span>
+            <span class="dataLevelTag">подразделение</span>
+            <span class="dataLevelTag">должность</span>
+            <span class="dataLevelTag">руководитель</span>
+            <span class="dataLevelTag">зарплата</span>
+            <span class="dataLevelTag">история помесячно</span>
+          </div>
+        </div>
+
+        <div class="dataLevelCard recommended">
+          <div class="dataLevelLabel">Рекомендуемый набор</div>
+          <div class="dataLevelTitle">+ Расширенная история</div>
+          <div class="dataLevelTags">
+            <span class="dataLevelTag">история зарплаты</span>
+            <span class="dataLevelTag">повышения</span>
+            <span class="dataLevelTag">переводы</span>
+            <span class="dataLevelTag">грейды</span>
+            <span class="dataLevelTag">оценка эффективности</span>
+            <span class="dataLevelTag">источник найма</span>
+            <span class="dataLevelTag">нагрузка</span>
+          </div>
+        </div>
+
+        <div class="dataLevelCard">
+          <div class="dataLevelLabel">Максимальный набор</div>
+          <div class="dataLevelTitle">+ Опросы и&nbsp;выходные интервью</div>
+          <div class="dataLevelTags">
+            <span class="dataLevelTag">опросы вовлечённости</span>
+            <span class="dataLevelTag">eNPS</span>
+            <span class="dataLevelTag">выходные интервью</span>
+            <span class="dataLevelTag">оценки руководителя</span>
+            <span class="dataLevelTag">карьерные ожидания</span>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="productSectionSubtitle" style="margin-top: 32px; margin-bottom: 0;">
+        Оптимальный горизонт данных&nbsp;&mdash; 24&ndash;36&nbsp;месяцев. Минимальный объём определяется не&nbsp;только количеством сотрудников, но&nbsp;и&nbsp;количеством увольнений. Если данных недостаточно для&nbsp;определённого метода, этот метод просто не&nbsp;используется.
+      </p>
+    </section>
+
+    <!-- ==================== ЧТО НЕ ОБЕЩАЕТ ==================== -->
+    <section class="productSection fadeIn">
+      <h2 class="productSectionTitle">Что исследование не&nbsp;обещает</h2>
+
+      <div class="compareGrid">
+        <div class="compareCard naive">
+          <div class="compareCardTitle">Не&nbsp;обещает</div>
+          <div class="compareCardText">
+            <p>&laquo;Мы&nbsp;точно установим причину каждого увольнения&raquo;&nbsp;&mdash; по&nbsp;наблюдательным данным это было&nbsp;бы нечестным обещанием.</p>
+          </div>
+        </div>
+        <div class="compareCard research">
+          <div class="compareCardTitle">Что даёт</div>
+          <div class="compareCardText">
+            <p>Какие факторы статистически связаны с&nbsp;уходом, насколько устойчивы эти связи, в&nbsp;каких группах они проявляются, какие гипотезы получают поддержку, какие вмешательства рационально проверять дальше.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ФОРМАТ РАБОТЫ ==================== -->
+    <section class="productSection fadeIn">
+      <h2 class="productSectionTitle">Формат работы</h2>
+
+      <div class="questionsGrid">
+        <div class="questionCard">
+          <div class="questionHeader" onclick="toggleQuestion(this)">
+            <span class="questionNumber">1</span>
+            <span class="questionText">Предварительная консультация</span>
+            <span class="questionArrow">▼</span>
+          </div>
+          <div class="questionBody">
+            <div class="questionBodyInner">
+              <p>Обсуждаем проблему, контекст и&nbsp;доступные данные. Бесплатно, 30&ndash;40&nbsp;минут.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="questionCard">
+          <div class="questionHeader" onclick="toggleQuestion(this)">
+            <span class="questionNumber">2</span>
+            <span class="questionText">Оценка реализуемости</span>
+            <span class="questionArrow">▼</span>
+          </div>
+          <div class="questionBody">
+            <div class="questionBodyInner">
+              <p>Проверяем, можно&nbsp;ли провести исследование на&nbsp;имеющихся данных. Результат&nbsp;&mdash; заключение о&nbsp;достаточности данных и&nbsp;ограничениях.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="questionCard">
+          <div class="questionHeader" onclick="toggleQuestion(this)">
+            <span class="questionNumber">3</span>
+            <span class="questionText">Дизайн исследования</span>
+            <span class="questionArrow">▼</span>
+          </div>
+          <div class="questionBody">
+            <div class="questionBodyInner">
+              <p>Фиксируем исследовательский вопрос, популяцию, событие, период наблюдения и&nbsp;аналитический план. Согласуем до&nbsp;начала работы.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="questionCard">
+          <div class="questionHeader" onclick="toggleQuestion(this)">
+            <span class="questionNumber">4</span>
+            <span class="questionText">Анализ</span>
+            <span class="questionArrow">▼</span>
+          </div>
+          <div class="questionBody">
+            <div class="questionBodyInner">
+              <p>Проводим исследование по&nbsp;согласованному плану. Проверяем устойчивость результатов. Промежуточные результаты обсуждаем.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="questionCard">
+          <div class="questionHeader" onclick="toggleQuestion(this)">
+            <span class="questionNumber">5</span>
+            <span class="questionText">Отчёт и&nbsp;презентация</span>
+            <span class="questionArrow">▼</span>
+          </div>
+          <div class="questionBody">
+            <div class="questionBodyInner">
+              <p>Передаём подробный аналитический отчёт с&nbsp;методологией и&nbsp;ограничениями. Презентуем результаты и&nbsp;отвечаем на&nbsp;вопросы.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="questionCard">
+          <div class="questionHeader" onclick="toggleQuestion(this)">
+            <span class="questionNumber">6</span>
+            <span class="questionText">Повторное измерение</span>
+            <span class="questionArrow">▼</span>
+          </div>
+          <div class="questionBody">
+            <div class="questionBodyInner">
+              <p>При необходимости через несколько месяцев можно повторить измерение или оценить эффект внедрённых изменений.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CTA ==================== -->
+    <section class="cta fadeIn">
+      <h2 class="ctaTitle">Обсудим ваш случай?</h2>
+      <p class="ctaText">Напишите мне в&nbsp;Telegram&nbsp;&mdash; расскажите, что происходит с&nbsp;текучестью. Я&nbsp;скажу, можно&nbsp;ли на&nbsp;это ответить данными.</p>
+      <a href="https://t.me/olegborisov_hr" class="btn btnPrimary" target="_blank" rel="noopener">Запросить консультацию</a>
+    </section>
+
+  </main>
+
+  <div id="footerPlaceholder"></div>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    function toggleQuestion(header) {
+      var card = header.parentElement;
+      card.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
