@@ -262,10 +262,10 @@ function initReadinessQuiz() {
       text = 'У вас есть данные, понимание цели и реалистичные ожидания. Можно стартовать.';
     } else if (pct >= 0.45) {
       level = 'almost'; icon = '🟡'; title = 'Почти готовы';
-      text = 'Есть пара моментов, которые стоит прояснить перед стартом. Давайте обсудим — я помогу разобраться.';
+      text = 'Есть пара моментов, которые стоит прояснить перед стартом. Давайте обсудим - я помогу разобраться.';
     } else {
       level = 'notReady'; icon = '🔴'; title = 'Пока рано';
-      text = 'Сейчас запуск data-проекта рискован. Но это не приговор — давайте обсудим, с чего начать подготовку.';
+      text = 'Сейчас запуск data-проекта рискован. Но это не приговор - давайте обсудим, с чего начать подготовку.';
     }
 
     var body = document.getElementById('quizBody');
@@ -326,7 +326,7 @@ function initCalculator() {
   function renderCalculator() {
     var html = '';
 
-    // Тип задачи — плитки
+    // Тип задачи - плитки
     html += '<div class="calcSection"><h3 class="calcSectionTitle">Тип задачи</h3><div class="calcTiles">';
     var types = [
       {id: 'audit', label: 'Аудит и консалтинг', desc: 'Разбор данных и процессов'},
@@ -348,7 +348,7 @@ function initCalculator() {
     html += renderRadio('complexity', 'Сложность данных', data.complexity);
     html += renderRadio('urgency', 'Срочность', data.urgency);
 
-    // Опции — зависят от типа
+    // Опции - зависят от типа
     if (selections.type && selections.type !== 'science') {
       var relevantOptions = getRelevantOptions();
       if (relevantOptions.length > 0) {
@@ -427,7 +427,7 @@ function initCalculator() {
     var stickyNote = document.getElementById('calcResultNoteSticky');
 
     if (!selections.type || selections.type === 'science') {
-      var sciText = selections.type === 'science' ? 'Индивидуально' : '—';
+      var sciText = selections.type === 'science' ? 'Индивидуально' : '-';
       var sciNote = selections.type === 'science' ? 'Стоимость обсуждается после знакомства с проектом' : '';
       if (resultValue) resultValue.textContent = sciText;
       if (resultNote) resultNote.textContent = sciNote;

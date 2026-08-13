@@ -30,7 +30,7 @@ function renderBlogPosts() {
       container.innerHTML = html;
     })
     .catch(function() {
-      // Постов нет — показываем заглушку
+      // Постов нет - показываем заглушку
       var empty = document.querySelector('.blogEmpty');
       if (empty) empty.style.display = 'block';
     });
