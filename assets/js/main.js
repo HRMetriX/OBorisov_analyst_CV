@@ -529,6 +529,15 @@ function initAttritionPopup() {
   }, 18000);
 }
 
+// ==================== GOATCOUNTER ====================
+function initGoatCounter() {
+  var script = document.createElement('script');
+  script.setAttribute('data-goatcounter', 'https://hrmetrx.goatcounter.com/count');
+  script.async = true;
+  script.src = '//gc.zgo.at/count.js';
+  document.head.appendChild(script);
+}
+
 // ==================== ЗАПУСК ====================
 document.addEventListener('DOMContentLoaded', function() {
   loadIncludes();
@@ -538,4 +547,5 @@ document.addEventListener('DOMContentLoaded', function() {
   initReadinessQuiz();
   initCalculator();
   initAttritionPopup();
+  initGoatCounter();
 });
